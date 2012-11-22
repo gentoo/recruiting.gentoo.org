@@ -1,0 +1,27 @@
+- model_class = Answer
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.pluralize
+%table.table.table-striped
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:question_id)
+      %th= model_class.human_attribute_name(:user_id)
+      %th= model_class.human_attribute_name(:content)
+      %th= model_class.human_attribute_name(:status)
+      %th= model_class.human_attribute_name(:created_at)
+      %th=t '.actions', :default => t("helpers.actions")
+  %tbody
+    - @answers.each do |answer|
+      %tr
+        %td= link_to answer.id, answer_path(answer)
+        %td= answer.question_id
+        %td= answer.user_id
+        %td= answer.content
+        %td= answer.status
+        %td=l answer.created_at
+        %td
+          = link_to t('.edit', :default => t("helpers.links.edit")), edit_answer_path(answer), :class => 'btn btn-mini'
+          = link_to t('.destroy', :default => t("helpers.links.destroy")), answer_path(answer), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+
+= link_to t('.new', :default => t("helpers.links.new")), new_answer_path, :class => 'btn btn-primary'

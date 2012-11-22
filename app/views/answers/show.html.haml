@@ -1,0 +1,25 @@
+- model_class = Answer
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human
+
+%p
+  %strong= model_class.human_attribute_name(:question_id) + ':'
+  %br
+  = @answer.question_id
+%p
+  %strong= model_class.human_attribute_name(:user_id) + ':'
+  %br
+  = @answer.user_id
+%p
+  %strong= model_class.human_attribute_name(:content) + ':'
+  %br
+  = @answer.content
+%p
+  %strong= model_class.human_attribute_name(:status) + ':'
+  %br
+  = @answer.status
+
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), answers_path, :class => 'btn'
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_answer_path(@answer), :class => 'btn'
+  = link_to t('.destroy', :default => t("helpers.links.destroy")), answer_path(@answer), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

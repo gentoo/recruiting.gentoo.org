@@ -11,3 +11,16 @@
  *= require_self
  *= require_tree .
  */
+@import "bootstrap";
+@import "bootstrap";
+@import "font-awesome";
+
+body { padding-top: 60px; }
+input, textarea { width: 400px; }
+
+/* footer */
+footer { margin-top: 20px; }
+footer.main .inner { height: 40px; width: 940px; margin: 0 auto; position: relative; text-align: center; }
+footer.main .inner p { display: inline-block; }
+footer.main .inner ul { padding-top: 12px; margin-left: 20px; display: inline-block; }
+footer.main .inner ul li { display: inline-block; margin-right: 10px; }
