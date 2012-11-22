@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/isaiah/bootswatch-rails.git
+  revision: 30cb490a62a7a365b0bd2643d97131b82a390654
+  specs:
+    bootswatch-rails (0.1.0)
+      railties (>= 3.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -81,6 +88,7 @@ GEM
       activerecord (>= 3.0.0)
     formtastic (2.2.1)
       actionpack (>= 3.0)
+    gravatar-ultimate (1.0.3)
     haml (3.1.7)
     haml-rails (0.3.5)
       actionpack (>= 3.1, < 4.1)
@@ -217,10 +225,12 @@ DEPENDENCIES
   activeadmin
   acts_as_commentable (~> 3.0.1)
   bootstrap-sass
+  bootswatch-rails!
   cancan
   coffee-rails (~> 3.2.1)
   devise
   font-awesome-sass-rails
+  gravatar-ultimate
   haml-rails
   jquery-rails
   mailboxer

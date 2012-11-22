@@ -9,7 +9,7 @@ Thoughts
 TODO
 --------
 
-* user profile page, gavatar support
+* gavatar support
 * ready recruit page for recruiters
 * script to load all projects
 * automatically recognize mentors, and developers
@@ -25,3 +25,4 @@ Done
 * Commentable question and answer
 * Use Markdown with syntax highlight for questions and answers.
   EpicEditor
+* user profile page

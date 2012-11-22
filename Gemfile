@@ -16,7 +16,10 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   #gem 'therubyracer', :platforms => :ruby
+  gem 'bootstrap-sass'
+  gem 'font-awesome-sass-rails'
 
+  gem 'bootswatch-rails', github: "isaiah/bootswatch-rails"
   gem 'uglifier', '>= 1.0.3'
 end
 gem 'simple_form'
@@ -32,10 +35,9 @@ gem 'psych'
 gem 'redcarpet', '~> 2.1.1'
 gem 'pygments.rb', '0.3.1'
 gem 'acts_as_commentable', '~> 3.0.1'
-gem 'bootstrap-sass'
-gem 'font-awesome-sass-rails'
 gem 'workflow'
 gem 'mailboxer'
+gem 'gravatar-ultimate'
 group :development, :test do
   gem 'pry'
   gem 'rspec-rails'

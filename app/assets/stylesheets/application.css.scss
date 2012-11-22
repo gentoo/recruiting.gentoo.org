@@ -12,8 +12,9 @@
  *= require_tree .
  *= require tango
  */
+@import "bootswatch/cerulean/variables";
 @import "bootstrap";
-@import "bootstrap";
+@import "bootswatch/cerulean/bootswatch";
 @import "font-awesome";
 
 body { padding-top: 60px; }
