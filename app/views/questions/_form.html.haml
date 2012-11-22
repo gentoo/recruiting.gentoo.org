@@ -7,7 +7,9 @@
   .form-actions
     = f.button :submit, :class => 'btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), questions_path, :class => 'btn'
-    = link_to "Epic editor", "javascript:void(0)", id: "load_epic_editor", class: "btn"
+    = link_to "javascript:void(0)", id: "load_epic_editor", class: "btn" do
+      %i.icon-align-justify
+      Epiceditor
 - content_for :js do
   :javascript
     $(function() {

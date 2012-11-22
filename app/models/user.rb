@@ -61,7 +61,7 @@ class User < ActiveRecord::Base
     novice.promote!
   end
 
-  def ready
+  def self.ready
     # FIXME
     all
   end

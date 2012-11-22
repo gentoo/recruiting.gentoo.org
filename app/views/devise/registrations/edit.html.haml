@@ -1,16 +1,24 @@
-%h2
-  Edit #{resource_name.to_s.humanize}
+.page-header
+  %h2 Account Settings
 = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
-  = f.error_notification
-  .form-inputs
-    = f.input :name, :required => true, :autofocus => true
-    = f.input :email, :required => true
-    = f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false
-    = f.input :password_confirmation, :required => false
-    = f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true
+  .tabbable
+    %ul.nav.nav-pills
+      %li.active
+        %a{href: "#tab1", "data-toggle" => "tab"} Profile
+      %li
+        %a{href: "#tab2", "data-toggle" => "tab"} Change password
+    .tab-content
+      .tab-pane.active#tab1
+        = f.error_notification
+        = f.input :name, :required => true, :autofocus => true
+        = f.input :email, :required => true
+        = f.input :biography
+      .tab-pane#tab2
+        = f.error_notification
+        = f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false
+        = f.input :password_confirmation, :required => false
+        = f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true
   .form-actions
     = f.button :submit, "Update"
-%h3 Cancel my account
-%p
-  Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}.
-= link_to "Back", :back
+    = link_to "Back", :back
+%p Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}.
