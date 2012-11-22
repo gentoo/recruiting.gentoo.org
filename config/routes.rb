@@ -1,6 +1,9 @@
 Gentoo::Application.routes.draw do
-  get "comments/create"
-
+  resources :novices do
+    member do
+      put :sponsor
+    end
+  end
   resources :questions do
     collection do
       get :answered
@@ -10,12 +13,23 @@ Gentoo::Application.routes.draw do
     resources :comments
   end
 
+  resources :answers do
+    resources :comments
+    collection do
+      get :review
+    end
+    member do
+      put :accept
+      put :reject
+    end
+  end
+
+  resources :sponsees
 
   ActiveAdmin.routes(self)
 
   devise_for :users
 
-  match "users/:id/promote" => "users#promote", as: :promote
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -13,12 +13,11 @@ class User < ActiveRecord::Base
   workflow do
     state :novice do
       event :promote, transitions_to: :candidate
-      event :rock, transitions_to: :mentor
     end
 
     state :candidate do
       event :promote, transitions_to: :developer
-      event :reject, transitions_to: :rejected
+      event :reject, transitions_to: :novice
     end
 
     state :developer do
@@ -34,7 +33,6 @@ class User < ActiveRecord::Base
     end
 
     state :admin
-    state :rejected
   end
 
   has_many :answers
@@ -44,11 +42,22 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :projects
 
   belongs_to :mentor, class_name: "User"
-  has_many :candidates, class_name: "User", foreign_key: :mentor_id
+  has_many :sponsees, class_name: "User", foreign_key: :mentor_id
+
+  scope :novices, where(workflow_state: :novice)
 
   validates_presence_of :email, :name, :password
 
   def answer_for(question)
     Answer.for(self, question).first
+  end
+
+  def answers_waiting_review
+    Answer.awaiting_review.joins(:user).where("users.id" => sponsees.map(&:id))
+  end
+
+  def recruit(novice)
+    sponsees << novice
+    novice.promote!
   end
 end

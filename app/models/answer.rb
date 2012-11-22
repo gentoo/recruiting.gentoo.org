@@ -12,6 +12,8 @@ class Answer < ActiveRecord::Base
     where(question_id: question.id).where(user_id: user.id)
   }
 
+  scope :awaiting_review, where(workflow_state: "awaiting_review")
+
   workflow do
     state :awaiting_review do
       event :review, transitions_to: :being_reviewed

@@ -1,0 +1,6 @@
+.page-header
+  %h2 Sheep list
+- @sponsees.each do |sponsee|
+  %div
+    %p= sponsee.name
+    %p= sponsee.email

@@ -1,0 +1,9 @@
+= simple_form_for [commentable, Comment.new] do |f|
+  = f.input :comment, label: false, html: {style: "height: 40px; width: 680px;"}
+  .form-actions
+    = f.button :submit, class: "btn btn-primary", value: "Comment"
+    = link_to t('.back', :default => t("helpers.links.back")), questions_path
+- commentable.comments.each do |comment|
+  .row
+    .span2 #{comment.user.name} says:
+    .span4= markdown comment.comment
