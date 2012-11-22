@@ -14,6 +14,14 @@
         %li= link_to "Assigned", questions_path
         %li= link_to "Answered", answered_questions_path
         %li= link_to "Submit", new_question_path
+    - elsif current_user.mentor?
+      %h3 Mentor
+      %ul.nav.nav-list
+        %li.nav-header Candidates
+        %li= link_to "Answered to check", check_answers_path
+        %li= link_to "My sponsees", sponsees_path
+        %li= link_to "Submit questions", new_question_path
+
     - elsif current_user.admin?
       %h3 Admin
       %ul.nav.nav-list
