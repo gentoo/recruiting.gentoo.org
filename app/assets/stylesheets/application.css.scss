@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require_tree .
+ *= require tango
  */
 @import "bootstrap";
 @import "bootstrap";
@@ -17,6 +18,8 @@
 
 body { padding-top: 60px; }
 input, textarea { width: 400px; }
+.hidden { display: none; }
+#epiceditor{ height: 400px }
 
 /* footer */
 footer { margin-top: 20px; }

@@ -1,3 +1,4 @@
+require 'html_with_pygments'
 module ApplicationHelper
   def bootstrap_flash
     flash_messages = []
@@ -42,5 +43,11 @@ module ApplicationHelper
 
   def render_breadcrumbs(divider = '/')
     render :partial => 'shared/breadcrumbs', :locals => { :divider => divider }
+  end
+
+  def markdown(text)
+    @markdown ||= Redcarpet::Markdown.new(HtmlWithPygments,
+        autolink: true, space_after_headers: true, fenced_code_blocks: true)
+    @markdown.render(text).html_safe
   end
 end

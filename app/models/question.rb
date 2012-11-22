@@ -3,7 +3,7 @@ class Question < ActiveRecord::Base
 
   acts_as_commentable
 
-  attr_accessible :content, :id, :reference, :title, :user_id, :group_id, :category_id
+  attr_accessible :content, :id, :title, :user_id, :group_id, :category_id
   has_many :answers
   belongs_to :user
   belongs_to :category

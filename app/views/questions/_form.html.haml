@@ -2,8 +2,22 @@
   = f.input :title
   = f.association :group
   = f.association :category
-  = f.input :reference
-  = f.input :content
+  = f.input :content, placeholder: "Markdown supported"
+  #epiceditor.hidden
   .form-actions
     = f.button :submit, :class => 'btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), questions_path, :class => 'btn'
+    = link_to "Epic editor", "javascript:void(0)", id: "load_epic_editor", class: "btn"
+- content_for :js do
+  :javascript
+    $(function() {
+      $('#load_epic_editor').click(function() {
+        $("#question_content").hide();
+        var epicEditor = new EpicEditor({basePath: "/assets", file: {name: "q#{@question.id}", defaultContent: $("#question_content").val()}});
+        $("#epiceditor").show();
+        epicEditor.load().importFile("q", $("#question_content").val());
+        $("form").submit(function() {
+          $("#answer_content").val(epicEditor.exportFile());
+        })
+      });
+    });

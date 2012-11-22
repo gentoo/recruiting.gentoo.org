@@ -4,11 +4,15 @@ class Ability
   def initialize(user)
     user ||= User.new
     if user.candidate? || user.mentor?
-      can :manage, [Question, Answer]
+      can :manage, [Question, Answer, Comment]
+    elsif user.mentor?
+      can :manage, [Question, Answer, Comment]
     elsif user.recruiter?
-      can :manage, [Question, Answer, Category, Group]
+      can :manage, [Question, Answer, Category, Group, Comment]
     elsif user.admin?
       can :manage, :all
+    else
+      can :read, :all
     end
     # Define abilities for the passed in user here. For example:
     #

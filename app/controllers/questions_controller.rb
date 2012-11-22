@@ -16,6 +16,10 @@ class QuestionsController < InheritedResources::Base
     end
   end
 
+  def show
+    @question = Question.includes(:comments).find params[:id]
+  end
+
   def answered
     @questions = Question.answered_by(current_user)
   end

@@ -1,10 +1,13 @@
 Gentoo::Application.routes.draw do
+  get "comments/create"
+
   resources :questions do
     collection do
       get :answered
       get :unanswered
     end
     resources :answers
+    resources :comments
   end
 
 
