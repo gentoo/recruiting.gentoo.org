@@ -60,4 +60,9 @@ class User < ActiveRecord::Base
     sponsees << novice
     novice.promote!
   end
+
+  def ready
+    # FIXME
+    all
+  end
 end

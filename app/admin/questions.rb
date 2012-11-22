@@ -22,6 +22,19 @@ ActiveAdmin.register Question do
     default_actions
   end
 
+  show do |question|
+    attributes_table do
+      row :title
+      row :content do
+        markdown question.content
+      end
+      row :group
+      row :category
+      row :created_at
+      row :updated_at
+    end
+  end
+
   form do |f|
     f.inputs "Info" do
       f.input :title

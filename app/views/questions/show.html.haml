@@ -3,7 +3,3 @@
 .page-header= markdown(@question.content)
 
 = render :partial => 'comments/form', locals: {commentable: @question}
-- @question.comments.each do |comment|
-  .row
-    .span2 #{comment.user.name} says:
-    .span4= comment.comment

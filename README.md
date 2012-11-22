@@ -4,7 +4,24 @@ Welcome to Gentoo Recruiting
 Thoughts
 --------
 
-* Mentor should be able to comment to candidates' answers.
+* gist integration
+
+TODO
+--------
+
+* user profile page, gavatar support
+* ready recruit page for recruiters
+* script to load all projects
+* automatically recognize mentors, and developers
+* openid?
+* instructions for role and how to obtain them
+* email notifications
+* clean sql, create index
+* capistrano deployment
+
+Done
+-----------
+
+* Commentable question and answer
 * Use Markdown with syntax highlight for questions and answers.
   EpicEditor
-* gist integration

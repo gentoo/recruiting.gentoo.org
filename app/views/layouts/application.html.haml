@@ -25,7 +25,9 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand(href="#") Gentoo Recruiting
+          %a.brand(href="#")
+            = image_tag "glogo-small.png", style: "height: 20px; width: 20px;"
+            Gentoo Recruiting
           .container.nav-collapse
             %ul.nav
               %li= link_to "Questions", "/questions"
@@ -66,9 +68,8 @@
         .inner
           %p &copy; Gentoo Foundation 2012
           %ul
-            %li= link_to "terms", "#/terms"
-            %li= link_to "help", "#/help"
-            %li= link_to "blog", "http://blogs.gentoo.org"
+            %li= link_to "HELP", "http://forums.gentoo.org"
+            %li= link_to "BLOG", "http://planet.gentoo.org"
     /
       Javascripts
       \==================================================

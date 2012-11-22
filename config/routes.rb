@@ -3,7 +3,11 @@ Gentoo::Application.routes.draw do
     member do
       put :sponsor
     end
+    collection do
+      get :ready
+    end
   end
+
   resources :questions do
     collection do
       get :answered

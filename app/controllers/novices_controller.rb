@@ -8,4 +8,8 @@ class NovicesController < ApplicationController
     current_user.recruit(@novice)
     redirect_to action: :index
   end
+
+  def ready
+    @novices = User.ready
+  end
 end
