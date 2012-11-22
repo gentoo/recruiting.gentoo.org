@@ -28,7 +28,13 @@ ActiveAdmin.register User do
     column("Name", :name)
     column("Email", :email)
     column("Role") { |user| status_tag(user.current_state.to_s) }
-    column("Action") { |user| link_to "Promote", promote_path(user)}
+    column("Action") { |user| link_to "Promote", "/admin/users/#{user.id}/promote", method: :put}
     default_actions
+  end
+
+  member_action :promote, :method => :put do
+    user = User.find(params[:id])
+    user.promote!
+    redirect_to action: :index, :notice => "Promoted!"
   end
 end
