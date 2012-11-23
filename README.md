@@ -4,7 +4,6 @@ Welcome to Gentoo Recruiting
 Thoughts
 --------
 
-* gist integration
 * camera snapshot [support](https://github.com/leemachin/say-cheese/blob/master/say-cheese.js)
 * openid?
 * versionize answer
@@ -12,8 +11,6 @@ Thoughts
 TODO
 --------
 
-* script to load all projects (provide a link to the project page if
-  exist)
 * gavatar support
 * ready recruit page for recruiters
 * paranioa users, questions, answers
@@ -22,6 +19,7 @@ TODO
 * email notifications
 * clean sql, create index
 * capistrano deployment
+* Cucumber spec
 
 Done
 -----------
@@ -30,6 +28,9 @@ Done
 * Use Markdown with syntax highlight for questions and answers.
   EpicEditor
 * user profile page
+* script to load all projects (provide a link to the project page if
+  exist)
+* gist integration
 
 Workflow
 -----------
@@ -57,3 +58,8 @@ Auto signed Roles
 * project leaders are recognised as recruiter
 * team leaders grant mentorship to team members
 * admin has full access
+
+Fancy features
+---------------
+
+* embed gist by trible emphasis (***http//gist.github.com/48751***)

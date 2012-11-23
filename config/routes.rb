@@ -1,4 +1,5 @@
 Gentoo::Application.routes.draw do
+  resources :projects
   resources :novices do
     member do
       put :sponsor

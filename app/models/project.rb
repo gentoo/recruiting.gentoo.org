@@ -1,10 +1,13 @@
 class Project < ActiveRecord::Base
-  attr_accessible :description, :name
+  store :team, accessors: [:members, :leaders]
+  attr_accessible :description, :name, :homepage
 
   has_and_belongs_to_many :members, class_name: "User"
 
   has_many :subprojects, class_name: "Project", foreign_key: :parent_prj_id
-  belongs_to :parent_project, class_name: "Project"
+  belongs_to :parent_project, class_name: "Project", foreign_key: :parent_prj_id
 
   belongs_to :leader, class_name: "User"
+
+  scope :top_level, where(parent_prj_id: nil)
 end

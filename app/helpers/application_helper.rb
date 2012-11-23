@@ -47,7 +47,16 @@ module ApplicationHelper
 
   def markdown(text)
     @markdown ||= Redcarpet::Markdown.new(HtmlWithPygments,
-        autolink: true, space_after_headers: true, fenced_code_blocks: true)
+        autolink: false, space_after_headers: true, fenced_code_blocks: true)
     @markdown.render(text).html_safe
+  end
+
+  def project_page(p)
+    host = "http://www.gentoo.org"
+    if p.homepage.nil?
+      p.name
+    else
+      link_to p.name, host + p.homepage
+    end
   end
 end

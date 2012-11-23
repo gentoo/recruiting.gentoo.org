@@ -1,9 +1,9 @@
 .span3
   .well.sidebar-nav
     - if current_user.nil? || current_user.novice?
-      %h3 News
+      %h3 Gentoo News
       %ul.nav.nav-list
-        %li.nav-header Gentoo newsletter
+        %li.nav-header Newsletter
         %li= link_to "We are forking udev!", "/path1"
         %li= link_to "Should we use systemd?", "/path2"
     - elsif current_user.candidate?
@@ -24,8 +24,8 @@
         %li= link_to "Submit questions", new_question_path
 
     - elsif current_user.admin?
-      %h3 Admin
+      %h3 Recruiter
       %ul.nav.nav-list
         %li.nav-header actions
         %li= link_to "Admin Dashboard", admin_dashboard_path
-        %li= link_to "Ready candidates", ready_novices_path
+        %li= link_to "Ready Candidates", ready_novices_path

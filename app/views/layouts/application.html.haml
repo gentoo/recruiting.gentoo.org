@@ -25,12 +25,14 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand(href="#")
+          %a.brand(href="/")
             = image_tag "glogo-small.png", style: "height: 20px; width: 20px;"
             Gentoo Recruiting
           .container.nav-collapse
             %ul.nav
+              %li.divider-vertical
               %li= link_to "Projects", "/projects"
+              %li.divider-vertical
               %li= link_to "Questions", "/questions"
 
             %ul.nav.pull-right
@@ -58,7 +60,6 @@
                         %i.icon-signout
                         = t(:sign_out)
     .container#app
-
       .row
         = render :partial => 'shared/sidebar'
         .span9

@@ -8,4 +8,8 @@ class HtmlWithPygments < Redcarpet::Render::HTML
       Pygments.highlight(code, options)
     end
   end
+
+  def triple_emphasis(text)
+    "<script src='#{text}.js' type='text/javascript' />"
+  end
 end

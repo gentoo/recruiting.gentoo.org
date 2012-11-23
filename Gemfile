@@ -14,6 +14,7 @@ gem 'mysql2'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
+  #gem 'compass-rails'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   #gem 'therubyracer', :platforms => :ruby
   gem 'bootstrap-sass'
@@ -38,6 +39,8 @@ gem 'acts_as_commentable', '~> 3.0.1'
 gem 'workflow'
 gem 'mailboxer'
 gem 'gravatar-ultimate'
+gem 'nokogiri'
+gem 'kaminari'
 group :development, :test do
   gem 'pry'
   gem 'rspec-rails'

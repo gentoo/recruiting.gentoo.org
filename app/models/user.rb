@@ -43,10 +43,14 @@ class User < ActiveRecord::Base
 
   belongs_to :mentor, class_name: "User"
   has_many :sponsees, class_name: "User", foreign_key: :mentor_id
+  has_one :ready_user # only for join
 
   scope :novices, where(workflow_state: :novice)
+  scope :ready, joins(:ready_user).where("ready_users.user_id = users.id")
+  
 
   validates_presence_of :email, :name, :password
+  validates_uniqueness_of :name
 
   def answer_for(question)
     Answer.for(self, question).first
@@ -56,13 +60,20 @@ class User < ActiveRecord::Base
     Answer.awaiting_review.joins(:user).where("users.id" => sponsees.map(&:id))
   end
 
+  def assigned_questions
+    Question.where(group_id: groups.select(:id).map(&:id))
+  end
+
   def recruit(novice)
     sponsees << novice
     novice.promote!
   end
 
-  def self.ready
-    # FIXME
-    all
+  def get_ready!
+    ReadyUser.create(user_id: id)
+  end
+
+  def ready?
+    assigned_questions.count == answers.count && answers.all?(&:accepted?)
   end
 end

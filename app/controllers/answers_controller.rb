@@ -20,6 +20,7 @@ class AnswersController < InheritedResources::Base
     authorize! :review, Answer
     @answer = Answer.find params[:id]
     @answer.accept!
+    check_user_ready(@answer.user)
     redirect_to action: :index
   end
 
@@ -31,6 +32,10 @@ class AnswersController < InheritedResources::Base
   end
 
   private
+  def check_user_ready(user)
+    user.get_ready! if user.ready?
+  end
+
   def get_question
     @question = Question.find(params[:question_id])
   end

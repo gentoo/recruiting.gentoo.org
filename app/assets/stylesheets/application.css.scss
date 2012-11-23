@@ -10,7 +10,7 @@
  *
  *= require_self
  *= require_tree .
- *= require tango
+ *= require github
  */
 @import "bootswatch/cerulean/variables";
 @import "bootstrap";
@@ -22,6 +22,13 @@ input, textarea { width: 400px; }
 .hidden { display: none; }
 #epiceditor{ height: 400px }
 textarea.comment { width: 680px; height: 88px; }
+/* fixes for conflits between font-awesome and glyphicons */
+.dropdown-menu > li > a:hover > [class^="icon-"],
+.dropdown-menu > li > a:hover > [class*=" icon-"],
+.dropdown-menu > .active > a > [class^="icon-"],
+.dropdown-menu > .active > a > [class*=" icon-"] {
+  background-image: none;
+}
 
 /* footer */
 footer { margin-top: 20px; }

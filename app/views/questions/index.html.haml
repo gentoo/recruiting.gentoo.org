@@ -19,3 +19,4 @@
           %td= answer.state
           %td
             = link_to "Edit answer", [:edit, question, answer], :class => 'btn btn-mini' if answer.awaiting_review? || answer.rejected?
+            = link_to "View", [question, answer], :class => 'btn btn-mini'
