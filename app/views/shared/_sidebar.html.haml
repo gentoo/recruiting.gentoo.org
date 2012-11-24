@@ -1,6 +1,12 @@
 .span3
-  .well.sidebar-nav
-    - if current_user.candidate?
+  .well.sidebar-nav#sidebar
+    - if current_user.nil? || current_user.novice?
+      %h3 Gentoo News
+      %ul.nav.nav-list
+        %li.nav-header Newsletter
+        %li= link_to "We are forking udev!", "/path1"
+        %li= link_to "Should we use systemd?", "/path2"
+    - elsif current_user.candidate?
       %h3 Welcome
       %ul.nav.nav-list
         %li.nav-header Questions
@@ -28,9 +34,4 @@
       %h3 Processing
       %ul.nav.nav-list
         %li= link_to "Applied project", "/projects/applying"
-    - else
-      %h3 Gentoo News
-      %ul.nav.nav-list
-        %li.nav-header Newsletter
-        %li= link_to "We are forking udev!", "/path1"
-        %li= link_to "Should we use systemd?", "/path2"
+

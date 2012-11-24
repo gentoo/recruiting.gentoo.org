@@ -16,7 +16,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'haml_coffee_assets'
   gem 'execjs'
-  #gem 'compass-rails'
+  gem 'compass-rails'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   #gem 'therubyracer', :platforms => :ruby
   gem 'bootstrap-sass'
