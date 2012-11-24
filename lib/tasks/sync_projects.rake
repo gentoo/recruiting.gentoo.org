@@ -4,7 +4,7 @@ require 'uri'
 
 namespace :sync do
   desc "synchronize projects with gentoo.org"
-  task :projects do |t|
+  task :projects => :environment do |t|
     uri = URI("http://www.gentoo.org/proj/en/index.xml?showlevel=3")
     @doc = Nokogiri::HTML(open(uri))
     @projects = @doc.css(".ntable tr")

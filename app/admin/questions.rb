@@ -50,7 +50,6 @@ ActiveAdmin.register Question do
       f.input :title
       f.input :content
       f.input :group
-      f.input :category
     end
     f.buttons
   end
