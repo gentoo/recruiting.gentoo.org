@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
       # FIXME remove me later, just a short cut for admin to promote more
       # recruiters
       event :promote, transitions_to: :recruiter
+      event :developer_signup, transitions_to: :developer
     end
 
     state :awaiting_review do
@@ -58,7 +59,19 @@ class User < ActiveRecord::Base
   scope :novices, where(workflow_state: :novice)
   scope :awaiting_review, where(workflow_state: :awaiting_review)
   scope :ready, joins(:ready_user).where("ready_users.user_id = users.id")
-  
+
+  # potentially slow
+  after_create do |user|
+    Project.select([:id, :team]).all.each do |prj|
+      if member_of?(prj.leaders)
+        promote! if novice?
+        prj.update_attribute :leader, user
+      elsif member_of?(prj.members)
+        developer_signup! if novice?
+        user.projects << prj
+      end
+    end
+  end
 
   validates_presence_of :email, :name
   validates_uniqueness_of :name
@@ -95,5 +108,10 @@ class User < ActiveRecord::Base
   def apply_project(project)
     update_attribute :applying_project, project
     applied!
+  end
+
+  private
+  def member_of?(names)
+    names.split(",").map(&:strip).include?(name)
   end
 end

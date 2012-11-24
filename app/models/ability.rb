@@ -20,6 +20,7 @@ class Ability
       cannot :apply, Project
     elsif user.developer?
       can :apply, Project
+      can :create, Question
       can :read, :all
     elsif user.novice? 
       can :apply, Project

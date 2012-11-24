@@ -39,4 +39,10 @@
       %h3 Processing
       %ul.nav.nav-list
         %li= link_to "Applied project", "/projects/applying"
-
+    - elsif current_user.developer?
+      %h3 Developer
+      %ul.nav.nav-list
+        %li.nav-header Actions
+        %li= link_to "Submit questions", new_question_path
+        %li= link_to "Novices", novices_path
+        %li Logged in as a developer, ask recruiters to be a mentor

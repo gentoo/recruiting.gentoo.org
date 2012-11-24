@@ -12,11 +12,9 @@ Thoughts
 TODO
 --------
 
-* gavatar support
+* gravatar support
 * paranioa users, questions, answers
-* automatically recognize mentors, and developers
 * internal mailbox
-* email notifications
 * optimize sql
 * capistrano deployment
 * Cucumber spec
@@ -24,6 +22,8 @@ TODO
 Done
 -----------
 
+* automatically recognize mentors, and developers
+* email notifications
 * Progress bar for candidate
 * instructions for role and how to obtain them
 * ready recruit page for recruiters
