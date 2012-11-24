@@ -19,6 +19,12 @@ images/fullscreen.png: images/fullscreen-7745b2f4b1e906838f5e2395ecc28a53.png
 images/fullscreen/index.png: images/fullscreen-7745b2f4b1e906838f5e2395ecc28a53.png
 images/preview.png: images/preview-e8bc22e8f7938b6b571a783b78b02dd4.png
 images/preview/index.png: images/preview-e8bc22e8f7938b6b571a783b78b02dd4.png
+themes/base/epiceditor.css: themes/base/epiceditor-5c34068894b965ec4a4adc91b853483d.css
+themes/base/epiceditor/index.css: themes/base/epiceditor-5c34068894b965ec4a4adc91b853483d.css
+themes/editor/epic-dark.css: themes/editor/epic-dark-fd30c3333aa4b809e46ff51772338a5b.css
+themes/editor/epic-dark/index.css: themes/editor/epic-dark-fd30c3333aa4b809e46ff51772338a5b.css
+themes/preview/github.css: themes/preview/github-3499772cc0c8d14daa158c106c3535da.css
+themes/preview/github/index.css: themes/preview/github-3499772cc0c8d14daa158c106c3535da.css
 active_admin/admin_notes_icon.png: active_admin/admin_notes_icon-6ebcce66abb69395d9c046059e17092e.png
 active_admin/admin_notes_icon/index.png: active_admin/admin_notes_icon-6ebcce66abb69395d9c046059e17092e.png
 active_admin/datepicker/datepicker-header-bg.png: active_admin/datepicker/datepicker-header-bg-072f4aa9c387de20d8b2402b38b4a365.png
