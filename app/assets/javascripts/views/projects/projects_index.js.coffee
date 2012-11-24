@@ -1,5 +1,6 @@
 class Gentoo.Views.ProjectsIndex extends Backbone.View
   template: JST['projects/index']
+  alertTemplate: JST['shared/alert']
   el: "#projects"
 
   initialize: ->
@@ -28,6 +29,10 @@ class Gentoo.Views.ProjectsIndex extends Backbone.View
  
   render_subprojects: (prj) ->
     (prjs) =>
+      if prjs.length is 0
+        a = @alertTemplate(message: "No subjects found.")
+        $(".page-header").before a
+        $(".alert").fadeOut(2000)
       prjs.each (p) =>
         if prj.hasClass("sub-project")
           p.set("klazz", "sub-sub-project")

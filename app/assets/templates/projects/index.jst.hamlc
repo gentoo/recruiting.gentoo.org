@@ -5,6 +5,6 @@
   %td= @description
   - if can_apply
     %td
-      %a{href:"/projects/#{@id}/apply",data-method:"put",class:"btn btn-mini",title: "Apply to this project"} 
+      %a{href:"/projects/#{@id}/apply",data-method:"put",class:"btn btn-mini",title: "Apply to this project", rel: "tooltip"} 
         %i.icon-book
         %i.icon-trophy

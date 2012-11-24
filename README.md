@@ -7,10 +7,12 @@ Thoughts
 * camera snapshot [support](https://github.com/leemachin/say-cheese/blob/master/say-cheese.js)
 * openid?
 * versionize answer
+* badges style status
 
 TODO
 --------
 
+* Progress bar for candidate
 * gavatar support
 * paranioa users, questions, answers
 * automatically recognize mentors, and developers

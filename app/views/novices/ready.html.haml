@@ -3,8 +3,4 @@
 - if @novices.empty?
   %p All candidates were promoted.
   
-- @novices.each do |novice|
-  %p= novice.groups.map(&:name)
-  %p= novice.name
-  %p= novice.email
-  %p= link_to "Promote", recruit_novice_path(novice), method: :put, class: "btn btn-mini"
+= render :partial => 'novices/list', object: @novices

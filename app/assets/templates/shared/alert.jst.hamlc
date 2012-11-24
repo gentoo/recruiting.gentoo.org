@@ -1,0 +1,5 @@
+.alert
+  %button.close(type="button" data-dismiss="alert") x
+  %strong
+    Warning!&nbsp; 
+    = @message

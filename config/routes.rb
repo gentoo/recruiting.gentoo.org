@@ -3,9 +3,12 @@ Gentoo::Application.routes.draw do
   resources :projects do
     collection do
       get :subprojects
+      get :applying
     end
+
     member do
       put :apply
+      delete :cancel_apply
     end
   end
 

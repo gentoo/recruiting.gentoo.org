@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :role
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :biography
   # attr_accessible :title, :body
 
   workflow do
@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :groups
   has_and_belongs_to_many :categories
   has_and_belongs_to_many :projects
-  belongs_to :applied_project, class_name: "Project"
+  belongs_to :applying_project, class_name: "Project", foreign_key: "applying_project_id"
 
   belongs_to :mentor, class_name: "User"
   has_many :sponsees, class_name: "User", foreign_key: :mentor_id
@@ -86,7 +86,7 @@ class User < ActiveRecord::Base
   end
 
   def apply_project(project)
-    update_attribute :applied_project, project
+    update_attribute :applying_project, project
     applied!
   end
 end

@@ -1,0 +1,21 @@
+.page-header
+  %h2 Favourite Project
+- if @project.nil?
+  %p Not applying for any project yet.
+- else
+  %dl
+    %dt Project
+    %dd= @project.name
+    %dt Leaders
+    %dd= @project.team[:leaders]
+    %dt Members
+    %dd= @project.team[:members]
+    %dt Description
+    %dd= @project.description
+    %dt Status
+    %dd
+      %span.label.label-info= current_user.awaiting_review? ? "Processing" : "Candidate"
+
+  = link_to cancel_apply_project_path(@project), class: "btn btn-danger", method: :delete do
+    %i.icon-trash
+    Cancel my application

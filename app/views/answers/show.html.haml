@@ -1,6 +1,7 @@
 .page-header
-  %h2= @question.title
-  %span#toggle_question= link_to "toggle content", "#"
+  %h3
+    = @question.title
+    %small#toggle_question= link_to "Toggle content", "#"
 
 .page-header.hidden.question
   %p= markdown(@question.content)

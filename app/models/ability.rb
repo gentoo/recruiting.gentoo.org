@@ -10,11 +10,18 @@ class Ability
       can :read, Answer
     elsif user.mentor?
       can :manage, [Question, Answer, Comment]
+      can :sponsor, User
     elsif user.recruiter?
       can :manage, [Question, Answer, Category, Group, Comment]
+      can :promote, User
+      can :sponsor, User
     elsif user.admin?
       can :manage, :all
-    elsif user.novice?
+      cannot :apply, Project
+    elsif user.developer?
+      can :apply, Project
+      can :read, :all
+    elsif user.novice? 
       can :apply, Project
     else
       can :read, :all

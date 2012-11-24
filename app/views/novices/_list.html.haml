@@ -1,0 +1,17 @@
+%ul.thumbnails
+  - list.each do |sponsee|
+    %li.span3
+      .thumbnail
+        %img(src="http://placehold.it/260x200")
+        %h3= sponsee.name
+        %p= truncate(sponsee.biography, length: 150)
+        - if can?(:sponsor, User) && sponsee.awaiting_review?
+          %p
+            = link_to sponsor_novice_path(sponsee), method: :put, class: "btn btn-primary" do
+              %i.icon-umbrella
+              Mentor 
+        - if can?(:promote, User) && sponsee.ready?
+          %p
+            = link_to recruit_novice_path(sponsee), method: :put, class: "btn btn-primary" do
+              %i.icon-trophy
+              Promote 
