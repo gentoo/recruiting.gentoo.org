@@ -1,4 +1,5 @@
 Gentoo::Application.routes.draw do
+  match "help" => "help#index"
   resources :projects do
     collection do
       get :subprojects

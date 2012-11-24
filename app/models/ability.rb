@@ -3,7 +3,7 @@ class Ability
 
   def initialize(user)
     user ||= User.new
-    if user.candidate? || user.mentor?
+    if user.candidate?
       can :manage, [Question, Comment]
       can :create, Answer
       can :update, Answer

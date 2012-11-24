@@ -12,10 +12,9 @@ TODO
 --------
 
 * gavatar support
-* ready recruit page for recruiters
 * paranioa users, questions, answers
 * automatically recognize mentors, and developers
-* instructions for role and how to obtain them
+* internal mailbox
 * email notifications
 * clean sql, create index
 * capistrano deployment
@@ -24,6 +23,8 @@ TODO
 Done
 -----------
 
+* instructions for role and how to obtain them
+* ready recruit page for recruiters
 * Commentable question and answer
 * Use Markdown with syntax highlight for questions and answers.
   EpicEditor
