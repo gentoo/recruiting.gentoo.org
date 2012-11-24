@@ -44,11 +44,11 @@ gem 'backbone-on-rails'
 group :development, :test do
   gem 'pry'
   gem 'rspec-rails'
+  gem 'mysql2'
 end
-gem 'mysql2'
 
 group :production do
-  #gem 'pg'
+  gem 'pg'
 end
 
 # To use ActiveModel has_secure_password
