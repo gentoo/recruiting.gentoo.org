@@ -9,7 +9,7 @@
         %th Title
         %th Category
         %th Status
-        %th=t '.actions', :default => t("helpers.actions")
+        %th
     %tbody
       - @questions.each do |question|
         - answer = current_user.answer_for(question)
@@ -18,8 +18,18 @@
           %td= question.category_name
           %td= answer.nil? ? "Unanswered" : answer.state
           %td
-            - if answer.nil?
-              = link_to "Answer", [:edit, question, :answer], :class => 'btn btn-mini'
-            - else
-              = link_to "Edit answer", [:edit, question, answer], :class => 'btn btn-mini' if answer.awaiting_review? || answer.rejected?
-              = link_to "View", [question, answer], :class => 'btn btn-mini'
+            = link_to question, class: "btn" do
+              %i.icon-info-sign
+              View
+            - if current_user.candidate?
+              - if answer.nil?
+                = link_to [:new, question, :answer], :class => 'btn' do
+                  %i.icon-book
+                  Answer
+              - else
+                - if answer.awaiting_review? || answer.rejected?
+                  = link_to "Edit answer", [:edit, question, answer], :class => 'btn'
+                - else
+                  = link_to "View Answer", [question, answer], :class => 'btn'
+
+  = paginate @questions

@@ -1,4 +1,5 @@
 class Question < ActiveRecord::Base
+  # FIXME seems group and category is duplicated
   include Workflow
 
   acts_as_commentable
@@ -35,7 +36,7 @@ class Question < ActiveRecord::Base
   scope :random, -> n { offset(rand(count)).limit(n) }
 
   def category_name
-    category.name
+    group.name
   end
 
 end

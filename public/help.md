@@ -4,9 +4,11 @@
 
 * User sign up as a novice
 * Novice applies to a project, recruiters get email notification
-* Recruiter assign a mentor to the novice or a project member pick one,
-  novice becomes candidate, questions related to the project will be assigned to the candidate
-  automatically
+* Recruiter assign a mentor to the novice or one is recruited by a member of the project,
+  novice becomes candidate
+* Questions related to the project will be assigned to the candidate automatically, 
+  (related means they belongs to the same gruop, which is up for the
+  recruiter to assign group to the projects.)
 * Novice answers the questions, mentor is responsible for review them
 * If answer rejected, novice change the answer and try again.
 * When all answers accepted, candidate is ready for recruiters to accept

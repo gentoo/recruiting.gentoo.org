@@ -59,4 +59,10 @@ module ApplicationHelper
       link_to p.name, host + p.homepage
     end
   end
+
+  def progress_bar(percentage)
+    content_tag :div, class: :progress, title: "Progress" do
+      content_tag :div, nil, style: "width: #{percentage * 100}%", class: "bar"
+    end
+  end
 end

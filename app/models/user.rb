@@ -13,6 +13,9 @@ class User < ActiveRecord::Base
   workflow do
     state :novice do
       event :applied, transitions_to: :awaiting_review
+      # FIXME remove me later, just a short cut for admin to promote more
+      # recruiters
+      event :promote, transitions_to: :recruiter
     end
 
     state :awaiting_review do
@@ -57,7 +60,7 @@ class User < ActiveRecord::Base
   scope :ready, joins(:ready_user).where("ready_users.user_id = users.id")
   
 
-  validates_presence_of :email, :name, :password
+  validates_presence_of :email, :name
   validates_uniqueness_of :name
 
   def answer_for(question)
@@ -83,6 +86,10 @@ class User < ActiveRecord::Base
 
   def ready?
     assigned_questions.count == answers.count && answers.all?(&:accepted?)
+  end
+
+  def progress
+    @progress ||= assigned_questions.count / answers.count.to_f
   end
 
   def apply_project(project)

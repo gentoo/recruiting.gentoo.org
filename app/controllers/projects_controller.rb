@@ -13,6 +13,7 @@ class ProjectsController < ApplicationController
     authorize! :apply, Project
     @project = Project.find params[:id]
     current_user.apply_project(@project)
+    Notification.signup(current_user).deliver
     flash[:notice] = "Congratulations! You just applied for project #{@project.name}, our recruiters will get to you asap."
     redirect_to action: :applying
   end

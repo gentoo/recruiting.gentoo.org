@@ -8,10 +8,11 @@
         %li= link_to "Should we use systemd?", "/path2"
     - elsif current_user.candidate?
       %h3 Welcome
+      = progress_bar(current_user.progress)
       %ul.nav.nav-list
         %li.nav-header Questions
         %li= link_to "Due", unanswered_questions_path
-        %li= link_to "Assigned", questions_path
+        %li= link_to "Assigned", assigned_questions_path
         %li= link_to "Answered", answered_questions_path
         %li= link_to "New", new_question_path
         %li= link_to "Applying project", "/projects/applying"
@@ -24,12 +25,16 @@
         %li= link_to "Novices", novices_path
         %li= link_to "Submit questions", new_question_path
 
-    - elsif current_user.admin?
+    - elsif current_user.admin? || current_user.recruiter?
       %h3 Recruiter
       %ul.nav.nav-list
-        %li.nav-header actions
-        %li= link_to "Admin Dashboard", admin_dashboard_path
+        %li.nav-header Actions
+        %li= link_to "Admin Dashboard", admin_dashboard_path if current_user.admin?
+        %li= link_to "Novices", novices_path
+        %li= link_to "Review", review_answers_path
+        %li= link_to "Sponsees", sponsees_path
         %li= link_to "Ready Candidates", ready_novices_path
+        %li= link_to "Submit questions", new_question_path
     - elsif current_user.awaiting_review?
       %h3 Processing
       %ul.nav.nav-list

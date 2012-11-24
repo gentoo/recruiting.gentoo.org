@@ -1,14 +1,17 @@
 .page-header
   %h2 Answers to review
-%table.table.table-striped
-  %thead
-    %tr
-      %th Question
-      %th Answered bk
-      %th
-  %tbody
-    - @answers.each do |answer|
+- if @answers.empty?
+  %p Nothing to review.
+- else
+  %table.table.table-striped
+    %thead
       %tr
-        %td= answer.question.title
-        %td= answer.user.name
-        %td= link_to "Review", [answer.question, answer]
+        %th Question
+        %th By
+        %th
+    %tbody
+      - @answers.each do |answer|
+        %tr
+          %td= answer.question.title
+          %td= answer.user.name
+          %td= link_to "Review", [answer.question, answer], class: 'btn btn-link'
