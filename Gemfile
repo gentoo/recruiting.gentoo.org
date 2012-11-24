@@ -29,14 +29,13 @@ gem 'haml-rails'
 gem 'devise'
 gem 'cancan'
 gem 'activeadmin'
-gem 'unicorn'
 gem 'thin'
 gem 'psych'
 gem 'redcarpet', '~> 2.1.1'
 gem 'pygments.rb', '0.3.1'
 gem 'acts_as_commentable', '~> 3.0.1'
 gem 'workflow'
-gem 'mailboxer'
+#gem 'mailboxer'
 gem 'gravatar-ultimate'
 gem 'nokogiri'
 gem 'kaminari'
@@ -45,6 +44,7 @@ group :development, :test do
   gem 'pry'
   gem 'rspec-rails'
   gem 'mysql2'
+  gem 'unicorn'
 end
 
 group :production do
