@@ -14,3 +14,4 @@
 /log/*.log
 /tmp
 .sass-cache
+config/database.yml
