@@ -43,8 +43,9 @@ Workflow
 * recruiter assign a mentor to the novice or a project member pick one,
   novice becomes candidate
 * questions related to the project will be assigned to the candidate
-  automatically (related means they belongs to the same gruop, which is up for the
-  recruiter to assign group to the projects.)
+  automatically (related means the questions and the applying project belong
+  to the same gruop, which is up for the recruiter to assign group to
+  the projects.)
 * novice answers the questions, mentor is responsible for review them
 * if answer rejected, novice change the answer and try again.
 * when all answers accepted, candidate is ready for recruiters to accept

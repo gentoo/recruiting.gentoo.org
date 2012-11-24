@@ -16,16 +16,18 @@
         %tr
           %td= link_to question.title, question_path(question)
           %td= question.category_name
-          %td= answer.nil? ? "Unanswered" : answer.state
+          %td= question.current_state
           %td
-            = link_to question, class: "btn" do
-              %i.icon-info-sign
-              View
+            - unless question.rejected?
+              = link_to question, class: "btn" do
+                %i.icon-info-sign
+                View
             - if current_user.candidate?
-              - if answer.nil?
-                = link_to [:new, question, :answer], :class => 'btn' do
-                  %i.icon-book
-                  Answer
+              - if answer.nil? 
+                - if current_user.assigned_to?(question) && question.approved?
+                  = link_to [:new, question, :answer], :class => 'btn' do
+                    %i.icon-book
+                    Answer
               - else
                 - if answer.awaiting_review? || answer.rejected?
                   = link_to "Edit answer", [:edit, question, answer], :class => 'btn'

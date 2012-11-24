@@ -1,5 +1,5 @@
 class QuestionsController < InheritedResources::Base
-  load_and_authorize_resource
+  before_filter :authenticate_user!, except: [:index, :show]
 
   def index
     @questions = Question.page params[:page]
@@ -8,8 +8,8 @@ class QuestionsController < InheritedResources::Base
   def create
     @question = Question.new params[:question]
     @question.user = current_user
-    @question.approved = current_user.admin?
     if @question.save
+      @question.approve! if current_user.admin?
       render :show
     else
       render :new

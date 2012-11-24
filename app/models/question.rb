@@ -10,10 +10,10 @@ class Question < ActiveRecord::Base
   belongs_to :category
   belongs_to :group
 
-  validates_presence_of :title, :content, :category, :group
+  validates_presence_of :title, :content, :group
 
   workflow do
-    state :new do
+    state :pending do
       event :approve, transitions_to: :approved
       event :reject, transitions_to: :rejected
     end
@@ -21,12 +21,12 @@ class Question < ActiveRecord::Base
     state :rejected
   end
 
-  default_scope -> {
-    where(workflow_state: :approved)
-  }
+  scope :valid, where(workflow_state: :approved)
+  scope :pending, where(workflow_state: :pending)
+  scope :trashed, where(workflow_state: :rejected)
 
   scope :unanswered_by, -> user {
-    Question.where(group_id: user.groups.map(&:id)).where("id NOT IN (SELECT question_id FROM answers INNER JOIN users ON users.id = answers.user_id)")
+    Question.valid.where(group_id: user.groups.map(&:id)).where("id NOT IN (SELECT question_id FROM answers INNER JOIN users ON users.id = answers.user_id)")
   }
 
   scope :answered_by, -> user {

@@ -8,13 +8,16 @@ class Ability
       can :create, Answer
       can :update, Answer
       can :read, Answer
+      cannot :destroy, Comment
     elsif user.mentor?
       can :manage, [Question, Answer, Comment]
       can :sponsor, User
+      cannot :destroy, Comment
     elsif user.recruiter?
-      can :manage, [Question, Answer, Category, Group, Comment]
+      can :manage, [Question, Answer, Group, Comment]
       can :promote, User
       can :sponsor, User
+      cannot :destroy, Comment
     elsif user.admin?
       can :manage, :all
       cannot :apply, Project

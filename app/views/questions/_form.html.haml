@@ -1,7 +1,6 @@
 = simple_form_for @question, :html => { :class => 'form-horizontal' } do |f|
   = f.input :title
   = f.association :group
-  = f.association :category
   = f.input :content, placeholder: "Markdown supported"
   #epiceditor.hidden
   .form-actions

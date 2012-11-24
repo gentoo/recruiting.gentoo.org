@@ -47,7 +47,6 @@ class User < ActiveRecord::Base
 
   has_many :answers
   has_many :questions
-  has_and_belongs_to_many :groups
   has_and_belongs_to_many :categories
   has_and_belongs_to_many :projects
   belongs_to :applying_project, class_name: "Project", foreign_key: "applying_project_id"
@@ -85,7 +84,12 @@ class User < ActiveRecord::Base
   end
 
   def assigned_questions
-    Question.where(group_id: groups.select(:id).map(&:id))
+    return [] if applying_project_id.nil?
+    Question.valid.where(group_id: applying_project.groups.select(:id).map(&:id))
+  end
+
+  def assigned_to?(question)
+    applying_project_id.nil? || applying_project.groups.include?(question.group)
   end
 
   def recruit(novice)
@@ -93,6 +97,8 @@ class User < ActiveRecord::Base
     novice.promote!
   end
 
+  # Figure out a ready user from all the users is too much work, I don't mind waste
+  # a little space.
   def get_ready!
     ReadyUser.create(user_id: id)
   end

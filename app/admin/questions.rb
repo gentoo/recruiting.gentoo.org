@@ -16,7 +16,7 @@ ActiveAdmin.register Question do
   index do
     selectable_column
     column :title
-    column :content
+    column ("Content") {|question| truncate(question.content, length: 200) }
     column("Status") { |question| status_tag(question.current_state.to_s) }
     column :created_at
     default_actions
@@ -32,6 +32,16 @@ ActiveAdmin.register Question do
       row :category
       row :created_at
       row :updated_at
+      row("Action") do
+        unless question.approved?
+          span class: "action_item" do
+            link_to "Approve", "/admin/questions/#{question.id}/approve", method: :put
+          end
+          span class: "action_item" do
+            link_to "Reject", "/admin/questions/#{question.id}/reject", method: :put
+          end
+        end
+      end
     end
   end
 
@@ -45,4 +55,17 @@ ActiveAdmin.register Question do
     f.buttons
   end
 
+  member_action :approve, :method => :put do
+    question = Question.find params[:id]
+    question.approve!
+    flash[:notice] = "#{question.title} approved!"
+    redirect_to action: :index
+  end
+
+  member_action :reject, :method => :put do
+    question = Question.find params[:id]
+    question.reject!
+    flash[:notice] = "#{question.title} rejected!"
+    redirect_to action: :index
+  end
 end
