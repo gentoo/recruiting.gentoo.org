@@ -47,4 +47,3 @@ group :development, :test do
   gem 'unicorn'
 end
 gem 'pg'
-gem 'activerecord-pg-adapter'
