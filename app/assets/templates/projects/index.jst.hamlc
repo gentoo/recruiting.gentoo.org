@@ -1,0 +1,10 @@
+%tr{title:"Click to show subprojects", style:"cursor: pointer", data-prjid: @id, class: @klazz}
+  %td= @name
+  %td= @team["leaders"]
+  %td= @team["members"]
+  %td= @description
+  - if can_apply
+    %td
+      %a{href:"/projects/#{@id}/apply",data-method:"put",class:"btn btn-mini",title: "Apply to this project"} 
+        %i.icon-book
+        %i.icon-trophy

@@ -34,8 +34,11 @@
               %li= link_to "Projects", "/projects"
               %li.divider-vertical
               %li= link_to "Questions", "/questions"
+              %li.divider-vertical
+              %li= link_to "Help", "/help"
 
             %ul.nav.pull-right
+              %li.divider-vertical
               - if ! user_signed_in?
                 %li= link_to t(:sign_in), new_user_session_path
                 %li.divider-vertical
@@ -70,7 +73,7 @@
         .inner
           %p &copy; Gentoo Foundation 2012
           %ul
-            %li= link_to "HELP", "http://forums.gentoo.org"
+            %li= link_to "FORUM", "http://forums.gentoo.org"
             %li= link_to "BLOG", "http://planet.gentoo.org"
     /
       Javascripts

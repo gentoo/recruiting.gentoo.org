@@ -32,6 +32,8 @@ class Question < ActiveRecord::Base
     joins(:answers).where("answers.user_id = ?", user.id).group(:group_id)
   }
 
+  scope :random, -> n { offset(rand(count)).limit(n) }
+
   def category_name
     category.name
   end

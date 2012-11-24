@@ -22,9 +22,11 @@ class QuestionsController < InheritedResources::Base
 
   def answered
     @questions = Question.answered_by(current_user)
+    render :index
   end
 
   def unanswered
     @questions = Question.unanswered_by(current_user)
+    render :index
   end
 end

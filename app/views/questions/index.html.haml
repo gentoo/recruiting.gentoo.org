@@ -16,7 +16,10 @@
         %tr
           %td= link_to question.title, question_path(question)
           %td= question.category_name
-          %td= answer.state
+          %td= answer.nil? ? "Unanswered" : answer.state
           %td
-            = link_to "Edit answer", [:edit, question, answer], :class => 'btn btn-mini' if answer.awaiting_review? || answer.rejected?
-            = link_to "View", [question, answer], :class => 'btn btn-mini'
+            - if answer.nil?
+              = link_to "Answer", [:edit, question, :answer], :class => 'btn btn-mini'
+            - else
+              = link_to "Edit answer", [:edit, question, answer], :class => 'btn btn-mini' if answer.awaiting_review? || answer.rejected?
+              = link_to "View", [question, answer], :class => 'btn btn-mini'

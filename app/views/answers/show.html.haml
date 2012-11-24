@@ -7,13 +7,14 @@
 
 .answer= markdown @answer.content
 %p= link_to "by #{@answer.user.name}", novice_path(@answer.user)
-.form-actions
-  = link_to [:accept, @answer], :class => 'btn btn-primary' do
-    %i.icon-ok
-    Accept
-  = link_to [:reject, @answer], :method => "put", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger' do
-    %i.icon-remove
-    Reject
+- if can? :review, Answer
+  .form-actions
+    = link_to [:accept, @answer], :class => 'btn btn-primary' do
+      %i.icon-ok
+      Accept
+    = link_to [:reject, @answer], :method => "put", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger' do
+      %i.icon-remove
+      Reject
 = render :partial => 'comments/form', locals: {commentable: @answer}
 
 - content_for :js do

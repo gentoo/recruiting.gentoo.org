@@ -29,6 +29,8 @@ textarea.comment { width: 680px; height: 88px; }
 .dropdown-menu > .active > a > [class*=" icon-"] {
   background-image: none;
 }
+.sub-project { background-color: $grayLighter; }
+.sub-sub-project { background-color: darken($grayLighter, 3%); }
 
 /* footer */
 footer { margin-top: 20px; }

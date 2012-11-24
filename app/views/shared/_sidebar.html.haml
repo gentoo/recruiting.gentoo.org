@@ -1,19 +1,14 @@
 .span3
   .well.sidebar-nav
-    - if current_user.nil? || current_user.novice?
-      %h3 Gentoo News
-      %ul.nav.nav-list
-        %li.nav-header Newsletter
-        %li= link_to "We are forking udev!", "/path1"
-        %li= link_to "Should we use systemd?", "/path2"
-    - elsif current_user.candidate?
+    - if current_user.candidate?
       %h3 Welcome
       %ul.nav.nav-list
         %li.nav-header Questions
         %li= link_to "Due", unanswered_questions_path
         %li= link_to "Assigned", questions_path
         %li= link_to "Answered", answered_questions_path
-        %li= link_to "Submit", new_question_path
+        %li= link_to "New", new_question_path
+        %li= link_to "Applying project", "/projects/applying"
     - elsif current_user.mentor?
       %h3 Mentor
       %ul.nav.nav-list
@@ -29,3 +24,13 @@
         %li.nav-header actions
         %li= link_to "Admin Dashboard", admin_dashboard_path
         %li= link_to "Ready Candidates", ready_novices_path
+    - elsif current_user.awaiting_review?
+      %h3 Processing
+      %ul.nav.nav-list
+        %li= link_to "Applied project", "/projects/applying"
+    - else
+      %h3 Gentoo News
+      %ul.nav.nav-list
+        %li.nav-header Newsletter
+        %li= link_to "We are forking udev!", "/path1"
+        %li= link_to "Should we use systemd?", "/path2"

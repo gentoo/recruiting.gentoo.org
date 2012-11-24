@@ -12,7 +12,12 @@ class User < ActiveRecord::Base
 
   workflow do
     state :novice do
+      event :applied, transitions_to: :awaiting_review
+    end
+
+    state :awaiting_review do
       event :promote, transitions_to: :candidate
+      event :reject, transitions_to: :novice
     end
 
     state :candidate do
@@ -22,6 +27,7 @@ class User < ActiveRecord::Base
 
     state :developer do
       event :promote, transitions_to: :mentor
+      event :applied, transitions_to: :awaiting_review
     end
 
     state :mentor do
@@ -40,12 +46,14 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :groups
   has_and_belongs_to_many :categories
   has_and_belongs_to_many :projects
+  belongs_to :applied_project, class_name: "Project"
 
   belongs_to :mentor, class_name: "User"
   has_many :sponsees, class_name: "User", foreign_key: :mentor_id
   has_one :ready_user # only for join
 
   scope :novices, where(workflow_state: :novice)
+  scope :awaiting_review, where(workflow_state: :awaiting_review)
   scope :ready, joins(:ready_user).where("ready_users.user_id = users.id")
   
 
@@ -75,5 +83,10 @@ class User < ActiveRecord::Base
 
   def ready?
     assigned_questions.count == answers.count && answers.all?(&:accepted?)
+  end
+
+  def apply_project(project)
+    update_attribute :applied_project, project
+    applied!
   end
 end

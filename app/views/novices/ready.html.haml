@@ -1,11 +1,10 @@
 .page-header
   %h2 Fish
 - if @novices.empty?
-  %p No one is ready, sigh.
+  %p All candidates were promoted.
   
 - @novices.each do |novice|
   %p= novice.groups.map(&:name)
   %p= novice.name
   %p= novice.email
-  %p= link_to "Promote", "/admin/users/#{novice.id}/promote", method: :put, class: "btn btn-mini"
-  %br
+  %p= link_to "Promote", recruit_novice_path(novice), method: :put, class: "btn btn-mini"

@@ -3,6 +3,7 @@ class Project < ActiveRecord::Base
   attr_accessible :description, :name, :homepage
 
   has_and_belongs_to_many :members, class_name: "User"
+  has_many :candidates, class_name: "User", foreign_key: "applied_project_id"
 
   has_many :subprojects, class_name: "Project", foreign_key: :parent_prj_id
   belongs_to :parent_project, class_name: "Project", foreign_key: :parent_prj_id
@@ -10,4 +11,5 @@ class Project < ActiveRecord::Base
   belongs_to :leader, class_name: "User"
 
   scope :top_level, where(parent_prj_id: nil)
+  scope :subprojects, -> parent_id { where(parent_prj_id: parent_id) }
 end

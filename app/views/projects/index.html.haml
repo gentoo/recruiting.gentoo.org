@@ -1,19 +1,20 @@
 .page-header
   %h2 Project list
 
-%table.table
+%table.table.table-hover
   %thead
     %tr
-      %th name
-      %th leader(s)
-      %th members
-      %th description
-  - @projects.each do |p|
-    %tbody
-      %tr
-        %td= project_page(p).html_safe
-        %td= p.team[:leaders]
-        %td= p.team[:members]
-        %td= p.description
+      %th Name
+      %th Leader(s)
+      %th Members
+      %th Description
+      - if can? :apply, Project
+        %th Apply
+  %tbody#projects
 
 = paginate @projects
+
+- content_for :js do
+  :javascript
+    var can_apply = #{can? :apply, Project};
+    new Gentoo.Routers.Projects(#{@projects.to_json});

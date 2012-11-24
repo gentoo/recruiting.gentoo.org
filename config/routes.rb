@@ -1,8 +1,17 @@
 Gentoo::Application.routes.draw do
-  resources :projects
+  resources :projects do
+    collection do
+      get :subprojects
+    end
+    member do
+      put :apply
+    end
+  end
+
   resources :novices do
     member do
       put :sponsor
+      put :recruit
     end
     collection do
       get :ready

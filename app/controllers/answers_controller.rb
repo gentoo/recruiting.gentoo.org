@@ -1,7 +1,7 @@
 class AnswersController < InheritedResources::Base
   load_and_authorize_resource
 
-  before_filter :get_question, only: [:new]
+  before_filter :get_question, only: [:new, :edit]
 
   def new
     @answer = @question.answers.build(user: current_user)
