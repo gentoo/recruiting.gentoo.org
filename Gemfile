@@ -6,9 +6,6 @@ gem 'rails-i18n'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2'
-
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -47,6 +44,11 @@ gem 'backbone-on-rails'
 group :development, :test do
   gem 'pry'
   gem 'rspec-rails'
+  gem 'mysql2'
+end
+
+group :production do
+  gem 'pg'
 end
 
 # To use ActiveModel has_secure_password
