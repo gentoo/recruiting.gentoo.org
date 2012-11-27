@@ -1,2 +1,0 @@
-module SponseesHelper
-end

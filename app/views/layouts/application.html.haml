@@ -31,9 +31,7 @@
           .container.nav-collapse
             %ul.nav
               %li.divider-vertical
-              %li= link_to "Projects", "/projects"
-              %li.divider-vertical
-              %li= link_to "Questions", "/questions"
+              %li= link_to "Question groups", "/groups"
               %li.divider-vertical
               %li= link_to "Help", "/help"
 
@@ -54,10 +52,6 @@
                       = link_to edit_user_registration_path do
                         %i.icon-cog
                         = t(:settings)
-                    %li 
-                      %a{:href => "/messages"}
-                        %i.icon-envelope-alt
-                        = t("sidebar.messages")
                     %li
                       = link_to destroy_user_session_path, method: :delete do
                         %i.icon-signout

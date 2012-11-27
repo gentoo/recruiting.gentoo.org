@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121124171150) do
+ActiveRecord::Schema.define(:version => 20121127202444) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -79,6 +79,11 @@ ActiveRecord::Schema.define(:version => 20121124171150) do
     t.integer "group_id"
   end
 
+  create_table "mentorships", :id => false, :force => true do |t|
+    t.integer "mentor_id"
+    t.integer "candidate_id"
+  end
+
   create_table "projects", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -128,6 +133,7 @@ ActiveRecord::Schema.define(:version => 20121124171150) do
     t.text     "biography"
     t.integer  "mentor_id"
     t.integer  "applying_project_id"
+    t.integer  "group_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

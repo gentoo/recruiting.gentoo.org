@@ -1,0 +1,21 @@
+.page-header
+  %h2 Question categories
+
+%table.table
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th Questions
+      %th 
+  %tbody
+    - @groups.each do |group|
+      %tr
+        %td= group.name
+        %td= group.description
+        %td= link_to "View questions", [group, :questions]
+        %td
+          = link_to [:subscribe, group], method: :put do
+            %i.icon-plus
+            subscribe
+

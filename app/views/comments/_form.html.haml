@@ -5,9 +5,11 @@
       %i.icon-comment
       Comment
     = link_to t('.back', :default => t("helpers.links.back")), commentable
-- commentable.comments.each do |comment|
+- commentable.comments.order("id DESC").each do |comment|
   .row
-    .span1 #{comment.user.name} says:
+    .span1
+      %p= comment.user.name
+      %p #{time_ago_in_words comment.created_at} ago
     .span8
       = markdown comment.comment
       - if current_user.admin?

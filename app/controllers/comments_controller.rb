@@ -3,7 +3,8 @@ class CommentsController < ApplicationController
   before_filter :get_commentable
 
   def create
-    @comment = @commentable.comments.create(params[:comment], user: current_user)
+    @comment = @commentable.comments.create(params[:comment])
+    @comment.user = current_user
     @comment.save
     redirect_to @commentable
   end

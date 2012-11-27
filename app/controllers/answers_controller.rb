@@ -1,15 +1,34 @@
 class AnswersController < InheritedResources::Base
   load_and_authorize_resource
 
-  before_filter :get_question, only: [:new, :edit]
+  before_filter :get_question, only: [:new, :edit, :update]
 
   def new
     @answer = @question.answers.build(user: current_user)
   end
 
+  def update
+    @answer = @question.answers.find params[:id]
+    @answer.update_attributes(params[:answer])
+    @answer.submit! if @answer.rejected?
+    redirect_to [@question, @answer]
+  end
+
+  def edit
+    @answer = @question.answers.find params[:id]
+    if current_user.candidate? && @answer.user != current_user
+      flash[:alert] = "You cannot edit this answer."
+      redirect_to @question
+    end
+  end
+
   def show
     @answer = Answer.find params[:id]
     @question = @answer.question
+    if current_user.candidate? && @answer.user != current_user
+      flash[:alert] = "You cannot view this answer."
+      redirect_to @question
+    end
   end
 
   def review
@@ -20,16 +39,16 @@ class AnswersController < InheritedResources::Base
     authorize! :review, Answer
     @answer = Answer.find params[:id]
     @answer.accept!
-    Answer.accept(user, @answer).deliver
+    #AnswerNotification.accept(@answer.user, @answer).deliver
     check_user_ready(@answer.user)
-    redirect_to action: :index
+    redirect_to action: :review
   end
 
   def reject
     authorize! :review, Answer
     @answer = Answer.find params[:id]
     @answer.reject!
-    Answer.reject(user, @answer).deliver
+    Answer.reject(@answer.user, @answer).deliver
     redirect_to action: :index
   end
 

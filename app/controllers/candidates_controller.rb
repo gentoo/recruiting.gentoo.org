@@ -1,6 +1,6 @@
-class NovicesController < ApplicationController
+class CandidatesController < ApplicationController
   def index
-    @novices = User.awaiting_review
+    @candidates = User.candidates
   end
 
   def sponsor
@@ -10,15 +10,15 @@ class NovicesController < ApplicationController
   end
 
   def ready
-    @novices = User.ready
+    @candidates = User.ready
   end
 
   def recruit
     @novice = User.find params[:id]
     @novice.promote!
+    @mentors = @novice.mentors
+    @mentors.each{|mentor| @novice.mentors.delete(mentor)}
     @novice.ready_user.delete
-    @novice.projects << @novice.applied_project
-    @novice.applied_project = nil
     @novice.save
     # TODO 
     # Send email notification to the user

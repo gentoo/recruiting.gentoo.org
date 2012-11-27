@@ -1,0 +1,6 @@
+.page-header
+  %h2 Fish
+- if @candidates.empty?
+  %p All candidates were promoted.
+  
+= render :partial => 'list', object: @candidates

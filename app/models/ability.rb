@@ -4,29 +4,27 @@ class Ability
   def initialize(user)
     user ||= User.new
     if user.candidate?
-      can :manage, [Question, Comment]
       can :create, Answer
+      can :show, Answer
       can :update, Answer
-      can :read, Answer
+      can :edit, Answer
+      can :comment, Answer
+      can :subscribe, Group
+      can :create, Comment
       cannot :destroy, Comment
     elsif user.mentor?
-      can :manage, [Question, Answer, Comment]
+      can :manage, [Answer, Comment]
       can :sponsor, User
+      can :comment, Question
       cannot :destroy, Comment
     elsif user.recruiter?
       can :manage, [Question, Answer, Group, Comment]
       can :promote, User
       can :sponsor, User
+      can :comment, Question
       cannot :destroy, Comment
     elsif user.admin?
       can :manage, :all
-      cannot :apply, Project
-    elsif user.developer?
-      can :apply, Project
-      can :create, Question
-      can :read, :all
-    elsif user.novice? 
-      can :apply, Project
     else
       can :read, :all
     end

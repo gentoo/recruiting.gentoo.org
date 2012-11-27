@@ -1,24 +1,19 @@
 Gentoo::Application.routes.draw do
   match "help" => "help#index"
-  resources :projects do
-    collection do
-      get :subprojects
-      get :applying
-    end
-
-    member do
-      put :apply
-      delete :cancel_apply
-    end
-  end
-
-  resources :novices do
+  resources :candidates do
     member do
       put :sponsor
       put :recruit
     end
     collection do
       get :ready
+    end
+  end
+
+  resources :groups do
+    resources :questions
+    member do
+      put :subscribe
     end
   end
 

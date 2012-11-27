@@ -61,8 +61,20 @@ module ApplicationHelper
   end
 
   def progress_bar(percentage)
-    content_tag :div, class: :progress, title: "Progress" do
+    content_tag :div, class: :progress, title: "Progress #{percentage * 100} %" do
       content_tag :div, nil, style: "width: #{percentage * 100}%", class: "bar"
+    end
+  end
+  
+  def answer_status(answer)
+    if answer.nil?
+      content_tag :div, "Unanswered", class: "label label-default"
+    elsif answer.awaiting_review?
+      content_tag :div, "Awaiting review", class: "label label-warning"
+    elsif answer.rejected?
+      content_tag :div, "Rejected", class: "label label-important"
+    else
+      content_tag :div, "Accepted", class: "label label-success"
     end
   end
 end

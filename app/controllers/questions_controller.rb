@@ -2,14 +2,13 @@ class QuestionsController < InheritedResources::Base
   before_filter :authenticate_user!, except: [:index, :show]
 
   def index
-    @questions = Question.page params[:page]
+    @group = Group.find params[:group_id]
+    @questions = @group.questions.page params[:page]
   end
 
   def create
     @question = Question.new params[:question]
-    @question.user = current_user
     if @question.save
-      @question.approve! if current_user.admin?
       render :show
     else
       render :new

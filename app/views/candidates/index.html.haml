@@ -1,0 +1,5 @@
+.page-header
+  %h2 Newbees list
+- if @candidates.empty?
+  %p Lambs were slaughtered.
+= render partial: 'list', object: @candidates

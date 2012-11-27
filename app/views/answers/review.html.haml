@@ -14,4 +14,7 @@
         %tr
           %td= answer.question.title
           %td= answer.user.name
-          %td= link_to "Review", [answer.question, answer], class: 'btn btn-link'
+          %td
+            = link_to [answer.question, answer], class: 'btn btn-warning' do
+              %i.icon-group
+              Review

@@ -8,30 +8,10 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :biography
-  # attr_accessible :title, :body
 
   workflow do
-    state :novice do
-      event :applied, transitions_to: :awaiting_review
-      # FIXME remove me later, just a short cut for admin to promote more
-      # recruiters
-      event :promote, transitions_to: :recruiter
-      event :developer_signup, transitions_to: :developer
-    end
-
-    state :awaiting_review do
-      event :promote, transitions_to: :candidate
-      event :reject, transitions_to: :novice
-    end
-
     state :candidate do
-      event :promote, transitions_to: :developer
-      event :reject, transitions_to: :novice
-    end
-
-    state :developer do
       event :promote, transitions_to: :mentor
-      event :applied, transitions_to: :awaiting_review
     end
 
     state :mentor do
@@ -46,28 +26,24 @@ class User < ActiveRecord::Base
   end
 
   has_many :answers
-  has_many :questions
-  has_and_belongs_to_many :categories
-  has_and_belongs_to_many :projects
-  belongs_to :applying_project, class_name: "Project", foreign_key: "applying_project_id"
+  belongs_to :group
 
-  belongs_to :mentor, class_name: "User"
-  has_many :sponsees, class_name: "User", foreign_key: :mentor_id
+  has_and_belongs_to_many :mentors, class_name: "User", join_table: "mentorships", 
+    foreign_key: "mentor_id", association_foreign_key: "candidate_id"
+  has_and_belongs_to_many :sponsees, class_name: "User", join_table: "mentorships",
+    foreign_key: "candidate_id", association_foreign_key: "mentor_id"
+
   has_one :ready_user # only for join
 
-  scope :novices, where(workflow_state: :novice)
-  scope :awaiting_review, where(workflow_state: :awaiting_review)
+  scope :candidates, where(workflow_state: :candidate)
   scope :ready, joins(:ready_user).where("ready_users.user_id = users.id")
 
   # potentially slow
   after_create do |user|
+    # check from dev-list.xml
     Project.select([:id, :team]).all.each do |prj|
-      if member_of?(prj.leaders)
-        promote! if novice?
-        prj.update_attribute :leader, user
-      elsif member_of?(prj.members)
-        developer_signup! if novice?
-        user.projects << prj
+      if member_of?(prj.leaders) || member_of?(prj.members)
+        promote! if candidate?
       end
     end
   end
@@ -84,17 +60,19 @@ class User < ActiveRecord::Base
   end
 
   def assigned_questions
-    return [] if applying_project_id.nil?
-    Question.valid.where(group_id: applying_project.groups.select(:id).map(&:id))
+    Question.where(group_id: group_id)
   end
 
   def assigned_to?(question)
-    applying_project_id.nil? || applying_project.groups.include?(question.group)
+    question.group_id == group_id
   end
 
-  def recruit(novice)
-    sponsees << novice
-    novice.promote!
+  def recruit(candidate)
+    sponsees << candidate
+  end
+
+  def mentoring?(candidate)
+    sponsees.include?(candidate)
   end
 
   # Figure out a ready user from all the users is too much work, I don't mind waste
@@ -108,12 +86,7 @@ class User < ActiveRecord::Base
   end
 
   def progress
-    @progress ||= assigned_questions.count / answers.count.to_f
-  end
-
-  def apply_project(project)
-    update_attribute :applying_project, project
-    applied!
+    @progress ||= ( answers.map(&:accepted?).count.to_f / assigned_questions.count.to_f )
   end
 
   private

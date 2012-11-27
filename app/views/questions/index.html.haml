@@ -1,37 +1,8 @@
 .page-header
   %h1 Questions
 - if @questions.empty?
-  There is no question assigned to you yet.
+  You have not subscribed to any question, click 
+  = link_to "here", groups_path
+  to start, or you have answered all your question.
 - else 
-  %table.table.table-striped
-    %thead
-      %tr
-        %th Title
-        %th Category
-        %th Status
-        %th
-    %tbody
-      - @questions.each do |question|
-        - answer = current_user.answer_for(question)
-        %tr
-          %td= link_to question.title, question_path(question)
-          %td= question.category_name
-          %td= question.current_state
-          %td
-            - unless question.rejected?
-              = link_to question, class: "btn" do
-                %i.icon-info-sign
-                View
-            - if current_user.candidate?
-              - if answer.nil? 
-                - if current_user.assigned_to?(question) && question.approved?
-                  = link_to [:new, question, :answer], :class => 'btn' do
-                    %i.icon-book
-                    Answer
-              - else
-                - if answer.awaiting_review? || answer.rejected?
-                  = link_to "Edit answer", [:edit, question, answer], :class => 'btn'
-                - else
-                  = link_to "View Answer", [question, answer], :class => 'btn'
-
-  = paginate @questions
+  = render :partial => 'list'

@@ -1,0 +1,32 @@
+%table.table.table-striped
+  %thead
+    %tr
+      %th Title
+      %th Group
+      - if current_user.candidate?
+        %th Answer status
+      %th
+  %tbody
+    - @questions.each do |question|
+      - answer = user_signed_in? ? current_user.answer_for(question) : nil
+      %tr
+        %td= link_to question.title, question_path(question)
+        %td= question.category_name
+        - if current_user.candidate?
+          %td= answer_status(answer)
+        %td
+          = link_to question, class: "btn" do
+            %i.icon-info-sign
+            View question
+          - if user_signed_in? && current_user.candidate?
+            - if answer.nil? 
+              - if current_user.assigned_to?(question)
+                = link_to [:new, question, :answer], :class => 'btn' do
+                  %i.icon-book
+                  Answer
+            - else
+              - if answer.awaiting_review? || answer.rejected?
+                = link_to "Edit answer", [:edit, question, answer], :class => 'btn btn-primary'
+              = link_to "View answer", [question, answer], class: "btn"
+
+= paginate @questions
