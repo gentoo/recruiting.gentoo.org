@@ -86,7 +86,7 @@ class User < ActiveRecord::Base
   end
 
   def progress
-    @progress ||= ( answers.count(&:accepted?) / assigned_questions.count.to_f )
+    @progress ||= ( answers.select(&:accepted?).count / assigned_questions.count.to_f )
   end
 
   private
