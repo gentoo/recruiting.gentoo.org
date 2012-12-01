@@ -40,6 +40,7 @@ gem 'gravatar-ultimate'
 gem 'nokogiri'
 gem 'kaminari'
 gem 'backbone-on-rails'
+gem 'yaml_db'
 group :development, :test do
   gem 'pry'
   gem 'rspec-rails'

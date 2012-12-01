@@ -1,0 +1,45 @@
+Organizational structure questions
+
+1.        When is it appropriate to post to the following mailing lists: gentoo-core,
+        gentoo-dev, gentoo-dev-announce, gentoo-project?
+
+docs: gentoo.org
+
+2.        Who should be contacted with complaints about specific developers or
+        projects?
+
+docs: devrel policy
+
+3.        What is the proper method for suggesting a wide-ranging feature or
+        enhancement to Gentoo? Describe the process for getting this feature
+        approved and implemented.
+
+docs: GLEPs
+
+4.        What is the purpose of the Gentoo Council?
+
+docs: GLEPs
+
+5.        What is the Gentoo Foundation? How does one apply for membership and
+        who are eligible?
+
+docs: gentoo.org
+
+6.        What is the purpose of the Gentoo project structure?
+
+docs: GLEPs
+
+7.        Who can start new Gentoo projects and how is it done?
+
+docs: GLEPs
+
+8.        What is the purpose of herds?
+
+docs: devmanual
+
+9.        What is the devaway system?
+
+docs: handbook
+
+
+

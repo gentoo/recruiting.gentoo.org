@@ -1,0 +1,1086 @@
+
+---
+users:
+  columns:
+  - id
+  - email
+  - encrypted_password
+  - reset_password_token
+  - reset_password_sent_at
+  - remember_created_at
+  - sign_in_count
+  - current_sign_in_at
+  - last_sign_in_at
+  - current_sign_in_ip
+  - last_sign_in_ip
+  - created_at
+  - updated_at
+  - name
+  - workflow_state
+  - biography
+  - mentor_id
+  - applying_project_id
+  - group_id
+  records: 
+  - - '2'
+    - admin@gentoo.org
+    - $2a$10$FiC0nkFJyws9r2XP8BVeq.B1CiRKldAGI9bvx/5bMzR/Opy8kD2me
+    - 
+    - 
+    - 
+    - '1'
+    - '2012-12-01 17:13:29.083327'
+    - '2012-12-01 17:13:29.083327'
+    - 127.0.0.1
+    - 127.0.0.1
+    - '2012-12-01 17:13:29.06198'
+    - '2012-12-01 17:13:52.395'
+    - admin
+    - admin
+    - 
+    - 
+    - 
+    - 
+  - - '3'
+    - kumba@gentoo.org
+    - $2a$10$nFQYgebj6VNQrgk09h3K9ur50PXHGznIdpYWs.bPkhw0JpVLXwklm
+    - 
+    - 
+    - 
+    - '1'
+    - '2012-12-01 19:48:50.576449'
+    - '2012-12-01 19:48:50.576449'
+    - 127.0.0.1
+    - 127.0.0.1
+    - '2012-12-01 19:48:50.547924'
+    - '2012-12-01 19:50:10.496027'
+    - Kumba
+    - mentor
+    - 
+    - 
+    - 
+    - 
+  - - '4'
+    - vapier@gentoo.org
+    - $2a$10$beRJ21oLqKBEKJ7qkFdk1uKaZLJ8BmDV52VujrKIdQ204TBs/WCF2
+    - 
+    - 
+    - 
+    - '1'
+    - '2012-12-01 19:49:22.556986'
+    - '2012-12-01 19:49:22.556986'
+    - 127.0.0.1
+    - 127.0.0.1
+    - '2012-12-01 19:49:22.529498'
+    - '2012-12-01 19:50:29.878552'
+    - vapier
+    - recruiter
+    - 
+    - 
+    - 
+    - 
+  - - '5'
+    - candidate@gentoo.org
+    - $2a$10$9zQG/vh4wzUzEaqx6d1ZvOCzqkBWsi0TuzkpwNg8JG9qqI65atQgG
+    - 
+    - 
+    - 
+    - '1'
+    - '2012-12-01 19:49:47.355791'
+    - '2012-12-01 19:49:47.355791'
+    - 127.0.0.1
+    - 127.0.0.1
+    - '2012-12-01 19:49:47.323443'
+    - '2012-12-01 19:51:14.475175'
+    - candidate
+    - candidate
+    - 
+    - 
+    - 
+    - '1'
+
+---
+groups:
+  columns:
+  - id
+  - name
+  - description
+  - created_at
+  - updated_at
+  records: 
+  - - '1'
+    - Developer Quiz
+    - ''
+    - '2012-12-01 17:14:34.892867'
+    - '2012-12-01 17:14:34.892867'
+  - - '2'
+    - Staffer Quiz
+    - ''
+    - '2012-12-01 17:14:58.946638'
+    - '2012-12-01 17:14:58.946638'
+  - - '3'
+    - Arch Tester Quiz
+    - ''
+    - '2012-12-01 17:15:15.170104'
+    - '2012-12-01 17:15:15.170104'
+
+---
+questions:
+  columns:
+  - id
+  - title
+  - content
+  - user_id
+  - created_at
+  - updated_at
+  - group_id
+  - category_id
+  - workflow_state
+  records: 
+  - - '193'
+    - Organizational structure questions 1
+    - ! '**When is it appropriate to post to the following mailing lists: gentoo-core,gentoo-dev,
+      gentoo-dev-announce, gentoo-project?**
+
+
+      ### docs
+
+
+      * [gentoo.org]()
+
+
+'
+    - 
+    - '2012-12-01 19:22:19.782981'
+    - '2012-12-01 19:22:19.782981'
+    - '1'
+    - 
+    - 
+  - - '194'
+    - Organizational structure questions 2
+    - ! '**Who should be contacted with complaints about specific developers orprojects?**
+
+
+      ### docs
+
+
+      * [devrel policy]()
+
+
+'
+    - 
+    - '2012-12-01 19:22:19.821614'
+    - '2012-12-01 19:22:19.821614'
+    - '1'
+    - 
+    - 
+  - - '195'
+    - Organizational structure questions 3
+    - ! '**What is the proper method for suggesting a wide-ranging feature orenhancement
+      to Gentoo? Describe the process for getting this featureapproved and implemented.**
+
+
+      ### docs
+
+
+      * [GLEPs](http://www.gentoo.org/proj/en/glep/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:19.837556'
+    - '2012-12-01 19:22:19.837556'
+    - '1'
+    - 
+    - 
+  - - '196'
+    - Organizational structure questions 4
+    - ! '**What is the purpose of the Gentoo Council?**
+
+
+      ### docs
+
+
+      * [GLEPs](http://www.gentoo.org/proj/en/glep/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:19.848594'
+    - '2012-12-01 19:22:19.848594'
+    - '1'
+    - 
+    - 
+  - - '197'
+    - Organizational structure questions 5
+    - ! '**What is the Gentoo Foundation? How does one apply for membership andwho
+      are eligible?**
+
+
+      ### docs
+
+
+      * [gentoo.org]()
+
+
+'
+    - 
+    - '2012-12-01 19:22:19.859854'
+    - '2012-12-01 19:22:19.859854'
+    - '1'
+    - 
+    - 
+  - - '198'
+    - Organizational structure questions 6
+    - ! '**What is the purpose of the Gentoo project structure?**
+
+
+      ### docs
+
+
+      * [GLEPs](http://www.gentoo.org/proj/en/glep/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:19.871664'
+    - '2012-12-01 19:22:19.871664'
+    - '1'
+    - 
+    - 
+  - - '199'
+    - Organizational structure questions 7
+    - ! '**Who can start new Gentoo projects and how is it done?**
+
+
+      ### docs
+
+
+      * [GLEPs](http://www.gentoo.org/proj/en/glep/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:19.882497'
+    - '2012-12-01 19:22:19.882497'
+    - '1'
+    - 
+    - 
+  - - '200'
+    - Organizational structure questions 8
+    - ! '**What is the purpose of herds?**
+
+
+      ### docs
+
+
+      * [Dev Manual](http://devmanual.gentoo.org/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:19.893304'
+    - '2012-12-01 19:22:19.893304'
+    - '1'
+    - 
+    - 
+  - - '201'
+    - Organizational structure questions 9
+    - ! '**What is the devaway system?**
+
+
+      ### docs
+
+
+      * [Handbook](http://www.gentoo.org/doc/en/handbook/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:19.904914'
+    - '2012-12-01 19:22:19.904914'
+    - '1'
+    - 
+    - 
+  - - '202'
+    - Ebuild technical/policy questions 1
+    - ! '**You change a package''s ebuild to install an init script. Previously,the
+      package had no init script at all.Is a revision bump necessary? Why? What about
+      when adding a patch?**
+
+
+      ### docs
+
+
+      * [Dev Manual](http://devmanual.gentoo.org/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:58.920504'
+    - '2012-12-01 19:22:58.920504'
+    - '1'
+    - 
+    - 
+  - - '203'
+    - Ebuild technical/policy questions 2
+    - ! '**A user submits a "live" CVS ebuild. What would be a preferablealternative
+      to such an ebuild?**
+
+
+      ### docs
+
+
+      * [Handbook](http://www.gentoo.org/doc/en/handbook/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:58.956163'
+    - '2012-12-01 19:22:58.956163'
+    - '1'
+    - 
+    - 
+  - - '204'
+    - Ebuild technical/policy questions 3(a)
+    - ! '**What is repoman? How would you check for QA problems withrepoman?**
+
+
+      ### docs
+
+
+      * [Handbook](http://www.gentoo.org/doc/en/handbook/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:58.980066'
+    - '2012-12-01 19:22:58.980066'
+    - '1'
+    - 
+    - 
+  - - '205'
+    - ! 'Ebuild technical/policy questions '
+    - ! '**(b) A user submits a brand-new ebuild for a new package. What are theproper
+      steps (including repoman/cvs commands) to take to addthis ebuild to the tree?**
+
+
+      ### docs
+
+
+      * [Handbook](http://www.gentoo.org/doc/en/handbook/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:59.001529'
+    - '2012-12-01 19:22:59.001529'
+    - '1'
+    - 
+    - 
+  - - '206'
+    - Ebuild technical/policy questions 4
+    - ! '**A user submits an ebuild that has numerous technical problems andviolates
+      policy. How would you handle that situation?**
+
+
+      ### docs
+
+
+      * [Handbook](http://www.gentoo.org/doc/en/handbook/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:59.024469'
+    - '2012-12-01 19:22:59.024469'
+    - '1'
+    - 
+    - 
+  - - '207'
+    - Ebuild technical/policy questions 5
+    - ! '**You have a set of new ebuilds that could potentially benefitfrom a global
+      USE flag. What steps should be taken beforea new USE flag is implemented? What
+      should be done if theUSE flag only applies to a single package?**
+
+
+      ### docs
+
+
+      * [Dev Manual](http://devmanual.gentoo.org/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:59.046342'
+    - '2012-12-01 19:22:59.046342'
+    - '1'
+    - 
+    - 
+  - - '208'
+    - Ebuild technical/policy questions 7
+    - ! '**What steps are needed to remove a use flag from IUSE in an ebuild?You''re
+      creating an ebuild. Unfortunately, the ebuild''s ''make install''target causes
+      numerous access violations. What is the bestcourse of action to take to have
+      a clean, straightforwardebuild?**
+
+
+      ### docs
+
+
+      * [Dev Manual](http://devmanual.gentoo.org/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:59.06591'
+    - '2012-12-01 19:22:59.06591'
+    - '1'
+    - 
+    - 
+  - - '209'
+    - Ebuild technical/policy questions 8
+    - ! '**You''re creating an ebuild that needs a patch. The patch isnontrivially
+      large - bigger than 20kbytes. Where shouldthe patch be kept?**
+
+
+      ### docs
+
+
+      * [Dev Manual](http://devmanual.gentoo.org/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:59.076106'
+    - '2012-12-01 19:22:59.076106'
+    - '1'
+    - 
+    - 
+  - - '210'
+    - Ebuild technical/policy questions 9
+    - ! '**You''re creating an ebuild that has its own license - one thatdoesn''t
+      exist in /usr/portage/licenses/. What is the propercourse of action?**
+
+
+      ### docs
+
+
+      * [GLEPs](http://www.gentoo.org/proj/en/glep/)
+
+
+      * [ devmanual]()
+
+
+'
+    - 
+    - '2012-12-01 19:22:59.087698'
+    - '2012-12-01 19:22:59.087698'
+    - '1'
+    - 
+    - 
+  - - '211'
+    - Ebuild technical/policy questions 10
+    - ! "**(a) You wish to have an ebuild marked \"stable,\" taking it out of ```~ARCH```
+      KEYWORDS. It's a library. What steps should be taken to do so?**\r\n\r\n**(b)
+      You wish to mark an ebuild \"testing,\" putting it into ```~ARCH``` KEYWORDS.
+      It was previously hard-masked in package.mask. What should be done prior to
+      doing so?**\r\n\r\n**(c) You wish to have an ebuild marked \"stable.\" It is
+      a popular application, but no other ebuilds depend on it. What should be done
+      first?**\r\n\r\n### docs\r\n\r\n* [Dev Manual](http://devmanual.gentoo.org/)\r\n\r\n"
+    - 
+    - '2012-12-01 19:22:59.099892'
+    - '2012-12-01 19:46:10.715411'
+    - '1'
+    - 
+    - 
+  - - '214'
+    - Ebuild technical/policy questions 11
+    - ! '**You''re committing a user-submitted ebuild. What should be in theinitial
+      ChangeLog?**
+
+
+      ### docs
+
+
+      * [Dev Manual](http://devmanual.gentoo.org/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:59.133545'
+    - '2012-12-01 19:22:59.133545'
+    - '1'
+    - 
+    - 
+  - - '215'
+    - Ebuild technical/policy questions 12
+    - ! '**What is the difference between DEPEND and RDEPEND?**
+
+
+      ### docs
+
+
+      * [Dev Manual](http://devmanual.gentoo.org/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:59.143581'
+    - '2012-12-01 19:22:59.143581'
+    - '1'
+    - 
+    - 
+  - - '216'
+    - Ebuild technical/policy questions 14
+    - ! '**You wish to make a change to an ebuild, but you checkedChangeLogs and metadata.xml
+      and it appears to be maintained bysomeone else. How should you proceed?You find
+      a situation in which an eclass may be useful. What shouldyou do before implementing
+      such an eclass?**
+
+
+      ### docs
+
+
+      * [Dev Manual](http://devmanual.gentoo.org/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:59.156745'
+    - '2012-12-01 19:22:59.156745'
+    - '1'
+    - 
+    - 
+  - - '217'
+    - Ebuild technical/policy questions 15
+    - ! '**You find a package that will not build on some architectures withoutPIC
+      (-fPIC) code in the shared libraries. What is the proper wayto handle this situation?**
+
+
+      ### docs
+
+
+      * [Dev Manual](http://devmanual.gentoo.org/)
+
+
+      * [pic-guide]()
+
+
+'
+    - 
+    - '2012-12-01 19:22:59.165906'
+    - '2012-12-01 19:22:59.165906'
+    - '1'
+    - 
+    - 
+  - - '218'
+    - Ebuild technical/policy questions 16
+    - ! '**How can you verify an ebuild has correct run time dependencies(RDEPEND)
+      for all installed binaries?**
+
+
+      ### docs
+
+
+      * [Handbook](http://www.gentoo.org/doc/en/handbook/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:59.176473'
+    - '2012-12-01 19:22:59.176473'
+    - '1'
+    - 
+    - 
+  - - '219'
+    - Ebuild technical/policy questions 17
+    - ! '**How do you deal with a situation in which an ebuild wishes toinstall a
+      file already installed by another package?**
+
+
+      ### docs
+
+
+      * [Handbook](http://www.gentoo.org/doc/en/handbook/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:59.189328'
+    - '2012-12-01 19:22:59.189328'
+    - '1'
+    - 
+    - 
+  - - '220'
+    - Ebuild technical/policy questions 18
+    - ! '**Most configure scripts attempt to automatically determinesettings based
+      on the host system. When should the ebuildspecifically override settings?**
+
+
+      ### docs
+
+
+      * [Dev Manual](http://devmanual.gentoo.org/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:59.199175'
+    - '2012-12-01 19:22:59.199175'
+    - '1'
+    - 
+    - 
+  - - '221'
+    - Ebuild technical/policy questions 19
+    - ! '**What is EAPI?**
+
+
+      ### docs
+
+
+      * [Dev Manual](http://devmanual.gentoo.org/)
+
+
+      * [ PMS]()
+
+
+'
+    - 
+    - '2012-12-01 19:22:59.210473'
+    - '2012-12-01 19:22:59.210473'
+    - '1'
+    - 
+    - 
+  - - '222'
+    - Ebuild technical/policy questions 20
+    - ! '**What is the procedure for removing packages from the tree?**
+
+
+      ### docs
+
+
+      * [Handbook](http://www.gentoo.org/doc/en/handbook/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:59.221588'
+    - '2012-12-01 19:22:59.221588'
+    - '1'
+    - 
+    - 
+  - - '223'
+    - Ebuild technical/policy questions 21
+    - ! '**How do keywording policies for less often used arches like ia64 ormips
+      differ from the more common ones like amd64?**
+
+
+      ### docs
+
+
+      * [Dev Manual](http://devmanual.gentoo.org/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:59.232994'
+    - '2012-12-01 19:22:59.232994'
+    - '1'
+    - 
+    - 
+  - - '224'
+    - Ebuild technical/policy questions 22
+    - ! '**You are adding a new major version to the tree that requires users tofollow
+      an upgrade guide. How will you communicate this to the users?**
+
+
+      ### docs
+
+
+      * [GLEPs](http://www.gentoo.org/proj/en/glep/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:59.24359'
+    - '2012-12-01 19:22:59.24359'
+    - '1'
+    - 
+    - 
+  - - '225'
+    - Ebuild technical/policy questions 23
+    - ! '**You are writing an ebuild for the foomatic package. Upstream callsthe current
+      version "1.3-7b" (but this is _not_ a beta release).How would the ebuild be
+      named? What''s wrong with the ebuildsnippet below and how should this be written
+      to aidmaintainability?**
+
+
+      ### docs
+
+
+      * [Dev Manual](http://devmanual.gentoo.org/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:59.255079'
+    - '2012-12-01 19:22:59.255079'
+    - '1'
+    - 
+    - 
+  - - '226'
+    - Ebuild technical/policy questions 24
+    - ! '**You have a patch for foomatic which adds SSL support that is optionalat
+      build time. Assuming that foomatic uses an autotools based build systemprovide
+      most probable changes required in an EAPI="0" ebuild. What shouldbe done for
+      the ebuild in case it uses EAPI="2"?**
+
+
+      ### docs
+
+
+      * [Dev Manual](http://devmanual.gentoo.org/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:59.266044'
+    - '2012-12-01 19:22:59.266044'
+    - '1'
+    - 
+    - 
+  - - '227'
+    - Ebuild technical/policy questions 25
+    - ! '**What''s the difference between local and global scope in an ebuild?**
+
+
+      ### docs
+
+
+      * [Handbook](http://www.gentoo.org/doc/en/handbook/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:59.277495'
+    - '2012-12-01 19:22:59.277495'
+    - '1'
+    - 
+    - 
+  - - '228'
+    - Ebuild technical/policy questions 26
+    - ! '**Why should an external application (for example sed/grep) not becalled
+      in global scope? What alternative methods can be used?**
+
+
+      ### docs
+
+
+      * [Dev Manual](http://devmanual.gentoo.org/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:59.289366'
+    - '2012-12-01 19:22:59.289366'
+    - '1'
+    - 
+    - 
+  - - '229'
+    - Ebuild technical/policy questions 27
+    - ! '**What is wrong with using $(somecommand) or `somecommand` or $ARCHinside
+      SRC_URI, DEPEND, etc?**
+
+
+      ### docs
+
+
+      * [Dev Manual](http://devmanual.gentoo.org/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:59.298845'
+    - '2012-12-01 19:22:59.298845'
+    - '1'
+    - 
+    - 
+  - - '230'
+    - Ebuild technical/policy questions 28
+    - ! "**Explain what's incorrect about the following code snippets and suggestan
+      alternative.**\r\n\r\n(a) This ebuild doesn't like the ```-mcpu=ultrasparc```
+      CFLAG, so drop to v9\r\n\r\n```shell \r\nCFLAGS=${CFLAGS/-mcpu=ultrasparc/-mcpu=v9}\r\n```\r\n\r\n(b)
+      Upstream don't support user-specified CFLAGS\r\n\r\n```shell\r\n unset CFLAGS\r\n```\r\n\r\n(c)
+      \ Extra settings for when SSL is enabled\r\n\r\n```shell\r\n if [ \"`use ssl
+      `\" ] ; then\r\n        # blah\r\n fi\r\n```\r\n\r\n(d) Extra options for configure\r\n\r\n```shell\r\n
+      use jpeg && myconf=\"--enable-jpeg\" \\\r\n        || myconf=\"--disable-jpeg\"\r\n
+      use png && myconf=\"${myconf} --enable-png\" \\\r\n        || myconf=\"${myconf}
+      --disable-png\"\r\n use gif && myconf=\"${myconf} --enable-gif89a\" \\\r\n        ||
+      myconf=\"${myconf} --disable-gif89a\"\r\n econf ${myconf}\r\n```\r\n\r\n(e)
+      If we USE foo, we need to DEPEND upon libfoo. Unfortunately foo is completely
+      broken on some archs\r\n\r\n```shell\r\n DEPEND=\"!x86? ( !amd64? ( !ppc? (
+      foo? ( >=dev-libs/libfoo-1.2 ) ) ) )\"\r\n```\r\n\r\n(f) If ```USE=fnord```
+      is enabled, make extra targets:\r\n\r\n```shell\r\n use fnord && ( emake fnordification
+      || die \"it broke\" )\r\n```\r\n\r\n### docs\r\n\r\n* [Dev Manual](http://devmanual.gentoo.org/)\r\n\r\n"
+    - 
+    - '2012-12-01 19:22:59.310593'
+    - '2012-12-01 19:41:03.574689'
+    - '1'
+    - 
+    - 
+  - - '236'
+    - Ebuild technical/policy questions 29
+    - ! '**Explain briefly the purpose of the following tools:grep, cut, sed, cat,
+      wc, awk**
+
+
+      ### docs
+
+
+      * [Dev Manual](http://devmanual.gentoo.org/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:59.376748'
+    - '2012-12-01 19:22:59.376748'
+    - '1'
+    - 
+    - 
+  - - '237'
+    - Ebuild technical/policy questions 31
+    - ! '**Why are ''head -5'' and ''tail -5'' bad? What should be used instead?You''re
+      writing an ebuild and init script for a server applicationthat needs networking
+      to be available when started and can alsouse a system logger if one is available.
+      How should this bewritten in the init script?**
+
+
+      ### docs
+
+
+      * [Dev Manual](http://devmanual.gentoo.org/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:59.391169'
+    - '2012-12-01 19:22:59.391169'
+    - '1'
+    - 
+    - 
+  - - '238'
+    - Ebuild technical/policy questions 32
+    - ! '**What is the ''Gentoo Way'' of allowing the user to pass other optionsto
+      the previously mentioned server application?**
+
+
+      ### docs
+
+
+      * [Dev Manual](http://devmanual.gentoo.org/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:59.41179'
+    - '2012-12-01 19:22:59.41179'
+    - '1'
+    - 
+    - 
+  - - '239'
+    - Ebuild technical/policy questions 33
+    - ! '**What is the ''Gentoo Way'' of globally setting environment variablesfor
+      all users?**
+
+
+      ### docs
+
+
+      * [Dev Manual](http://devmanual.gentoo.org/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:59.420689'
+    - '2012-12-01 19:22:59.420689'
+    - '1'
+    - 
+    - 
+  - - '240'
+    - Ebuild technical/policy questions 34
+    - ! '**What directory should be used for application-generatednon-temporary data?**
+
+
+      ### docs
+
+
+      * [Dev Manual](http://devmanual.gentoo.org/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:59.43165'
+    - '2012-12-01 19:22:59.43165'
+    - '1'
+    - 
+    - 
+  - - '241'
+    - Ebuild technical/policy questions 35
+    - ! '**Which directory should manual (man) pages be in and how should theybe installed
+      from an ebuild?**
+
+
+      ### docs
+
+
+      * [Handbook](http://www.gentoo.org/doc/en/handbook/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:59.444556'
+    - '2012-12-01 19:22:59.444556'
+    - '1'
+    - 
+    - 
+  - - '242'
+    - Ebuild technical/policy questions 36
+    - ! '**On Gentoo Linux systems, what is the purpose of /usr/local/bin?**
+
+
+      ### docs
+
+
+      * [Dev Manual](http://devmanual.gentoo.org/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:59.454928'
+    - '2012-12-01 19:22:59.454928'
+    - '1'
+    - 
+    - 
+  - - '243'
+    - Ebuild technical/policy questions 37
+    - ! '**When should you use || die "msg" with commands/functions?Could || die always
+      be moved inside those functions/commands?**
+
+
+      ### docs
+
+
+      * [Dev Manual](http://devmanual.gentoo.org/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:59.466274'
+    - '2012-12-01 19:22:59.466274'
+    - '1'
+    - 
+    - 
+  - - '244'
+    - Ebuild technical/policy questions 38
+    - ! '**You are committing a new package to the tree. What will you have inthe
+      KEYWORDS variable?**
+
+
+      ### docs
+
+
+      * [Dev Manual](http://devmanual.gentoo.org/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:59.476458'
+    - '2012-12-01 19:22:59.476458'
+    - '1'
+    - 
+    - 
+  - - '245'
+    - Ebuild technical/policy questions 39
+    - ! '**You are bumping foomatic''s ebuild from version 1.2 to version1.3. The
+      new release contains bugfixes and newfunctionality. The current KEYWORDS for
+      1.2 are"x86 sparc ~mips amd64" -- what will KEYWORDS be forthe new 1.3 ebuild?**
+
+
+      ### docs
+
+
+      * [Dev Manual](http://devmanual.gentoo.org/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:59.488512'
+    - '2012-12-01 19:22:59.488512'
+    - '1'
+    - 
+    - 
+  - - '246'
+    - Ebuild technical/policy questions 40
+    - ! '**You are bumping foomatic''s ebuild from version 1.3 to 1.4. Thenew release
+      extends functionality and introduces a newdependency on libfnord version 1.2
+      or later. TheKEYWORDS for foomatic-1.3 are "x86 sparc ~mips amd64"and the KEYWORDS
+      for libfnord-1.2 are "x86 ~sparc" --what will you do?**
+
+
+      ### docs
+
+
+      * [Dev Manual](http://devmanual.gentoo.org/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:59.499893'
+    - '2012-12-01 19:22:59.499893'
+    - '1'
+    - 
+    - 
+  - - '247'
+    - Ebuild technical/policy questions 41
+    - ! '**You are bumping foomatic''s ebuild from version 1.4 to 1.5. Thisrelease
+      introduces new optional support for the libgerbillibrary, which you are controlling
+      via the gerbil globalUSE flag. Unfortunately libgerbil is full of code whichdoesn''t
+      work properly on big endian systems, and so has"-sparc -mips" in the KEYWORDS.
+      How will you handle this?**
+
+
+      ### docs
+
+
+      * [Dev Manual](http://devmanual.gentoo.org/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:59.512897'
+    - '2012-12-01 19:22:59.512897'
+    - '1'
+    - 
+    - 
+  - - '248'
+    - Ebuild technical/policy questions 42
+    - ! '**You are bumping foomatic''s ebuild from version 1.5 to version2.0. This
+      new version is a massive rewrite which introduceshuge changes to the build system,
+      the required librariesand how the code works. What will you do for KEYWORDS
+      here?**
+
+
+      ### docs
+
+
+      * [Dev Manual](http://devmanual.gentoo.org/)
+
+
+'
+    - 
+    - '2012-12-01 19:22:59.522864'
+    - '2012-12-01 19:22:59.522864'
+    - '1'
+    - 
+    - 

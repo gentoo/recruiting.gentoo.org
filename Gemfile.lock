@@ -232,6 +232,7 @@ GEM
       rack (>= 1.0)
     workflow (0.8.1)
     yajl-ruby (1.1.0)
+    yaml_db (0.2.3)
 
 PLATFORMS
   ruby
@@ -268,3 +269,4 @@ DEPENDENCIES
   uglifier (>= 1.0.3)
   unicorn
   workflow
+  yaml_db

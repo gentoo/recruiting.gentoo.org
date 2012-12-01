@@ -1,0 +1,26 @@
+*** Please also submit the following information:
+
+*        GPG public key ID (if you do not have one, please create one)
+        You should sign your quizzes with your key
+        http://www.gentoo.org/doc/en/gnupg-user.xml
+
+*        SSH public key (if you do not have one, please create one)
+        http://www.gentoo.org/proj/en/infrastructure/cvs-sshkeys.xml
+        If you don't paste your key inline, make sure it's signed by your
+        gpg key.
+
+*        Date of birth
+
+*        Where do you live (Town/City, Country)
+
+*        What are your programming/scripting skills, if applicable?
+
+*        What other areas are you experienced in?
+
+*        What other projects have you contributed to, if any?
+
+*        Tell us about yourself. This doesn't need to be strictly
+        computer-relevant; things like where you're from,
+        hobbies, job, family, interests... This information will be used
+        for your public new developer announcement so please mention if
+        something should not be part of that.

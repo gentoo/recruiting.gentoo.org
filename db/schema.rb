@@ -37,17 +37,6 @@ ActiveRecord::Schema.define(:version => 20121127202444) do
     t.string   "workflow_state"
   end
 
-  create_table "categories", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "categories_users", :id => false, :force => true do |t|
-    t.integer "user_id"
-    t.integer "category_id"
-  end
-
   create_table "comments", :force => true do |t|
     t.string   "title",            :limit => 50, :default => ""
     t.text     "comment"
@@ -69,35 +58,9 @@ ActiveRecord::Schema.define(:version => 20121127202444) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "groups_projects", :id => false, :force => true do |t|
-    t.integer "group_id"
-    t.integer "project_id"
-  end
-
-  create_table "groups_users", :id => false, :force => true do |t|
-    t.integer "user_id"
-    t.integer "group_id"
-  end
-
   create_table "mentorships", :id => false, :force => true do |t|
     t.integer "mentor_id"
     t.integer "candidate_id"
-  end
-
-  create_table "projects", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.integer  "parent_prj_id"
-    t.integer  "leader_id"
-    t.string   "team"
-    t.string   "homepage"
-  end
-
-  create_table "projects_users", :id => false, :force => true do |t|
-    t.integer "user_id"
-    t.integer "project_id"
   end
 
   create_table "questions", :force => true do |t|

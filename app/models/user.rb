@@ -38,16 +38,6 @@ class User < ActiveRecord::Base
   scope :candidates, where(workflow_state: :candidate)
   scope :ready, joins(:ready_user).where("ready_users.user_id = users.id")
 
-  # potentially slow
-  after_create do |user|
-    # check from dev-list.xml
-    Project.select([:id, :team]).all.each do |prj|
-      if member_of?(prj.leaders) || member_of?(prj.members)
-        promote! if candidate?
-      end
-    end
-  end
-
   validates_presence_of :email, :name
   validates_uniqueness_of :name
 

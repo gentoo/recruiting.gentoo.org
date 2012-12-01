@@ -1,6 +1,3 @@
 .page-header
-  %h5 Hot projects
-  = @projects.map(&:name).join(", ")
-.page-header
   %h5 Random question
-  = markdown(Question.random(1)[0].content)
+  = markdown(@random_question.content)

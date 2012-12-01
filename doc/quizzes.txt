@@ -1,0 +1,298 @@
+﻿Ebuild technical/policy questions
+
+1.        You change a package's ebuild to install an init script. Previously,
+        the package had no init script at all.
+        Is a revision bump necessary? Why? What about when adding a patch?
+
+docs: devmanual
+
+2.        A user submits a "live" CVS ebuild. What would be a preferable
+        alternative to such an ebuild?
+
+docs: handbook
+
+3.        (a) What is repoman? How would you check for QA problems with
+        repoman?
+
+docs: handbook
+
+        (b) A user submits a brand-new ebuild for a new package. What are the
+        proper steps (including repoman/cvs commands) to take to add
+        this ebuild to the tree?
+
+docs: handbook
+
+4.        A user submits an ebuild that has numerous technical problems and
+        violates policy. How would you handle that situation?
+
+docs: handbook
+
+5.        You have a set of new ebuilds that could potentially benefit
+        from a global USE flag. What steps should be taken before
+        a new USE flag is implemented? What should be done if the
+        USE flag only applies to a single package?
+
+docs: devmanual
+
+6.        What steps are needed to remove a use flag from IUSE in an ebuild?
+
+docs:
+
+7.        You're creating an ebuild. Unfortunately, the ebuild's 'make install'
+        target causes numerous access violations. What is the best
+        course of action to take to have a clean, straightforward
+        ebuild?
+
+docs: devmanual
+
+8.        You're creating an ebuild that needs a patch. The patch is
+        nontrivially large - bigger than 20kbytes. Where should
+        the patch be kept?
+
+docs: devmanual
+
+9.        You're creating an ebuild that has its own license - one that
+        doesn't exist in /usr/portage/licenses/. What is the proper
+        course of action?
+
+docs: GLEPs, devmanual
+
+10.        (a) You wish to have an ebuild marked "stable," taking it out of
+        ~ARCH KEYWORDS. It's a library. What steps should be taken to do so?
+
+docs: devmanual
+
+        (b) You wish to mark an ebuild "testing," putting it into ~ARCH
+        KEYWORDS. It was previously hard-masked in package.mask.
+        What should be done prior to doing so?
+
+docs: handbook
+
+        (c) You wish to have an ebuild marked "stable." It is a popular
+        application, but no other ebuilds depend on it.
+        What should be done first?
+
+docs: devmanual
+
+11.        You're committing a user-submitted ebuild. What should be in the
+        initial ChangeLog?
+
+docs: devmanual
+
+12.        What is the difference between DEPEND and RDEPEND?
+
+docs: devmanual
+
+13.        You wish to make a change to an ebuild, but you checked
+        ChangeLogs and metadata.xml and it appears to be maintained by
+        someone else. How should you proceed?
+
+docs:
+
+14.        You find a situation in which an eclass may be useful. What should
+        you do before implementing such an eclass?
+
+docs: devmanual
+
+15.        You find a package that will not build on some architectures without
+        PIC (-fPIC) code in the shared libraries. What is the proper way
+        to handle this situation?
+
+docs: devmanual,pic-guide
+
+16.        How can you verify an ebuild has correct run time dependencies
+        (RDEPEND) for all installed binaries?
+
+docs: handbook
+
+17.        How do you deal with a situation in which an ebuild wishes to
+        install a file already installed by another package?
+
+docs: handbook
+
+18.        Most configure scripts attempt to automatically determine
+        settings based on the host system. When should the ebuild
+        specifically override settings?
+
+docs: devmanual
+
+19.        What is EAPI?
+
+docs: devmanual, PMS
+
+20.        What is the procedure for removing packages from the tree?
+
+docs: handbook
+
+21.        How do keywording policies for less often used arches like ia64 or
+        mips differ from the more common ones like amd64?
+
+docs: devmanual
+
+22.        You are adding a new major version to the tree that requires users to
+        follow an upgrade guide. How will you communicate this to the users?
+
+docs: GLEPs
+
+23. You are writing an ebuild for the foomatic package. Upstream calls 
+        the current version "1.3-7b" (but this is _not_ a beta release).
+        How would the ebuild be named? What's wrong with the ebuild
+        snippet below and how should this be written to aid
+        maintainability?
+
+ SRC_URI="http://foomatic.example.com/download/foomatic-1.3-7b.tar.bz2"
+ S=${WORKDIR}/foomatic-1.3-7b
+
+docs: devmanual
+
+24. You have a patch for foomatic which adds SSL support that is optional
+  at build time. Assuming that foomatic uses an autotools based build system
+  provide most probable changes required in an EAPI="0" ebuild. What should
+  be done for the ebuild in case it uses EAPI="2"?
+
+docs: devmanual
+
+25. What's the difference between local and global scope in an ebuild?
+
+docs: handbook
+
+26. Why should an external application (for example sed/grep) not be
+        called in global scope? What alternative methods can be used?
+
+docs: devmanual
+
+27. What is wrong with using $(somecommand) or `somecommand` or $ARCH
+        inside SRC_URI, DEPEND, etc?
+
+docs: devmanual
+
+28. Explain what's incorrect about the following code snippets and suggest
+        an alternative.
+
+28.a
+ # This ebuild doesn't like the -mcpu=ultrasparc CFLAG, so drop to v9
+ CFLAGS=${CFLAGS/-mcpu=ultrasparc/-mcpu=v9}
+
+docs: devmanual
+
+28.b
+ # Upstream don't support user-specified CFLAGS
+ unset CFLAGS
+
+docs: devmanual
+
+28.c
+ # Extra settings for when SSL is enabled
+ if [ "`use ssl `" ] ; then
+        # blah
+ fi
+
+docs: devmanual
+
+28.d
+ # Extra options for configure
+ use jpeg && myconf="--enable-jpeg" \
+        || myconf="--disable-jpeg"
+ use png && myconf="${myconf} --enable-png" \
+        || myconf="${myconf} --disable-png"
+ use gif && myconf="${myconf} --enable-gif89a" \
+        || myconf="${myconf} --disable-gif89a"
+ econf ${myconf}
+
+docs: devmanual
+
+28.e
+ # If we USE foo, we need to DEPEND upon libfoo. Unfortunately
+ # foo is completely broken on some archs
+ DEPEND="!x86? ( !amd64? ( !ppc? ( foo? ( >=dev-libs/libfoo-1.2 ) ) ) )"
+
+docs: devmanual
+
+28.f
+ # If USE=fnord is enabled, make extra targets:
+ use fnord && ( emake fnordification || die "it broke" )
+
+docs: devmanual
+
+29. Explain briefly the purpose of the following tools:
+        grep, cut, sed, cat, wc, awk
+
+docs: devmanual
+
+30. Why are 'head -5' and 'tail -5' bad? What should be used instead?
+
+docs:
+
+31. You're writing an ebuild and init script for a server application 
+        that needs networking to be available when started and can also
+        use a system logger if one is available. How should this be
+        written in the init script?
+
+docs: devmanual
+
+32. What is the 'Gentoo Way' of allowing the user to pass other options
+        to the previously mentioned server application?
+
+docs: devmanual
+
+33. What is the 'Gentoo Way' of globally setting environment variables
+        for all users?
+
+docs: devmanual
+
+34. What directory should be used for application-generated 
+        non-temporary data?
+
+docs: devmanual
+
+35. Which directory should manual (man) pages be in and how should they 
+        be installed from an ebuild?
+
+docs: handbook
+
+36. On Gentoo Linux systems, what is the purpose of /usr/local/bin?
+
+docs: devmanual
+
+37. When should you use || die "msg" with commands/functions?
+   Could || die always be moved inside those functions/commands?
+
+docs: devmanual
+
+38. You are committing a new package to the tree. What will you have in 
+        the KEYWORDS variable?
+
+docs: devmanual
+
+39. You are bumping foomatic's ebuild from version 1.2 to version 
+        1.3. The new release contains bugfixes and new
+        functionality. The current KEYWORDS for 1.2 are
+        "x86 sparc ~mips amd64" -- what will KEYWORDS be for
+        the new 1.3 ebuild?
+
+docs: devmanual
+
+40. You are bumping foomatic's ebuild from version 1.3 to 1.4. The
+        new release extends functionality and introduces a new
+        dependency on libfnord version 1.2 or later. The
+        KEYWORDS for foomatic-1.3 are "x86 sparc ~mips amd64"
+        and the KEYWORDS for libfnord-1.2 are "x86 ~sparc" --
+        what will you do?
+
+docs: devmanual
+
+41. You are bumping foomatic's ebuild from version 1.4 to 1.5. This
+        release introduces new optional support for the libgerbil
+        library, which you are controlling via the gerbil global
+        USE flag. Unfortunately libgerbil is full of code which
+        doesn't work properly on big endian systems, and so has
+        "-sparc -mips" in the KEYWORDS. How will you handle this?
+
+docs: devmanual
+
+42. You are bumping foomatic's ebuild from version 1.5 to version
+        2.0. This new version is a massive rewrite which introduces
+        huge changes to the build system, the required libraries
+        and how the code works. What will you do for KEYWORDS here?
+
+docs: devmanual
