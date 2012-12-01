@@ -15,7 +15,8 @@
         %td= group.description
         %td= link_to "View questions", [group, :questions]
         %td
-          = link_to [:subscribe, group], method: :put do
-            %i.icon-plus
-            subscribe
+          - if current_user.candidate? && current_user.group.nil?
+            = link_to [:subscribe, group], method: :put do
+              %i.icon-plus
+              subscribe
 
