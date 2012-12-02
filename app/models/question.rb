@@ -5,6 +5,7 @@ class Question < ActiveRecord::Base
   attr_accessible :content, :id, :title, :group_id, :group
   has_many :answers
   belongs_to :group
+  default_scope order("created_at ASC")
 
   validates_presence_of :title, :content, :group
 
