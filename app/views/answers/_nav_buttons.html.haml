@@ -1,6 +1,6 @@
 - if can? :answer, Question
   - if previous_question = @question.previous
-    = link_to [:new, previews_question, :answer], class: "btn" do
+    = link_to [:new, previous_question, :answer], class: "btn" do
       %i.icon-step-backward
       Previous
   = link_to [@question.group, :questions], class: "btn" do
