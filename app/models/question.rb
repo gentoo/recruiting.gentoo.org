@@ -23,4 +23,11 @@ class Question < ActiveRecord::Base
     group.name
   end
 
+  def next
+    self.class.where(group_id: group_id).where("id > ?", id).limit(1).first
+  end
+
+  def previous
+    self.class.unscoped.where(group_id: group_id).order("id DESC").where("id < ?", id).limit(1).first
+  end
 end

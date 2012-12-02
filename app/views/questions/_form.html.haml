@@ -14,7 +14,7 @@
     $(function() {
       $('#load_epic_editor').click(function() {
         $("#question_content").hide();
-        var epicEditor = new EpicEditor({basePath: "/assets", file: {name: "q#{@question.id}", defaultContent: $("#question_content").val()}});
+        var epicEditor = new EpicEditor({basePath: "/assets"});
         $("#epiceditor").show();
         epicEditor.load().importFile("q", $("#question_content").val());
         $("form").submit(function() {

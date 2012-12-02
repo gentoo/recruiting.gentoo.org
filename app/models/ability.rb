@@ -12,21 +12,26 @@ class Ability
       can :subscribe, Group
       can :create, Comment
       cannot :destroy, Comment
+      can :answer, Question
     elsif user.mentor?
       can :manage, [Answer, Comment]
       can :sponsor, User
       can :comment, Question
       cannot :destroy, Comment
+      cannot :answer, Question
     elsif user.recruiter?
       can :manage, [Question, Answer, Group, Comment]
       can :promote, User
       can :sponsor, User
       can :comment, Question
       cannot :destroy, Comment
+      cannot :answer, Question
     elsif user.admin?
       can :manage, :all
+      cannot :answer, Question
     else
       can :read, :all
+      cannot :read, Answer
     end
     # Define abilities for the passed in user here. For example:
     #

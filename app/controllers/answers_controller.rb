@@ -4,7 +4,12 @@ class AnswersController < InheritedResources::Base
   before_filter :get_question, only: [:new, :edit, :update]
 
   def new
-    @answer = @question.answers.build(user: current_user)
+    @answer = current_user.answer_for(@question)
+    if @answer
+      render :edit
+    else
+      @answer = @question.answers.build(user: current_user)
+    end
   end
 
   def update

@@ -5,7 +5,7 @@
       %i.icon-comment
       Comment
     = link_to t('.back', :default => t("helpers.links.back")), commentable
-- commentable.comments.order("id DESC").each do |comment|
+- commentable.comments.each do |comment|
   .row
     .span1
       %p= comment.user.name

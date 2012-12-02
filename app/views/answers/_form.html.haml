@@ -9,11 +9,13 @@
   = f.input :content, as: :hidden
   .form-actions
     = f.button :submit, :class => 'btn-primary', value: "Submit"
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), questions_path, :class => 'btn'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), [@question.group, :questions], :class => 'btn'
+    = render :partial => 'nav_buttons'
 - content_for :js do
   :javascript
     $(function() {
-      var epicEditor = new EpicEditor({basePath: "/assets", file: {name: "a#{@answer.id}", defaultContent: "#{escape_javascript(@answer.content)}"}}).load().reflow('height');
+      var epicEditor = new EpicEditor({basePath: "/assets"}).load().reflow('height');
+      epicEditor.importFile("answer", "#{escape_javascript(@answer.content)}")
       $("form").submit(function() {
         $("#answer_content").val(epicEditor.exportFile());
       })

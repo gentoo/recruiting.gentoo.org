@@ -3,6 +3,10 @@ class CandidatesController < ApplicationController
     @candidates = User.candidates
   end
 
+  def show
+    @candidate = User.find params[:id]
+  end
+
   def sponsor
     @novice = User.find params[:id]
     current_user.recruit(@novice)

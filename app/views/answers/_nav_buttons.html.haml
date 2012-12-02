@@ -1,0 +1,24 @@
+- if can? :answer, Question
+  - if previous_question = @question.previous
+    = link_to [:new, previews_question, :answer], class: "btn" do
+      %i.icon-step-backward
+      Previous
+  = link_to [@question.group, :questions], class: "btn" do
+    %i.icon-eject
+    All
+  - if next_question = @question.next
+    = link_to [:new, next_question, :answer], class: "btn btn-primary" do
+      Next
+      %i.icon-step-forward
+- else
+  - if previous_question = @question.previous
+    = link_to previous_question, class: "btn" do
+      %i.icon-step-backward
+      Previous
+  = link_to [@question.group, :questions], class: "btn" do
+    %i.icon-eject
+    All
+  - if next_question = @question.next
+    = link_to @question.next, class: "btn btn-primary" do
+      Next
+      %i.icon-step-forward
