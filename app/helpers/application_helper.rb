@@ -72,9 +72,9 @@ module ApplicationHelper
     elsif answer.awaiting_review?
       content_tag :div, "Awaiting review", class: "label label-warning"
     elsif answer.rejected?
-      content_tag :div, "Rejected", class: "label label-important"
+      content_tag :div, "Rejected by #{answer.operator.name rescue nil}", class: "label label-important"
     else
-      content_tag :div, "Accepted", class: "label label-success"
+      content_tag :div, "Accepted by #{answer.operator.name rescue nil}", class: "label label-success"
     end
   end
 end

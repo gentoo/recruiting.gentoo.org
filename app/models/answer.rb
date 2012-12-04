@@ -1,10 +1,11 @@
 class Answer < ActiveRecord::Base
   include Workflow
   acts_as_commentable
-  attr_accessible :content, :question_id, :user_id, :user
+  attr_accessible :content, :question_id, :user_id, :user, :operator
 
   belongs_to :user
   belongs_to :question
+  belongs_to :operator, class_name: "User"
 
   validates_presence_of :user, :question, :content
 
@@ -28,5 +29,9 @@ class Answer < ActiveRecord::Base
   
   def state
     current_state.to_s.humanize
+  end
+
+  def mentor_action!(user)
+    update_attribute(:operator, user)
   end
 end
