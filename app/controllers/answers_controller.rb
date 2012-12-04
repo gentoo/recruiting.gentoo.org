@@ -3,6 +3,18 @@ class AnswersController < InheritedResources::Base
 
   before_filter :get_question, only: [:new, :edit, :update]
 
+  def index
+    authorize! :review, Answer
+    @candidate = User.find params[:candidate_id] 
+    if @candidate.candidate? && current_user.mentoring?(@candidate)
+      @answers = current_user.answers_waiting_review(@candidate)
+      render :review
+    else
+      flash[:alert] = "This is not a candidate."
+      redirect_to root_url
+    end
+  end
+
   def new
     @answer = current_user.answer_for(@question)
     if @answer
@@ -44,6 +56,7 @@ class AnswersController < InheritedResources::Base
     authorize! :review, Answer
     @answer = Answer.find params[:id]
     @answer.accept!
+    @answer.mentor_action!(current_user)
     #AnswerNotification.accept(@answer.user, @answer).deliver
     check_user_ready(@answer.user)
     redirect_to action: :review
@@ -53,7 +66,8 @@ class AnswersController < InheritedResources::Base
     authorize! :review, Answer
     @answer = Answer.find params[:id]
     @answer.reject!
-    Answer.reject(@answer.user, @answer).deliver
+    @answer.mentor_action!(current_user)
+    #AnswerNotification.reject(@answer.user, @answer).deliver
     redirect_to action: :index
   end
 

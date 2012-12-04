@@ -8,6 +8,7 @@ Gentoo::Application.routes.draw do
     collection do
       get :ready
     end
+    resources :answers
   end
 
   resources :groups do

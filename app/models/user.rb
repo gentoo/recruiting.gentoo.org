@@ -45,8 +45,9 @@ class User < ActiveRecord::Base
     Answer.for(self, question).first
   end
 
-  def answers_waiting_review
-    Answer.awaiting_review.joins(:user).where("users.id" => sponsees.map(&:id))
+  def answers_waiting_review(sponsee = nil)
+    sponsee_ids = sponsee.nil? ? sponsees.map(&:id) : [sponsee.id]
+    Answer.awaiting_review.joins(:user).where("users.id" => sponsee_ids)
   end
 
   def assigned_questions
@@ -79,8 +80,4 @@ class User < ActiveRecord::Base
     @progress ||= ( answers.select(&:accepted?).count / assigned_questions.count.to_f )
   end
 
-  private
-  def member_of?(names)
-    names.split(",").map(&:strip).include?(name)
-  end
 end

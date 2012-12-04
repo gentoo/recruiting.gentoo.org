@@ -11,6 +11,10 @@
               = link_to sponsee_path(sponsee), method: :delete, class: "btn btn-primary" do
                 %i.icon-unlock
                 Unmentor
+              - unless sponsee.ready?
+                = link_to candidate_answers_path(sponsee), class: "btn btn-warning" do
+                  %i.icon-group
+                  Review
             - else
               = link_to sponsor_candidate_path(sponsee), method: :put, class: "btn btn-primary" do
                 %i.icon-umbrella

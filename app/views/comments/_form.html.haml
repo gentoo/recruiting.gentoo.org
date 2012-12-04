@@ -4,7 +4,7 @@
     = button_tag :submit, class: "btn btn-primary" do
       %i.icon-comment
       Comment
-    = link_to t('.back', :default => t("helpers.links.back")), commentable
+    = link_to t('.back', :default => t("helpers.links.back")), commentable, class: "btn"
 - commentable.comments.each do |comment|
   .row
     .span1
