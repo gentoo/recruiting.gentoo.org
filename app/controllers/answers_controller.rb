@@ -7,7 +7,7 @@ class AnswersController < InheritedResources::Base
     authorize! :review, Answer
     @candidate = User.find params[:candidate_id] 
     if @candidate.candidate? && current_user.mentoring?(@candidate)
-      @answers = current_user.answers_waiting_review(@candidate)
+      @answers = current_user.answers_reviewable(@candidate)
       render :review
     else
       flash[:alert] = "This is not a candidate."
@@ -49,7 +49,7 @@ class AnswersController < InheritedResources::Base
   end
 
   def review
-    @answers = current_user.answers_waiting_review
+    @answers = current_user.answers_waiting_review.page params[:page]
   end
 
   def accept
@@ -68,7 +68,7 @@ class AnswersController < InheritedResources::Base
     @answer.reject!
     @answer.mentor_action!(current_user)
     #AnswerNotification.reject(@answer.user, @answer).deliver
-    redirect_to action: :index
+    redirect_to action: :review
   end
 
   private

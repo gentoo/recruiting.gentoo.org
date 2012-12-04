@@ -1,6 +1,6 @@
 class CandidatesController < ApplicationController
   def index
-    @candidates = User.candidates
+    @candidates = User.candidates.page params[:page]
   end
 
   def show

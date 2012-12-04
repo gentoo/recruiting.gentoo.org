@@ -3,18 +3,4 @@
 - if @answers.empty?
   %p Nothing to review.
 - else
-  %table.table.table-striped
-    %thead
-      %tr
-        %th Question
-        %th By
-        %th
-    %tbody
-      - @answers.each do |answer|
-        %tr
-          %td= answer.question.title
-          %td= answer.user.name
-          %td
-            = link_to [answer.question, answer], class: 'btn btn-warning' do
-              %i.icon-group
-              Review
+  = render :partial => 'list'

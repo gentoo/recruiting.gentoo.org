@@ -9,11 +9,16 @@ class Answer < ActiveRecord::Base
 
   validates_presence_of :user, :question, :content
 
+  default_scope order("updated_at DESC")
+
   scope :for, -> user, question {
     where(question_id: question.id).where(user_id: user.id)
   }
 
   scope :awaiting_review, where(workflow_state: "awaiting_review")
+  scope :reviewable, -> user {
+    joins(:user).where("users.id" => user.sponsees.map(&:id))
+  }
 
   workflow do
     state :awaiting_review do

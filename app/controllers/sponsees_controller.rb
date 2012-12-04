@@ -1,6 +1,6 @@
 class SponseesController < ApplicationController
   def index
-    @sponsees = current_user.sponsees
+    @sponsees = current_user.sponsees.page params[:page]
   end
 
   def show

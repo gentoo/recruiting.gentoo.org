@@ -1,0 +1,6 @@
+.page-header
+  %h2 All reviewable answers
+- if @answers.empty?
+  %p List empty.
+- else
+  = render :partial => 'answers/list'

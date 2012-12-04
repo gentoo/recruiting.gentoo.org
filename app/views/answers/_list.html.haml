@@ -1,0 +1,19 @@
+%table.table.table-striped
+  %thead
+    %tr
+      %th Question
+      %th By
+      %th
+  %tbody
+    - @answers.each do |answer|
+      %tr
+        %td= answer.question.title
+        %td= answer.user.name
+        %td
+          - if answer.awaiting_review?
+            = link_to [answer.question, answer], class: 'btn btn-warning' do
+              %i.icon-group
+              Review
+          - else
+            = answer_status(answer)
+= paginate @answers

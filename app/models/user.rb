@@ -45,9 +45,12 @@ class User < ActiveRecord::Base
     Answer.for(self, question).first
   end
 
-  def answers_waiting_review(sponsee = nil)
-    sponsee_ids = sponsee.nil? ? sponsees.map(&:id) : [sponsee.id]
-    Answer.awaiting_review.joins(:user).where("users.id" => sponsee_ids)
+  def answers_reviewable(sponsee)
+    Answer.awaiting_review.joins(:user).where("users.id" => sponsee.id)
+  end
+
+  def answers_waiting_review
+    Answer.reviewable(self).awaiting_review
   end
 
   def assigned_questions
