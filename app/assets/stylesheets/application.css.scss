@@ -39,6 +39,8 @@ textarea.comment { width: 680px; height: 88px; }
   @include background-image(linear-gradient(center top, lighten($linkColor, 35%) $linkColor));
 }
 
+a.btn-primary:visited, a.btn-success:visited, a.btn-warning:visited { color: white }
+
 /* footer */
 footer { margin-top: 20px; }
 footer.main .inner { height: 40px; width: 940px; margin: 0 auto; position: relative; text-align: center; }
