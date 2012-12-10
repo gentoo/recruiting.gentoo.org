@@ -35,10 +35,10 @@ ActiveAdmin.register User do
 
   form do |f|
     f.inputs "user" do
+      f.input :workflow_state, as: :select, collection: User.workflow_spec.states, label: "Role"
       f.input :name
       f.input :email
-      f.input :password
-      f.input :password_confirmation
+      f.input :biography
     end
     f.buttons
   end
