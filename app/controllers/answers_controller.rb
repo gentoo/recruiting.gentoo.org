@@ -6,9 +6,8 @@ class AnswersController < InheritedResources::Base
   def index
     authorize! :review, Answer
     @candidate = User.find params[:candidate_id] 
-    if @candidate.candidate? && current_user.mentoring?(@candidate)
-      @answers = current_user.answers_reviewable(@candidate)
-      render :review
+    if @candidate.candidate?
+      @answers = @candidate.answers.page params[:page]
     else
       flash[:alert] = "This is not a candidate."
       redirect_to root_url

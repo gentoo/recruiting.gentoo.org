@@ -45,10 +45,6 @@ class User < ActiveRecord::Base
     Answer.for(self, question).first
   end
 
-  def answers_reviewable(sponsee)
-    Answer.awaiting_review.joins(:user).where("users.id" => sponsee.id)
-  end
-
   def answers_waiting_review
     Answer.reviewable(self).awaiting_review
   end

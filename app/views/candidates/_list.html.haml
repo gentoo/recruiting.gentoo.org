@@ -19,6 +19,10 @@
               = link_to sponsor_candidate_path(sponsee), method: :put, class: "btn btn-primary" do
                 %i.icon-umbrella
                 Mentor 
+            - if (current_user.recruiter? || current_user.admin?) && !current_user.mentoring?(sponsee)
+              = link_to candidate_answers_path(sponsee), class: "btn btn-success" do
+                %i.icon-check
+                Grade
         - if can?(:promote, User) && sponsee.ready?
           %p
             = link_to recruit_candidate_path(sponsee), method: :put, class: "btn btn-danger" do

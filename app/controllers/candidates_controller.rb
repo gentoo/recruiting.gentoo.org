@@ -14,7 +14,7 @@ class CandidatesController < ApplicationController
   end
 
   def ready
-    @candidates = User.ready
+    @candidates = User.ready.page params[:page]
   end
 
   def recruit

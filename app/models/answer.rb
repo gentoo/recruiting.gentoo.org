@@ -20,6 +20,8 @@ class Answer < ActiveRecord::Base
     joins(:user).where("users.id" => user.sponsees.map(&:id))
   }
 
+  scope :accepted, where(workflow_state: "accepted")
+
   workflow do
     state :awaiting_review do
       event :accept, transitions_to: :accepted

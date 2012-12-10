@@ -16,4 +16,5 @@
               Review
           - else
             = answer_status(answer)
+            = link_to "View", [answer.question, answer], class: "btn"
 = paginate @answers
