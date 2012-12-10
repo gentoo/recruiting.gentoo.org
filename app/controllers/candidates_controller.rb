@@ -1,4 +1,6 @@
 class CandidatesController < ApplicationController
+  before_filter :authenticate_user!
+
   def index
     @candidates = User.candidates.page params[:page]
   end
@@ -8,16 +10,19 @@ class CandidatesController < ApplicationController
   end
 
   def sponsor
+    authorize! :sponsor, User
     @novice = User.find params[:id]
     current_user.recruit(@novice)
     redirect_to action: :index
   end
 
   def ready
+    authorize! :promote, User
     @candidates = User.ready.page params[:page]
   end
 
   def recruit
+    authorize! :promote, User
     @novice = User.find params[:id]
     @novice.promote!
     @mentors = @novice.mentors

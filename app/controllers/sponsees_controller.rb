@@ -1,4 +1,6 @@
 class SponseesController < ApplicationController
+  before_filter :authenticate_user!
+
   def index
     @sponsees = current_user.sponsees.page params[:page]
   end
@@ -7,6 +9,7 @@ class SponseesController < ApplicationController
   end
 
   def destroy
+    authorize! :sponsor, User
     @sponsee = current_user.sponsees.find params[:id]
     current_user.sponsees.delete(@sponsee) if @sponsee.present?
     redirect_to action: :index
