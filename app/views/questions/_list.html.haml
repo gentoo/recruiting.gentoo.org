@@ -11,7 +11,7 @@
       - answer = user_signed_in? ? current_user.answer_for(question) : nil
       %tr
         %td
-          - if can? :answer, Question
+          - if can?(:answer, Question) && current_user.assigned_to?(question)
             = link_to question.title, [:new, question, :answer]
           - else
             = link_to question.title, question
@@ -19,7 +19,7 @@
         - if current_user.candidate?
           %td= answer_status(answer)
         %td
-          - if can? :answer, Question
+          - if can?(:answer, Question)
             - if answer.nil? 
               - if current_user.assigned_to?(question)
                 = link_to [:new, question, :answer], :class => 'btn' do

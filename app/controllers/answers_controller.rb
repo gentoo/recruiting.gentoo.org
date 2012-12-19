@@ -15,6 +15,7 @@ class AnswersController < InheritedResources::Base
   end
 
   def new
+    authorize! :answer, Question
     @answer = current_user.answer_for(@question)
     if @answer
       render :edit

@@ -1,6 +1,11 @@
 Welcome to Gentoo Recruiting
 =============================
 
+ISSUES
+--------
+
+* Candidate should only be able to answer subscribed quuestions.
+
 Thoughts
 --------
 

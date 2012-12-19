@@ -1,0 +1,76 @@
+admin:
+  id: '2'
+  email: admin@gentoo.org
+  encrypted_password: $2a$10$FiC0nkFJyws9r2XP8BVeq.B1CiRKldAGI9bvx/5bMzR/Opy8kD2me
+  reset_password_token: 
+  reset_password_sent_at: 
+  remember_created_at: 
+  sign_in_count: '5'
+  current_sign_in_at: '2012-12-10 20:58:27.729535'
+  last_sign_in_at: '2012-12-10 20:12:48.728081'
+  current_sign_in_ip: 127.0.0.1
+  last_sign_in_ip: 127.0.0.1
+  created_at: '2012-12-01 17:13:29.06198'
+  updated_at: '2012-12-10 20:58:27.730532'
+  name: admin
+  workflow_state: admin
+  biography: 
+  mentor_id: 
+  group_id:
+mentor:
+  id: '3'
+  email: kumba@gentoo.org
+  encrypted_password: $2a$10$nFQYgebj6VNQrgk09h3K9ur50PXHGznIdpYWs.bPkhw0JpVLXwklm
+  reset_password_token: 
+  reset_password_sent_at: 
+  remember_created_at: 
+  sign_in_count: '8'
+  current_sign_in_at: '2012-12-10 21:10:51.386356'
+  last_sign_in_at: '2012-12-10 20:24:47.398423'
+  current_sign_in_ip: 127.0.0.1
+  last_sign_in_ip: 127.0.0.1
+  created_at: '2012-12-01 19:48:50.547924'
+  updated_at: '2012-12-10 21:10:51.387403'
+  name: Kumba
+  workflow_state: mentor
+  biography: 
+  mentor_id: 
+  group_id: 
+recruitor:
+  id: '4'
+  email: vapier@gentoo.org
+  encrypted_password: $2a$10$beRJ21oLqKBEKJ7qkFdk1uKaZLJ8BmDV52VujrKIdQ204TBs/WCF2
+  reset_password_token: 
+  reset_password_sent_at: 
+  remember_created_at: 
+  sign_in_count: '5'
+  current_sign_in_at: '2012-12-10 21:09:53.893618'
+  last_sign_in_at: '2012-12-10 20:35:45.361663'
+  current_sign_in_ip: 127.0.0.1
+  last_sign_in_ip: 127.0.0.1
+  created_at: '2012-12-01 19:49:22.529498'
+  updated_at: '2012-12-10 21:09:53.894635'
+  name: vapier
+  workflow_state: recruiter
+  biography: 
+  mentor_id: 
+  group_id: 
+candidate:
+  id: '5'
+  email: candidate@gentoo.org
+  encrypted_password: $2a$10$9zQG/vh4wzUzEaqx6d1ZvOCzqkBWsi0TuzkpwNg8JG9qqI65atQgG
+  reset_password_token: 
+  reset_password_sent_at: 
+  remember_created_at: 
+  sign_in_count: '8'
+  current_sign_in_at: '2012-12-18 22:06:40.684699'
+  last_sign_in_at: '2012-12-04 20:00:32.691352'
+  current_sign_in_ip: 127.0.0.1
+  last_sign_in_ip: 127.0.0.1
+  created_at: '2012-12-01 19:49:47.323443'
+  updated_at: '2012-12-18 22:06:40.712448'
+  name: candidate
+  workflow_state: candidate
+  biography: ! "I'm a ruby developer.\r\n\r\n# I rocks!"
+  mentor_id: 
+  group_id: '1'
