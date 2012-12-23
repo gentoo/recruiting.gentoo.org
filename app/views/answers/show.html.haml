@@ -1,9 +1,7 @@
 .page-header
-  %h3
-    = @question.title
-    %small#toggle_question= link_to "Toggle content", "#"
+  %h3= @question.title
 
-.page-header.hidden.question
+.page-header.question
   %p= markdown(@question.content)
 
 .answer= markdown @answer.content
@@ -20,9 +18,3 @@
         %i.icon-remove
         Reject
 = render :partial => 'comments/form', locals: {commentable: @answer}
-
-- content_for :js do
-  :javascript
-    $("#toggle_question").click(function() {
-      $(".question").toggle();
-    });
