@@ -4,7 +4,12 @@ Welcome to Gentoo Recruiting
 ISSUES
 --------
 
-* Candidate should only be able to answer subscribed quuestions.
+* Question navigation for mentors should be different.
+* Edit staff question, always show question content.
+* Substitute user biography with detailed fields.
+* Upload & download ssh keys.
+* Ajaxify mentoring operations.
+* Gentoo-lize site theme.
 
 Thoughts
 --------
