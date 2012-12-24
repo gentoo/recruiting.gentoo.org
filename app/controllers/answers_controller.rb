@@ -55,20 +55,22 @@ class AnswersController < InheritedResources::Base
   def accept
     authorize! :review, Answer
     @answer = Answer.find params[:id]
-    @answer.accept!
-    @answer.mentor_action!(current_user)
+    current_user.accept!(@answer)
     #AnswerNotification.accept(@answer.user, @answer).deliver
     check_user_ready(@answer.user)
-    redirect_to action: :review
+    respond_to do |format|
+      format.js { render layout: false }
+    end
   end
 
   def reject
     authorize! :review, Answer
     @answer = Answer.find params[:id]
-    @answer.reject!
-    @answer.mentor_action!(current_user)
+    current_user.reject!(@answer)
     #AnswerNotification.reject(@answer.user, @answer).deliver
-    redirect_to action: :review
+    respond_to do |format|
+      format.js { render layout: false }
+    end
   end
 
   private

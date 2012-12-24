@@ -11,10 +11,10 @@
 - if can? :review, Answer
   - if @answer.awaiting_review?
     .form-actions
-      = link_to [:accept, @answer], :class => 'btn btn-primary', method: :put do
+      = link_to [:accept, @answer], class: 'btn btn-primary', method: :put, remote: true do
         %i.icon-ok
         Accept
-      = link_to [:reject, @answer], :method => "put", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger' do
+      = link_to [:reject, @answer], method: :put, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-danger', remote: true do
         %i.icon-remove
         Reject
 = render :partial => 'comments/form', locals: {commentable: @answer}

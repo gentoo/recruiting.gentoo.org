@@ -79,4 +79,14 @@ class User < ActiveRecord::Base
     @progress ||= ( answers.select(&:accepted?).count / assigned_questions.count.to_f )
   end
 
+  # mentor operations
+  def accept!(answer)
+    answer.accept!
+    answer.mentor_action!(self)
+  end
+
+  def reject!(answer)
+    answer.reject!
+    answer.mentor_action!(self)
+  end
 end
