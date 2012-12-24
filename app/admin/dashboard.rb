@@ -22,16 +22,6 @@ ActiveAdmin.register_page "Dashboard" do
           end
         end
       end
-      
-      column do
-        panel "User submitted questions" do
-          table_for Question.unscoped.where(workflow_state: :new) do |t|
-            t.column("Author"){|q| link_to q.user.name, admin_user_path(q.user)}
-            t.column("Title"){|q| link_to q.title, admin_question_path(q) } 
-            t.column("Group"){|q| q.group.name }
-          end
-        end
-      end
     end
     columns do
       column do
