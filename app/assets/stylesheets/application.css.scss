@@ -12,7 +12,8 @@
  *= require_tree .
  *= require github
  */
-@import "bootswatch/cerulean/variables";
+/*@import "bootswatch/cerulean/variables";*/
+@import "gentoo";
 @import "bootstrap";
 @import "compass";
 @import "bootswatch/cerulean/bootswatch";
@@ -30,13 +31,17 @@ textarea.comment { width: 680px; height: 88px; }
 .dropdown-menu > .active > a > [class*=" icon-"] {
   background-image: none;
 }
-.sub-project { background-color: $grayLighter; }
-.sub-sub-project { background-color: darken($grayLighter, 3%); }
 
 #sidebar {
   border: none;
   min-height: 600px;
-  @include background-image(linear-gradient(center top, lighten($linkColor, 35%) $linkColor));
+  background-color: #DDDAEC;
+  /*@include background-image(linear-gradient(center top, lighten($linkColor, 35%) $linkColor));*/
+}
+.nav-list a {
+  font-size: 0.85em;
+  font-weight: bold;
+  line-height: 1.4em;
 }
 
 a.btn-primary:visited, a.btn-success:visited, a.btn-warning:visited { color: white }
