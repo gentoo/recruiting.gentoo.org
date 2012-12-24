@@ -12,7 +12,13 @@
         = f.error_notification
         = f.input :name, :required => true, :autofocus => true
         = f.input :email, :required => true
-        = f.input :biography
+        = f.input :ssh_key, :required => true
+        = f.input :date_of_birth
+        = f.input :address, label: "Where are you from"
+        = f.input :skills, label: "Main skills"
+        = f.input :other_skills, label: "Other experience"
+        = f.input :projects, label: "Projects you took part in"
+        = f.input :biography, placeholder: "Tell us about yourself. This doesn't need to be strictly computer-relevant; things like hobbies, job, family, interests..."
       .tab-pane#tab2
         = f.error_notification
         = f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false

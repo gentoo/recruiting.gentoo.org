@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121219133322) do
+ActiveRecord::Schema.define(:version => 20121224182754) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -94,6 +94,12 @@ ActiveRecord::Schema.define(:version => 20121219133322) do
     t.text     "biography"
     t.integer  "mentor_id"
     t.integer  "group_id"
+    t.text     "ssh_key"
+    t.string   "address"
+    t.string   "skills"
+    t.string   "other_skills"
+    t.string   "projects"
+    t.date     "date_of_birth"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
