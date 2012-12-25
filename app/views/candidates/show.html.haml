@@ -1,4 +1,38 @@
+:css
+  strong {
+    display: inline-block;
+    text-align: right;
+    width: 110px;
+  }
 .thumbnail
   %img(src="http://placehold.it/260x200")
-  %h3= @candidate.name
+  %hr
+  %p
+    %strong Name
+    = @candidate.name
+  %p 
+    %strong Email
+    = @candidate.email
+  %p
+    %strong Date of birth
+    = @candidate.date_of_birth
+  %p 
+    %strong SSH public key
+    = link_to "download", ssh_key_candidate_path(@candidate)
+  %p 
+    %strong Address
+    = @candidate.address
+  %p
+    %strong Skills
+    = @candidate.skills
+  %p 
+    %strong Other experiences
+    = @candidate.other_skills
+  %p 
+    %strong Contributed projects
+    = @candidate.projects
+  %p
+    %strong Biography
   %p= markdown @candidate.biography
+
+= link_to "<<Back", :back

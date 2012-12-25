@@ -3,7 +3,7 @@
     %li.span3
       .thumbnail
         %img(src="http://placehold.it/260x200")
-        %h3= sponsee.name
+        %h3= link_to sponsee.name, candidate_path(sponsee)
         %p= truncate(sponsee.biography, length: 150)
         - if can?(:sponsor, User)
           %p

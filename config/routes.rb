@@ -5,6 +5,7 @@ Gentoo::Application.routes.draw do
     member do
       put :sponsor
       put :recruit
+      get :ssh_key
     end
     collection do
       get :ready

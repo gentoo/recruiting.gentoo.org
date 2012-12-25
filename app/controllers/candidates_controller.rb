@@ -2,10 +2,12 @@ class CandidatesController < ApplicationController
   before_filter :authenticate_user!
 
   def index
+    authorize! :sponsor, User
     @candidates = User.candidates.page params[:page]
   end
 
   def show
+    authorize! :sponsor, User
     @candidate = User.find params[:id]
   end
 
@@ -33,5 +35,11 @@ class CandidatesController < ApplicationController
     # Send email notification to the user
     flash[:notice] = "#{@novice.name} is now a gentoo developer."
     redirect_to action: :ready
+  end
+
+  def ssh_key
+    authorize! :sponsor, User
+    @candidate = User.find params[:id]
+    send_data @candidate.ssh_key, filename: "#{@candidate.name}.pub"
   end
 end
