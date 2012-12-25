@@ -2,7 +2,7 @@
   %h2= @question.title
 .page-header= markdown(@question.content)
 
-%p= render partial: "answers/nav_buttons"
+%p= render partial: "nav_buttons"
 
 - if can? :comment, Question
   = render :partial => 'comments/form', locals: {commentable: @question}

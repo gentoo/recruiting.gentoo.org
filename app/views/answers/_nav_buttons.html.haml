@@ -10,15 +10,16 @@
     = link_to [:new, next_question, :answer], class: "btn btn-primary" do
       Next
       %i.icon-step-forward
-- else
-  - if previous_question = @question.previous
-    = link_to previous_question, class: "btn" do
+- elsif @answer
+  - if previous_answer = @answer.previous
+    = link_to [@question, previous_answer], class: "btn" do
       %i.icon-step-backward
       Previous
-  = link_to [@question.group, :questions], class: "btn" do
+  = link_to [:review, :answers], class: "btn" do
     %i.icon-eject
     All
-  - if next_question = @question.next
-    = link_to @question.next, class: "btn btn-primary" do
+  - if next_answer = @answer.next
+    = link_to [@question, next_answer], class: "btn btn-primary" do
       Next
       %i.icon-step-forward
+

@@ -41,4 +41,12 @@ class Answer < ActiveRecord::Base
   def mentor_action!(user)
     update_attribute(:operator, user)
   end
+
+  def next
+    self.class.where(user_id: user_id).where("id > ?", id).limit(1).first
+  end
+
+  def previous
+    self.class.unscoped.where(user_id: user_id).order("id DESC").where("id < ?", id).limit(1).first
+  end
 end
