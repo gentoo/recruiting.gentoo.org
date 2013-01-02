@@ -159,6 +159,10 @@ GEM
     libwebsocket (0.1.7.1)
       addressable
       websocket
+    lol_dba (1.4.1)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      railties (>= 3.0)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -298,6 +302,7 @@ DEPENDENCIES
   haml_coffee_assets
   jquery-rails
   kaminari
+  lol_dba
   nokogiri
   pg
   pry

@@ -46,6 +46,7 @@ group :development, :test do
   gem 'rspec-rails'
   #gem 'mysql2'
   gem 'unicorn'
+  gem 'lol_dba'
 end
 group :test do
   gem 'cucumber-rails', :require => false
