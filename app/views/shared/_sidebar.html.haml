@@ -1,36 +1,31 @@
-.span3
-  .well.sidebar-nav#sidebar
-    - if current_user.nil?
-      %h3 Gentoo News
-      %ul.nav.nav-list
-        %li.nav-header Newsletter
-        %li= link_to "We forked udev!", "/path1"
-        %li= link_to "Should we use systemd?", "/path2"
-    - elsif current_user.candidate?
-      %h3 Welcome
-      = progress_bar(current_user.progress)
-      %ul.nav.nav-list
-        %li.nav-header Questions
-        %li= link_to "To be answered", unanswered_questions_path
-        %li= link_to "Already answered", answered_questions_path
-        %li= link_to "All", assigned_questions_path
-    - elsif current_user.mentor?
-      %h3 Mentor
-      %ul.nav.nav-list
-        %li.nav-header Actions
-        %li= link_to "Answers to review", review_answers_path
-        %li= link_to "All reviewed answers", reviews_path
-        %li= link_to "Sponsees", sponsees_path
-        %li= link_to "Candidates", candidates_path
+- unless current_user.nil?
+  .span3
+    .well.sidebar-nav#sidebar
+      - if current_user.candidate?
+        %h3 Welcome
+        = progress_bar(current_user.progress)
+        %ul.nav.nav-list
+          %li.nav-header Questions
+          %li= link_to "To be answered", unanswered_questions_path
+          %li= link_to "Already answered", answered_questions_path
+          %li= link_to "All", assigned_questions_path
+      - elsif current_user.mentor?
+        %h3 Mentor
+        %ul.nav.nav-list
+          %li.nav-header Actions
+          %li= link_to "Answers to review", review_answers_path
+          %li= link_to "All reviewed answers", reviews_path
+          %li= link_to "Sponsees", sponsees_path
+          %li= link_to "Candidates", candidates_path
 
-    - elsif current_user.admin? || current_user.recruiter?
-      %h3 Recruiter
-      %ul.nav.nav-list
-        %li.nav-header Actions
-        %li= link_to "Admin Dashboard", admin_dashboard_path if current_user.admin?
-        %li= link_to "Candidates", candidates_path
-        %li= link_to "Sponsees", sponsees_path
-        %li= link_to "Answers to review", review_answers_path
-        %li= link_to "All reviewed answers", reviews_path
-        %li= link_to "Ready Candidates", ready_candidates_path
-        %li= link_to "Submit questions", new_question_path
+      - elsif current_user.admin? || current_user.recruiter?
+        %h3 Recruiter
+        %ul.nav.nav-list
+          %li.nav-header Actions
+          %li= link_to "Admin Dashboard", admin_dashboard_path if current_user.admin?
+          %li= link_to "Candidates", candidates_path
+          %li= link_to "Sponsees", sponsees_path
+          %li= link_to "Answers to review", review_answers_path
+          %li= link_to "All reviewed answers", reviews_path
+          %li= link_to "Ready Candidates", ready_candidates_path
+          %li= link_to "Submit questions", new_question_path
