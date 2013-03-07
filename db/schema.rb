@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121224182754) do
+ActiveRecord::Schema.define(:version => 20130102154159) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -38,6 +38,21 @@ ActiveRecord::Schema.define(:version => 20121224182754) do
     t.integer  "operator_id"
   end
 
+  add_index "answers", ["operator_id"], :name => "index_answers_on_operator_id"
+  add_index "answers", ["question_id"], :name => "index_answers_on_question_id"
+  add_index "answers", ["user_id"], :name => "index_answers_on_user_id"
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "categories_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "category_id"
+  end
+
   create_table "comments", :force => true do |t|
     t.string   "title",            :limit => 50, :default => ""
     t.text     "comment"
@@ -59,9 +74,38 @@ ActiveRecord::Schema.define(:version => 20121224182754) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "groups_projects", :id => false, :force => true do |t|
+    t.integer "group_id"
+    t.integer "project_id"
+  end
+
+  create_table "groups_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "group_id"
+  end
+
   create_table "mentorships", :id => false, :force => true do |t|
     t.integer "mentor_id"
     t.integer "candidate_id"
+  end
+
+  add_index "mentorships", ["candidate_id", "mentor_id"], :name => "index_mentorships_on_candidate_id_and_mentor_id"
+  add_index "mentorships", ["mentor_id", "candidate_id"], :name => "index_mentorships_on_mentor_id_and_candidate_id"
+
+  create_table "projects", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "parent_prj_id"
+    t.integer  "leader_id"
+    t.string   "team"
+    t.string   "homepage"
+  end
+
+  create_table "projects_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "project_id"
   end
 
   create_table "questions", :force => true do |t|
@@ -71,6 +115,8 @@ ActiveRecord::Schema.define(:version => 20121224182754) do
     t.datetime "updated_at", :null => false
     t.integer  "group_id"
   end
+
+  add_index "questions", ["group_id"], :name => "index_questions_on_group_id"
 
   create_table "ready_users", :force => true do |t|
     t.integer "user_id"
@@ -103,6 +149,7 @@ ActiveRecord::Schema.define(:version => 20121224182754) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["group_id"], :name => "index_users_on_group_id"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end
