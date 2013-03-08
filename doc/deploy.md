@@ -23,6 +23,7 @@ then
 ```
 mv config/database.yml.example config/database.yml
 bundle exec rake db:create
+bundle exec rake db:migrate
 bundle exec rake db:data:load
 ```
 
