@@ -16,3 +16,4 @@
 .sass-cache
 config/database.yml
 *.un~
+*.swp
