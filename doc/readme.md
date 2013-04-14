@@ -23,6 +23,7 @@ then
 ```
 mv config/database.yml.example config/database.yml
 RAILS_ENV=productoin bundle exec rake db:create
+RAILS_ENV=productoin bundle exec rake db:schema:load
 RAILS_ENV=productoin bundle exec rake db:data:load
 ```
 
