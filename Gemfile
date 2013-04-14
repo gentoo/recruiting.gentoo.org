@@ -44,9 +44,9 @@ gem 'yaml_db'
 group :development, :test do
   gem 'pry'
   gem 'rspec-rails'
-  #gem 'mysql2'
   gem 'unicorn'
   gem 'lol_dba'
+  gem 'pg'
 end
 group :test do
   gem 'cucumber-rails', :require => false
@@ -55,4 +55,6 @@ group :test do
   gem 'capybara'
   gem 'cucumber-debug'
 end
-gem 'pg'
+group :production do
+  gem 'mysql2'
+end

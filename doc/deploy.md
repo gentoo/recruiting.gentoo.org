@@ -12,7 +12,7 @@ gem i bundler --no-rdoc --no-ri
 * install dependencies
 
 ```
-bundle
+bundle install --deployment --without development
 ```
 
 * prepare database
@@ -24,6 +24,11 @@ then
 mv config/database.yml.example config/database.yml
 RAILS_ENV=productoin bundle exec rake db:create
 RAILS_ENV=productoin bundle exec rake db:data:load
+```
+
+* compile assets
+```
+RAILS_ENV=production bundle exec rake assets:precompile
 ```
 
 * start webserver
