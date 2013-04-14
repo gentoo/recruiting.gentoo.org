@@ -22,8 +22,8 @@ then
 
 ```
 mv config/database.yml.example config/database.yml
-bundle exec rake db:create
-bundle exec rake db:data:load
+RAILS_ENV=productoin bundle exec rake db:create
+RAILS_ENV=productoin bundle exec rake db:data:load
 ```
 
 * start webserver
