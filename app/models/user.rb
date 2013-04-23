@@ -41,6 +41,8 @@ class User < ActiveRecord::Base
   validates_presence_of :email, :name
   validates_uniqueness_of :name
 
+  has_many :comments, dependent: :delete_all
+
   def answer_for(question)
     Answer.for(self, question).first
   end
