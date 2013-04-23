@@ -29,7 +29,7 @@ ActiveAdmin.register_page "Dashboard" do
           ul do
             Comment.order("id DESC").limit(5).map do |comment|
               li do
-                para link_to "by #{comment.user.name}", comment.commentable
+                para link_to "by #{comment.user.try(:name)}", comment.commentable
                 para markdown comment.comment
               end
             end
