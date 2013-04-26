@@ -65,7 +65,8 @@
    
     %footer.main
       .inner
-        %p &copy; Gentoo Foundation 2012
+        %p &copy; Gentoo Foundation #{Time.now.strftime("%Y")}
+        %p built by #{link_to "isaiah", "https://twitter.com/isaiah_peng"} and #{link_to "other contributors", "https://github.com/gentoo/recruiting.gentoo.org/blob/master/doc/contributors.md"}
         %ul
           %li= link_to "FORUM", "http://forums.gentoo.org"
           %li= link_to "BLOG", "http://planet.gentoo.org"
