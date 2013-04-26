@@ -10,3 +10,7 @@
 * When all answers accepted, candidate is ready for recruiters to accept
   as mentor, sus become a gentoo developer
 * Recruiter can promote developer to be a mentor.
+
+### Issues
+
+Please report issues you find to [github issues](https://github.com/gentoo/recruiting.gentoo.org/issues).
