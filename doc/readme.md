@@ -28,6 +28,8 @@ RAILS_ENV=productoin bundle exec rake db:schema:load
 RAILS_ENV=productoin bundle exec rake db:data:load
 ```
 
+Change the secret token in config/initializers/secret_token.rb by following instructions there.
+
 * compile assets
 ```
 RAILS_ENV=production bundle exec rake assets:precompile
