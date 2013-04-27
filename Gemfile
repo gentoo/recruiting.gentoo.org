@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.9'
+gem 'rails', '~> 3.2.13'
 gem 'rails-i18n'
 
 # Bundle edge Rails instead:
@@ -28,7 +28,7 @@ gem 'jquery-rails'
 gem 'haml-rails'
 gem 'devise'
 gem 'cancan'
-gem 'activeadmin'
+gem 'activeadmin', '~> 0.5.0'
 gem 'thin'
 gem 'psych'
 gem 'redcarpet', '~> 2.1.1'
