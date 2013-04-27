@@ -46,6 +46,7 @@ module ApplicationHelper
   end
 
   def markdown(text)
+    return "" if text.nil?
     @markdown ||= Redcarpet::Markdown.new(HtmlWithPygments.new(filter_html: true),
         autolink: false, space_after_headers: true, fenced_code_blocks: true)
     @markdown.render(text).html_safe
