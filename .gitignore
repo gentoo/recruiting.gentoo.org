@@ -17,3 +17,4 @@
 config/database.yml
 *.un~
 *.swp
+Gemfile.lock
