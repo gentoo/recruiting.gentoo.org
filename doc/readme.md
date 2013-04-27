@@ -21,7 +21,8 @@ first modify config/database.yml.example
 then
 
 ```
-mv config/database.yml.example config/database.yml
+cp config/database.yml.example config/database.yml
+cp config/initializers/secret_token.rb.example config/initializers/secret_token.rb
 RAILS_ENV=productoin bundle exec rake db:create
 RAILS_ENV=productoin bundle exec rake db:schema:load
 RAILS_ENV=productoin bundle exec rake db:data:load
