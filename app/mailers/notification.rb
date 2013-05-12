@@ -1,5 +1,5 @@
 class Notification < ActionMailer::Base
-  default from: "recruters@gentoo.org"
+  default from: "noreply@recruiting.gentoo.org"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -8,8 +8,7 @@ class Notification < ActionMailer::Base
   #
   def signup(user)
     @user = user
-    #mail to: "recruiters@gentoo.org", subject: "New user signup Gentoo Recruiting"
-    mail to: "isaiah.peng@vcint.com", subject: "New user signup Gentoo Recruiting"
+    mail to: "recruiters@gentoo.org", subject: "New user signup Gentoo Recruiting"
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -28,6 +27,6 @@ class Notification < ActionMailer::Base
   #   en.notification.accept.subject
   #
   def accept(user)
-    mail to: user.email, subject: "Congrats! You are accepted as a Gentoo developer!"
+    mail to: user.email, subject: "Congratulations! You are accepted as a Gentoo developer!"
   end
 end

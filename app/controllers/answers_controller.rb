@@ -2,8 +2,7 @@ class AnswersController < InheritedResources::Base
   before_filter :authenticate_user!
   load_and_authorize_resource
 
-  before_filter :get_question, only: [:new, :edit, :update]
-
+  before_filter :get_question, only: [:new, :edit, :update] 
   def index
     authorize! :review, Answer
     @candidate = User.find params[:candidate_id] 
@@ -29,6 +28,7 @@ class AnswersController < InheritedResources::Base
     @answer = @question.answers.find params[:id]
     @answer.update_attributes(params[:answer])
     @answer.submit! if @answer.rejected?
+    AnswerNotification.update(current_user, @answer).deliver
     redirect_to [@question, @answer]
   end
 
@@ -57,7 +57,7 @@ class AnswersController < InheritedResources::Base
     authorize! :review, Answer
     @answer = Answer.find params[:id]
     current_user.accept!(@answer)
-    #AnswerNotification.accept(@answer.user, @answer).deliver
+    AnswerNotification.accept(@answer.user, @answer).deliver
     check_user_ready(@answer.user)
     respond_to do |format|
       format.js { render layout: false }
@@ -68,7 +68,7 @@ class AnswersController < InheritedResources::Base
     authorize! :review, Answer
     @answer = Answer.find params[:id]
     current_user.reject!(@answer)
-    #AnswerNotification.reject(@answer.user, @answer).deliver
+    AnswerNotification.reject(@answer.user, @answer).deliver
     respond_to do |format|
       format.js { render layout: false }
     end
@@ -76,7 +76,10 @@ class AnswersController < InheritedResources::Base
 
   private
   def check_user_ready(user)
-    user.get_ready! if user.ready?
+    if user.ready?
+      user.get_ready!
+      Notification.ready(user).deliver
+    end
   end
 
   def get_question
