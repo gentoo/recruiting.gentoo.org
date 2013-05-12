@@ -26,7 +26,7 @@
             %span.icon-bar
             %span.icon-bar
           %a.brand(href="/")
-            = image_tag "glogo-small.png", style: "height: 20px; width: 20px;"
+            = image_tag "glogo-small.png", style: "height: 45px; width: 45px;"
             Gentoo Recruiting
           .container.nav-collapse
             %ul.nav
@@ -34,6 +34,31 @@
               %li= link_to "Question groups", "/groups"
               %li.divider-vertical
               %li= link_to "Help", "/help"
+              %li.divider-vertical
+              %li.dropdown
+                = link_to "#", class: "dropdown-toggle", "data-toggle" => "dropdown" do
+                  gentoo.org Sites
+                  %i.caret
+                %ul.dropdown-menu
+                  %li
+                    %a{:href => "http://www.gentoo.org/"} gentoo.org
+                  %li
+                    %a{:href => "http://wiki.gentoo.org/", :title => "Find and contribute documentation"} Wiki
+                  %li
+                    %a{:href => "https://bugs.gentoo.org/", :title => "Report issues and find common issues"} Bugs
+                  %li
+                    %a{:href => "http://forums.gentoo.org/", :title => "Discuss with the community"} Forums
+                  %li
+                    %a{:href => "http://packages.gentoo.org/", :title => "Find software for your Gentoo"} Packages
+                  %li.divider
+                  %li
+                    %a{:href => "http://archives.gentoo.org/", :title => "Read up on past discussions"} Archives
+                  %li
+                    %a{:href => "http://overlays.gentoo.org/", :title => "Collaborate on maintaining packages"} Overlays
+                  %li
+                    %a{:href => "http://planet.gentoo.org/", :title => "Find out what's going on in the developer community"} Planet
+                  %li
+                    %a{:href => "http://sources.gentoo.org/", :title => "Browse our source code"} Sources
 
             %ul.nav.pull-right
               %li.divider-vertical

@@ -15,6 +15,7 @@
 /*@import "bootswatch/cerulean/variables";*/
 @import "gentoo";
 @import "bootstrap";
+/*@import "bootstrap-responsive";*/
 @import "compass";
 @import "bootswatch/cerulean/bootswatch";
 @import "font-awesome";
@@ -54,3 +55,7 @@ footer.main .inner { height: 40px; width: 940px; margin: 0 auto; position: relat
 footer.main .inner p { display: inline-block; }
 footer.main .inner ul { padding-top: 12px; margin-left: 20px; display: inline-block; }
 footer.main .inner ul li { display: inline-block; margin-right: 10px; }
+
+.navbar .navbar-inner .brand { 
+  padding: 8.5px 20px;
+}

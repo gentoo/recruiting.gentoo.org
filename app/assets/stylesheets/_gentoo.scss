@@ -30,6 +30,7 @@ $yellow:                #F7B42C;
 $orange:                #DD5600;
 $pink:                  #F49AC1;
 $purple:                #9760B3;
+$gentoo:                #5C4F85;
 
 
 // Scaffolding
@@ -134,8 +135,8 @@ $hrBorder:                $grayLighter;
 
 // Navbar
 // -------------------------
-$navbarHeight:                    40px;
-$navbarBackground:                $linkColor;
+$navbarHeight:                    63px;
+$navbarBackground:                $gentoo;
 $navbarBackgroundHighlight:       lighten($navbarBackground, 10%);
 
 $navbarText:                      $grayLighter;
