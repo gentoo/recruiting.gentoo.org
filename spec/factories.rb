@@ -1,7 +1,8 @@
 FactoryGirl.define do
   factory :user do
-    email     { |number| "test_#{number}@example.com" }
-    name      { |number| "Test user #{number}" }
+    sequence(:email)     { |number| "test_#{number}@example.com" }
+    sequence(:name)      { |number| "Test user #{number}" }
+    confirmed_at         Time.now
     password  "testpassword"
   end
 
@@ -20,4 +21,8 @@ FactoryGirl.define do
   factory :group
 
   factory :candidate, parent: :user
+
+  factory :mentor, parent: :user do
+    workflow_state :mentor
+  end
 end
