@@ -1,4 +1,4 @@
-Given /^I logged in as a "(\w+)"$/ do |kind|
+Given /^I logged in as an? "(\w+)"$/ do |kind|
   user = FactoryGirl.create kind
   visit "/users/sign_in"
   fill_in :user_email, with: user.email
@@ -13,6 +13,10 @@ end
 
 When /^I follow "(.*?)"$/ do |question_title|
   click_link question_title
+end
+
+When /^I follow first link "(.*?)"$/ do |question_title|
+  page.first(:xpath, "//a[contains(text(), 'Review')]").click
 end
 
 Then /^I should( not)? see:? "(.*?)"$/ do |negation, text|
