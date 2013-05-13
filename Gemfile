@@ -55,6 +55,7 @@ group :test do
   gem 'database_cleaner'
   gem 'capybara'
   gem 'cucumber-debug'
+  gem 'simplecov-csv', require: false
 end
 group :production do
   gem 'mysql2'
