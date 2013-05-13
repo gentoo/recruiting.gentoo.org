@@ -15,12 +15,12 @@ When /^I follow "(.*?)"$/ do |question_title|
   click_link question_title
 end
 
-Then /^I should see: "(.*?)"$/ do |text|
-  page.should have_content(text)
-end
-
-Then /^I should not see: "(.*?)"$/ do |text|
-  page.should_not have_content(text)
+Then /^I should( not)? see:? "(.*?)"$/ do |negation, text|
+  if negation
+    page.should_not have_content(text)
+  else
+    page.should     have_content(text)
+  end
 end
 
 Then /^I should see button: "(.*?)"$/ do |text|

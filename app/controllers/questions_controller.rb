@@ -20,7 +20,7 @@ class QuestionsController < InheritedResources::Base
   end
 
   def assigned
-    @questions = current_user.assigned_questions.page params[:page]
+    @questions = current_user.questions.page params[:page]
     render :index
   end
 
