@@ -52,10 +52,6 @@ class User < ActiveRecord::Base
     Answer.reviewable(self).awaiting_review
   end
 
-  def assigned_questions
-    Question.where(group_id: group_id)
-  end
-
   def assigned_to?(question)
     question.group_id == group_id
   end
@@ -75,11 +71,11 @@ class User < ActiveRecord::Base
   end
 
   def ready?
-    assigned_questions.count == answers.count && answers.all?(&:accepted?)
+    Question.for_user(self).count == answers.count && answers.all?(&:accepted?)
   end
 
   def progress
-    @progress ||= ( answers.select(&:accepted?).count / assigned_questions.count.to_f )
+    @progress ||= ( answers.select(&:accepted?).count / Question.for_user(self).count.to_f )
   end
 
   # mentor operations
