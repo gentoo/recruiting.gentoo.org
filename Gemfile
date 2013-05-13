@@ -47,6 +47,7 @@ group :development, :test do
   #gem 'mysql2'
   gem 'unicorn'
   gem 'lol_dba'
+  gem 'factory_girl_rails'
 end
 group :test do
   gem 'cucumber-rails', :require => false
