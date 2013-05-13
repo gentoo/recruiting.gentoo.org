@@ -118,6 +118,11 @@ GEM
     eventmachine (1.0.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    factory_girl (2.3.2)
+      activesupport
+    factory_girl_rails (1.4.0)
+      factory_girl (~> 2.3.0)
+      railties (>= 3.0.0)
     fastercsv (1.5.5)
     ffi (1.2.0)
     font-awesome-sass-rails (2.0.0.0)
@@ -300,6 +305,7 @@ DEPENDENCIES
   database_cleaner
   devise
   execjs
+  factory_girl_rails
   font-awesome-sass-rails
   gravatar-ultimate
   haml-rails
