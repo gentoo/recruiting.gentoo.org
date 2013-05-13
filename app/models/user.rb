@@ -26,9 +26,10 @@ class User < ActiveRecord::Base
   end
 
   has_many :answers
-  belongs_to :group
+  has_many :user_groups
+  has_many :groups, through: :user_groups
 
-  has_and_belongs_to_many :mentors, class_name: "User", join_table: "mentorships", 
+  has_and_belongs_to_many :mentors, class_name: "User", join_table: "mentorships",
     foreign_key: "mentor_id", association_foreign_key: "candidate_id"
   has_and_belongs_to_many :sponsees, class_name: "User", join_table: "mentorships",
     foreign_key: "candidate_id", association_foreign_key: "mentor_id"

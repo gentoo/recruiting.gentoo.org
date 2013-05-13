@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130102154159) do
+ActiveRecord::Schema.define(:version => 20130513125351) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -122,6 +122,11 @@ ActiveRecord::Schema.define(:version => 20130102154159) do
     t.integer "user_id"
   end
 
+  create_table "user_groups", :force => true do |t|
+    t.integer "user_id"
+    t.integer "group_id"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
@@ -139,7 +144,6 @@ ActiveRecord::Schema.define(:version => 20130102154159) do
     t.string   "workflow_state"
     t.text     "biography"
     t.integer  "mentor_id"
-    t.integer  "group_id"
     t.text     "ssh_key"
     t.string   "address"
     t.string   "skills"
@@ -149,7 +153,6 @@ ActiveRecord::Schema.define(:version => 20130102154159) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["group_id"], :name => "index_users_on_group_id"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end
