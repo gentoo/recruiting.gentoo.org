@@ -9,7 +9,7 @@ Feature: Quiz subscription
 
   Scenario: Subscribe to multiple quizzes
     When I follow "Question groups"
-    And I subscribe to question group "first"
+    And I subscribe to question group "Developer Quiz"
     And I follow "Question groups"
-    And I subscribe to question group "first"
+    And I subscribe to question group "Staffer Quiz"
     Then I should be subscribed to all question groups

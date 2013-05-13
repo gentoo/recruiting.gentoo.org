@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
   end
 
   def assigned_to?(question)
-    question.group_id == group_id
+    question.group_id.in? group_ids
   end
 
   def recruit(candidate)

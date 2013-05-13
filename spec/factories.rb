@@ -8,15 +8,16 @@ FactoryGirl.define do
   factory :answer do
     association :user
     association :question
-    content     { |number| "Answer number #{number}" }
+    sequence(:content) { |n| "Answer number #{n}" }
   end
 
   factory :question do
     association :group
-    title       { |number| "Question number #{number}" }
-    content     { |number| "Conbtent of question number #{number}" }
+    sequence(:title)  { |n| "Question number #{n}" }
+    sequence(:content) { |n| "Conbtent of question number #{n}" }
   end
 
-  factory :group do
-  end
+  factory :group
+
+  factory :candidate, parent: :user
 end
