@@ -5,12 +5,21 @@ class Question < ActiveRecord::Base
   attr_accessible :content, :id, :title, :group_id, :group
   has_many :answers
   belongs_to :group
+  has_many :user_groups, through: :group
+  has_many :users, through: :user_groups
+
   default_scope order("created_at ASC")
 
   validates_presence_of :title, :content, :group
 
+  scope :for_user, -> user {
+    joins(:users).where(['users.id = ?', user.id])
+  }
+
   scope :unanswered_by, -> user {
-    where(group_id: user.group_id).where("id NOT IN (SELECT question_id FROM answers INNER JOIN users ON users.id = answers.user_id)")
+    for_user(user).
+    joins('LEFT OUTER JOIN answers ON answers.question_id = questions.id').
+    where(answers: {id: nil})
   }
 
   scope :answered_by, -> user {

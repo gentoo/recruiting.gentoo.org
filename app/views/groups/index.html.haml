@@ -7,7 +7,7 @@
       %th Name
       %th Description
       %th Questions
-      %th 
+      %th
   %tbody
     - @groups.each do |group|
       %tr
@@ -15,8 +15,7 @@
         %td= group.description
         %td= link_to "View questions", [group, :questions]
         %td
-          - if current_user.candidate? && current_user.group.nil?
-            = link_to [:subscribe, group], method: :put do
-              %i.icon-plus
-              subscribe
+          = link_to [:subscribe, group], method: :put do
+            %i.icon-plus
+            subscribe
 
