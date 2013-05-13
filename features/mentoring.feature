@@ -7,7 +7,7 @@ Feature: Mentoring
     Given I logged in as an "mentor"
     And sample recruits exist
 
-  Scenario: Comment answer
+  Scenario: Comment an answer
     When I follow "Answers to review"
     And I follow first link "Review"
     Then I should not see "Some remark"
