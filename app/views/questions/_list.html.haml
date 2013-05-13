@@ -20,7 +20,7 @@
           %td= answer_status(answer)
         %td
           - if can?(:answer, Question)
-            - if answer.nil? 
+            - if answer.nil?
               - if current_user.assigned_to?(question)
                 = link_to [:new, question, :answer], :class => 'btn' do
                   %i.icon-book

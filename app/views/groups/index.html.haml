@@ -15,7 +15,10 @@
         %td= group.description
         %td= link_to "View questions", [group, :questions]
         %td
-          = link_to [:subscribe, group], method: :put do
-            %i.icon-plus
-            subscribe
+          - if group.id.in? current_user.group_ids
+            subscribed
+          - else
+            = link_to [:subscribe, group], method: :put do
+              %i.icon-plus
+              subscribe
 

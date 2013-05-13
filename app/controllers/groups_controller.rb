@@ -8,13 +8,8 @@ class GroupsController < ApplicationController
   def subscribe
     authorize! :subscribe, Group
     group = Group.find(params[:id])
-    if current_user.group.nil? && group.present?
-      current_user.update_attribute(:group_id, params[:id])
-      flash[:notice] = "You have subscribed to group #{group.name}"
-      redirect_to [group, :questions]
-    else
-      flash[:alert] = "You can only subscribe to one group at a time."
-      redirect_to [group, :questions]
-    end
+    current_user.groups += [group]
+    flash[:notice] = "You have subscribed to group #{group.name}"
+    redirect_to [group, :questions]
   end
 end
