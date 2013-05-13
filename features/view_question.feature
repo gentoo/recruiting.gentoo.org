@@ -18,3 +18,8 @@ Feature: View a certain question
     And I follow "Organizational structure questions 3"
     Then I should see: "All"
     And I should not see button: "Submit"
+
+  Scenario: View assigned question listing
+    When I follow "All"
+    Then I should see "Organizational structure questions 2"
+    And I should not see "Organizational structure questions 3"
