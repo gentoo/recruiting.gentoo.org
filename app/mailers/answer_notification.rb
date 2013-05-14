@@ -26,12 +26,12 @@ class AnswerNotification < ActionMailer::Base
   def update(user, answer)
     @greeting = "Hi"
 
-    mail to: user.mentors.map(&:email), subject: "#{user.name} update his answer for quetion #{answer.question.title}."
+    mail to: user.mentors.map(&:email), subject: "#{user.name} update his answer for question #{answer.question.title}."
   end
 
   def new(user, answer)
     @greeting = "Hi"
 
-    mail to: user.mentors.map(&:email), subject: "#{user.name} answered quetion #{answer.question.title}."
+    mail to: user.mentors.map(&:email), subject: "#{user.name} answered question #{answer.question.title}."
   end
 end
