@@ -56,6 +56,7 @@ group :test do
   gem 'capybara'
   gem 'cucumber-debug'
   gem 'simplecov-csv', require: false
+  gem 'capybara-webkit', git: 'https://github.com/thoughtbot/capybara-webkit.git'
 end
 group :production do
   gem 'mysql2'

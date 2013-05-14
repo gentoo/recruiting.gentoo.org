@@ -7,8 +7,8 @@ Given /^sample recruits exist$/ do
   recruit3 = FactoryGirl.create :user, groups: Group.all
   step "sample question categories exist"
   Question.all.each do |question|
-    answer1 = Factory :answer, user: recruit1, question: question
-    answer2 = Factory :answer, user: recruit2, question: question
+    answer1 = FactoryGirl.create :answer, user: recruit1, question: question
+    answer2 = FactoryGirl.create :answer, user: recruit2, question: question
     me.accept!(answer2)
   end
   me.sponsees << [recruit1, recruit2, recruit3]
