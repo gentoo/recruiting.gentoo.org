@@ -22,3 +22,11 @@ Feature: Mentoring
     Then I should not see "Accepted"
     And I follow "Accept"
     Then I should see "Accepted"
+
+  @javascript
+  Scenario: Reject an answer
+    When I follow "Answers to review"
+    And I follow first link "Review"
+    Then I should not see "Rejected"
+    And I follow "Reject"
+    Then I should see "Rejected"
