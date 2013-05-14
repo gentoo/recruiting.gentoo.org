@@ -14,3 +14,11 @@ Feature: Mentoring
     When I fill in "comment_comment" with "Some remark"
     And press "Comment"
     Then I should see "Some remark"
+
+  @javascript
+  Scenario: Accept an answer
+    When I follow "Answers to review"
+    And I follow first link "Review"
+    Then I should not see "Accepted"
+    And I follow "Accept"
+    Then I should see "Accepted"
