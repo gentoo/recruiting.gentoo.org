@@ -30,3 +30,11 @@ Feature: Mentoring
     Then I should not see "Rejected"
     And I follow "Reject"
     Then I should see "Rejected"
+
+  @javascript
+  Scenario: Start mentoring
+    When I follow "Candidates"
+    Then I should not mentor all other users
+    When I follow "Mentor"
+    Then I should not see link "Mentor"
+    And I should mentor all other users

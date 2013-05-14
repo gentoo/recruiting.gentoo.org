@@ -21,9 +21,9 @@ end
 
 Then /^I should( not)? see:? "(.*?)"$/ do |negation, text|
   if negation
-    page.should_not have_content(text)
+    page.should have_no_content(text)
   else
-    page.should     have_content(text)
+    page.should have_content(text)
   end
 end
 

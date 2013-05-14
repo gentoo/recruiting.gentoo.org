@@ -22,3 +22,20 @@ end
 When /^press "(.*?)"$/ do |button|
   click_button(button)
 end
+
+When /^I follow first candidate name$/ do
+  step %{follow "#{User.candidates.first.name}"}
+end
+
+Then /^I should( not)? mentor all other users$/ do |negation|
+  me = User.find_by_workflow_state 'mentor'
+  ((me.sponsees.count == User.count - 1) ^ negation).should be_true
+end
+
+Then /^I should( not)? see link "([^"]*)"$/ do |negation, text|
+  if negation
+    page.should have_no_xpath("//a[contains(text(), '#{text}')]")
+  else
+    page.should have_xpath("//a[contains(text(), '#{text}')]")
+  end
+end
