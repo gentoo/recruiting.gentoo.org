@@ -20,6 +20,10 @@
     %strong SSH public key
     = link_to "download", ssh_key_candidate_path(@candidate)
   %p 
+    %strong GnuPG public key
+    = link_to "download", gpg_key_candidate_path(@candidate)
+
+  %p 
     %strong Address
     = @candidate.address
   %p

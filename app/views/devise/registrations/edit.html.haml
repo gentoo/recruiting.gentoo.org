@@ -12,13 +12,15 @@
         = f.error_notification
         = f.input :name, :required => true, :autofocus => true
         = f.input :email, :required => true
-        = f.input :ssh_key, :required => true
-        = f.input :date_of_birth
+        = f.input :ssh_key, :required => true, label: "SSH KEY"
+        = f.input :gpg_key, :required => true, label: "GnuPG KEY"
+        = f.input :date_of_birth, as: :date, start_year: Date.today.year - 60,
+                                  end_year: Date.today.year - 10
         = f.input :address, label: "Where are you from"
         = f.input :skills, label: "Main skills"
         = f.input :other_skills, label: "Other experience"
         = f.input :projects, label: "Projects you took part in"
-        = f.input :biography, placeholder: "Tell us about yourself. This doesn't need to be strictly computer-relevant; things like hobbies, job, family, interests..."
+        = f.input :biography, placeholder: "Tell us about yourself. This doesn't need to be strictly computer-relevant; things like hobbies, job, family, interests. This will be used for your recruit annoucement."
       .tab-pane#tab2
         = f.error_notification
         = f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false

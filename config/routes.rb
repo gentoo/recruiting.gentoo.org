@@ -6,6 +6,7 @@ Gentoo::Application.routes.draw do
       put :sponsor
       put :recruit
       get :ssh_key
+      get :gpg_key
     end
     collection do
       get :ready

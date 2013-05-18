@@ -41,9 +41,13 @@ class User < ActiveRecord::Base
   scope :ready, joins(:ready_user).where("ready_users.user_id = users.id")
 
   validates_presence_of :email, :name
+  validates_presence_of :ssh_key, :gpg_key, on: :update
+
   validates_uniqueness_of :name
 
   has_many :comments, dependent: :delete_all
+
+  before_validation :sluggish_name
 
   def answer_for(question)
     Answer.for(self, question).first
@@ -88,5 +92,14 @@ class User < ActiveRecord::Base
   def reject!(answer)
     answer.reject!
     answer.mentor_action!(self)
+  end
+
+  def to_param
+    name
+  end
+
+  private
+  def sluggish_name
+    self.name = self.name.downcase.gsub(/\s+/, '-')
   end
 end
