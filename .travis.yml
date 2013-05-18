@@ -4,10 +4,12 @@ rvm:
 env:
   - DB=mysql
 script:
-  - RAILS_ENV=test bundle exec rake --trace db:migrate test
+  - bundle exec rake spec
+  - bundle exec rake cucumber
 before_script:
   - cp config/database.yml.example config/database.yml
   - mysql -e 'create database recruiting_test'
+  - RAILS_ENV=test bundle exec rake --trace db:migrate test
 branches:
   only:
     - master

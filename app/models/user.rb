@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
   scope :ready, joins(:ready_user).where("ready_users.user_id = users.id")
 
   validates_presence_of :email, :name
-  validates_presence_of :ssh_key, :gpg_key, on: :update
+  #validates_presence_of :ssh_key, :gpg_key, on: :update
 
   validates_uniqueness_of :name
 
