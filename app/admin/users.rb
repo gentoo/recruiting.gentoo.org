@@ -1,4 +1,8 @@
 ActiveAdmin.register User do
+  controller do
+    defaults finder: :find_by_name
+  end
+
   menu priority: 1
   scope :all, default: true
   scope :novices do |users|
@@ -44,7 +48,7 @@ ActiveAdmin.register User do
   end
 
   member_action :promote, :method => :put do
-    user = User.find(params[:id])
+    user = User.find_by_name(params[:id])
     user.promote!
     flash[:notice] = "#{user.name} promoted!"
     redirect_to action: :index
