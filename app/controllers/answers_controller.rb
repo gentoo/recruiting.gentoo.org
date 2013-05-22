@@ -2,10 +2,10 @@ class AnswersController < InheritedResources::Base
   before_filter :authenticate_user!
   load_and_authorize_resource
 
-  before_filter :get_question, only: [:new, :edit, :update] 
+  before_filter :get_question, only: [:new, :edit, :update, :create] 
   def index
     authorize! :review, Answer
-    @candidate = User.find params[:candidate_id] 
+    @candidate = User.find_by_name params[:candidate_id] 
     if @candidate.candidate?
       @answers = @candidate.answers.page params[:page]
     else
@@ -21,6 +21,17 @@ class AnswersController < InheritedResources::Base
       render :edit
     else
       @answer = @question.answers.build(user: current_user)
+    end
+  end
+
+  def create
+    authorize! :answer, Question
+    @answer = @question.answers.new(params[:answer])
+    @answer.user = current_user
+    if @answer.save
+      AnswerNotification.update(current_user, @answer).deliver
+    else
+      render :new
     end
   end
 
@@ -57,7 +68,7 @@ class AnswersController < InheritedResources::Base
     authorize! :review, Answer
     @answer = Answer.find params[:id]
     current_user.accept!(@answer)
-    AnswerNotification.accept(@answer.user, @answer).deliver
+    AnswerNotification.accept(current_user, @answer.user, @answer).deliver
     check_user_ready(@answer.user)
     respond_to do |format|
       format.js { render layout: false }
@@ -68,7 +79,7 @@ class AnswersController < InheritedResources::Base
     authorize! :review, Answer
     @answer = Answer.find params[:id]
     current_user.reject!(@answer)
-    AnswerNotification.reject(@answer.user, @answer).deliver
+    AnswerNotification.reject(current_user, @answer.user, @answer).deliver
     respond_to do |format|
       format.js { render layout: false }
     end

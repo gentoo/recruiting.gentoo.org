@@ -1,13 +1,15 @@
 class AnswerNotification < ActionMailer::Base
-  default from: "noreply@recruiting.gentoo.org"
+  default from: "no-reply@recruiting.gentoo.org"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
   #   en.answer.accept.subject
   #
-  def accept(user, answer)
-    @greeting = "Hi"
+  def accept(mentor, user, answer)
+    @mentor = mentor
+    @user = user
+    @answer_url = candidate_answer_url(candidate_id:user.id, id: answer.id)
 
     mail to: user.email, subject: "You answer for #{answer.question.title} is accepted."
   end
@@ -17,16 +19,21 @@ class AnswerNotification < ActionMailer::Base
   #
   #   en.answer.reject.subject
   #
-  def reject(user, answer)
-    @greeting = "Hi"
+  def reject(mentor, user, answer)
+    @user = user
+    @mentor = mentor
+    @question = answer.question.title
+    @answer_url = candidate_answer_url(candidate_id:user.id, id: answer.id)
 
-    mail to: user.email, subject: "You answer for #{answer.question.title} is rejected."
+    mail to: user.email, subject: "You answer for #{@question} is rejected."
   end
 
   def update(user, answer)
-    @greeting = "Hi"
+    @user = user
+    @answer_url = candidate_answer_url(candidate_id:user.id, id: answer.id)
+    @question = answer.question.title
 
-    mail to: user.mentors.map(&:email), subject: "#{user.name} update his answer for question #{answer.question.title}."
+    mail to: user.mentors.map(&:email), subject: "#{user.name} update his answer for question #{@question}."
   end
 
   def new(user, answer)

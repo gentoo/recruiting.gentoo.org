@@ -31,7 +31,8 @@ class CandidatesController < ApplicationController
     @mentors.each{|mentor| @novice.mentors.delete(mentor)}
     @novice.ready_user.delete
     @novice.save
-    Notification.accept(@novice).deliver
+    Notification.accept(current_user, @novice).deliver
+    Notification.recruit(current_user, @novice, @mentors).deliver
     flash[:notice] = "#{@novice.name} is now a gentoo developer."
     redirect_to action: :ready
   end
