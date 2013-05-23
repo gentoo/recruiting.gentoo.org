@@ -76,7 +76,42 @@ class User < ActiveRecord::Base
   end
 
   def ready?
-    Question.for_user(self).count == answers.count && answers.all?(&:accepted?)
+    # reorder('') is necessary - for some reason "ORDER BY created_at" gets
+    # added to scopes automatically and causes problems when running query over
+    # more than one table with the column
+
+    uid = Question.sanitize self.id
+    questions_in_group_count  = Question.
+                                  where("questions.group_id = groups.id").
+                                  select('COUNT(questions.id)').
+                                  reorder('')
+    answered_questions_count = questions_in_group_count.
+                                  joins(%{
+                                    INNER JOIN answers ON
+                                      answers.question_id = questions.id
+                                      AND
+                                      answers.user_id = #{uid}
+                                  })
+    # Groups selected by user
+    user_selected = Group.
+                      joins(%{
+                        INNER JOIN user_groups ON
+                        user_groups.group_id = groups.id
+                        AND
+                        user_groups.user_id = #{uid}
+                      })
+
+    # And from them we choose those that have the same number of questions as
+    # number of questions answered. That is they have all questions answered
+    solved_groups = user_selected.where(%{
+      (#{questions_in_group_count.to_sql})
+      =
+      (#{answered_questions_count.to_sql})
+    }).
+    reorder('')
+
+    # User is ready if there is at least one group with all questions answered
+    solved_groups.any?
   end
 
   def progress
