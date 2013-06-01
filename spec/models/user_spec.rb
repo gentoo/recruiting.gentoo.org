@@ -9,14 +9,14 @@ describe User do
     end
 
     it "should be false for user who didn't select any group yet" do
-      @user.should_not be_ready
+      @groups.each{|group| @user.should_not be_ready_for(group)}
     end
 
     it "should be false if there are left some questions unanaswered in each group" do
       @user.groups = @groups
       @user.save!
       @questions.collect(&:first).each { |q| FactoryGirl.create :answer, user: @user, question: q }
-      @user.should_not be_ready
+      @user.should_not be_ready_for(@group.first)
     end
 
     it "should be false if someone else answered all questions" do
@@ -25,14 +25,16 @@ describe User do
       user2.save!
       @user.save!
       @questions.flatten.each { |q| FactoryGirl.create :answer, user: user2, question: q }
-      @user.should_not be_ready
+      @user.should_not be_ready_for(@groups.first)
     end
 
-    it "should be true if user answered all question in one of groups" do
+    it "should be true if user answered all question in one of groups and all answers accepted" do
       @user.groups = @groups
       @user.save!
-      @questions.flatten.each { |q| FactoryGirl.create :answer, user: @user, question: q }
-      @user.should be_ready
+      @groups.first.questions.flatten.each { |q| FactoryGirl.create :answer, user: @user, question: q }
+      @user.should be_ready_for(@groups.first)
     end
+
+    it "should be false unless all answers are accepted"
   end
 end

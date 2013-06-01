@@ -26,10 +26,13 @@ class CandidatesController < ApplicationController
   def recruit
     authorize! :promote, User
     @novice = User.find_by_name params[:id]
-    @novice.promote!
+    # XXX The recruiter choose what post to assign the candidate
+    # @novice.recuite! # => staffer
+    @novice.promote! # => mentor
     @mentors = @novice.mentors
     @mentors.each{|mentor| @novice.mentors.delete(mentor)}
-    @novice.ready_user.delete
+    # XXX only the one with the right group
+    @novice.ready_users.delete_all
     @novice.save
     Notification.accept(current_user, @novice).deliver
     Notification.recruit(current_user, @novice, @mentors).deliver

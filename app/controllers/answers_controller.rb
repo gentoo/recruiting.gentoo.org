@@ -69,7 +69,7 @@ class AnswersController < InheritedResources::Base
     @answer = Answer.find params[:id]
     current_user.accept!(@answer)
     AnswerNotification.accept(current_user, @answer.user, @answer).deliver
-    check_user_ready(@answer.user)
+    check_user_ready(@answer.user, @answer.group)
     respond_to do |format|
       format.js { render layout: false }
     end
@@ -86,10 +86,10 @@ class AnswersController < InheritedResources::Base
   end
 
   private
-  def check_user_ready(user)
-    if user.ready?
-      user.get_ready!
-      Notification.ready(user).deliver
+  def check_user_ready(user, group)
+    if user.ready_for?(group)
+      user.get_ready!(group)
+      Notification.ready(user, group).deliver
     end
   end
 

@@ -16,10 +16,9 @@ class Notification < ActionMailer::Base
   #
   #   en.notification.ready.subject
   #
-  def ready(user)
+  def ready(user, group)
     @user = user
-    #FIXME fix this once multiple subscription is done
-    @quiz_type = user.user_groups.first.name
+    @quiz_type = group.name
     @url = candidate_answers_url(candidate:user)
     mail to: "recruiters@gentoo.org", subject: "#{user.name} is graduating."
   end

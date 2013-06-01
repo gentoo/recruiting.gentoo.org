@@ -12,6 +12,11 @@ class User < ActiveRecord::Base
   workflow do
     state :candidate do
       event :promote, transitions_to: :mentor
+      event :recruit, transitions_to: :staffer
+    end
+
+    state :staffer do
+      event :promote, transitions_to: :mentor
     end
 
     state :mentor do
@@ -35,10 +40,10 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :sponsees, class_name: "User", join_table: "mentorships",
     foreign_key: "candidate_id", association_foreign_key: "mentor_id"
 
-  has_one :ready_user # only for join
+  has_many :ready_users # only for join
 
   scope :candidates, where(workflow_state: :candidate)
-  scope :ready, joins(:ready_user).where("ready_users.user_id = users.id")
+  scope :ready, joins(:ready_users).where("ready_users.user_id = users.id")
 
   validates_presence_of :email, :name
   #validates_presence_of :ssh_key, :gpg_key, on: :update
@@ -71,51 +76,20 @@ class User < ActiveRecord::Base
 
   # Figure out a ready user from all the users is too much work, I don't mind waste
   # a little space.
-  def get_ready!
-    ReadyUser.create(user_id: id)
+  def get_ready!(group)
+    ReadyUser.create(user_id: id, group_id: group_id)
+  end
+
+  def ready_for?(group)
+    group.questions.count == answers.where(question: group.questions, workflow_state: "accepted").count
   end
 
   def ready?
-    # reorder('') is necessary - for some reason "ORDER BY created_at" gets
-    # added to scopes automatically and causes problems when running query over
-    # more than one table with the column
-
-    uid = Question.sanitize self.id
-    questions_in_group_count  = Question.
-                                  where("questions.group_id = groups.id").
-                                  select('COUNT(questions.id)').
-                                  reorder('')
-    answered_questions_count = questions_in_group_count.
-                                  joins(%{
-                                    INNER JOIN answers ON
-                                      answers.question_id = questions.id
-                                      AND
-                                      answers.user_id = #{uid}
-                                  })
-    # Groups selected by user
-    user_selected = Group.
-                      joins(%{
-                        INNER JOIN user_groups ON
-                        user_groups.group_id = groups.id
-                        AND
-                        user_groups.user_id = #{uid}
-                      })
-
-    # And from them we choose those that have the same number of questions as
-    # number of questions answered. That is they have all questions answered
-    solved_groups = user_selected.where(%{
-      (#{questions_in_group_count.to_sql})
-      =
-      (#{answered_questions_count.to_sql})
-    }).
-    reorder('')
-
-    # User is ready if there is at least one group with all questions answered
-    solved_groups.any?
+    ! ready_users.empty?
   end
 
   def progress
-    @progress ||= ( answers.select(&:accepted?).count / Question.for_user(self).count.to_f )
+    @progress ||= ( answers.select(&:accepted?).count / Question.for_user(self).count.to_f ).round(2)
   end
 
   # mentor operations
