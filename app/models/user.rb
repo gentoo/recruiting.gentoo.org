@@ -77,11 +77,11 @@ class User < ActiveRecord::Base
   # Figure out a ready user from all the users is too much work, I don't mind waste
   # a little space.
   def get_ready!(group)
-    ReadyUser.create(user_id: id, group_id: group_id)
+    ReadyUser.create(user_id: id, group_id: group.id)
   end
 
   def ready_for?(group)
-    group.questions.count == answers.where(question: group.questions, workflow_state: "accepted").count
+    group.questions.count == answers.where(question_id: group.questions, workflow_state: "accepted").count
   end
 
   def ready?

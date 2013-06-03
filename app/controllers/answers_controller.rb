@@ -69,7 +69,7 @@ class AnswersController < InheritedResources::Base
     @answer = Answer.find params[:id]
     current_user.accept!(@answer)
     AnswerNotification.accept(current_user, @answer.user, @answer).deliver
-    check_user_ready(@answer.user, @answer.group)
+    check_user_ready(@answer.user, @answer.question.group)
     respond_to do |format|
       format.js { render layout: false }
     end

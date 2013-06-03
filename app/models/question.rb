@@ -17,9 +17,7 @@ class Question < ActiveRecord::Base
   }
 
   scope :unanswered_by, -> user {
-    for_user(user).
-    joins('LEFT OUTER JOIN answers ON answers.question_id = questions.id').
-    where(answers: {id: nil})
+    for_user(user).where('questions.id not in (select answers.question_id from answers where answers.user_id = ? and workflow_state in ("awaiting_review", "accepted"))', user.id)
   }
 
   scope :answered_by, -> user {

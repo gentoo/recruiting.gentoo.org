@@ -16,7 +16,7 @@ describe User do
       @user.groups = @groups
       @user.save!
       @questions.collect(&:first).each { |q| FactoryGirl.create :answer, user: @user, question: q }
-      @user.should_not be_ready_for(@group.first)
+      @user.should_not be_ready_for(@groups.first)
     end
 
     it "should be false if someone else answered all questions" do
@@ -31,10 +31,22 @@ describe User do
     it "should be true if user answered all question in one of groups and all answers accepted" do
       @user.groups = @groups
       @user.save!
-      @groups.first.questions.flatten.each { |q| FactoryGirl.create :answer, user: @user, question: q }
+      @groups.first.questions.each do |q| 
+        answer = FactoryGirl.create :answer, user: @user, question: q
+        answer.accept!
+      end
       @user.should be_ready_for(@groups.first)
     end
 
-    it "should be false unless all answers are accepted"
+    it "should be false unless all answers are accepted" do
+      @user.groups = @groups
+      @user.save!
+      @groups.first.questions[1..-1].each do |q| 
+        answer = FactoryGirl.create :answer, user: @user, question: q
+        answer.accept! 
+      end
+      @user.should_not be_ready_for(@groups.first)
+    end
+
   end
 end

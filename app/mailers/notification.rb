@@ -19,7 +19,7 @@ class Notification < ActionMailer::Base
   def ready(user, group)
     @user = user
     @quiz_type = group.name
-    @url = candidate_answers_url(candidate:user)
+    @url = candidate_answers_url(candidate_id:user.id)
     mail to: "recruiters@gentoo.org", subject: "#{user.name} is graduating."
   end
 
