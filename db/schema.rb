@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130601193854) do
+ActiveRecord::Schema.define(:version => 20130622094330) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(:version => 20130601193854) do
   create_table "ready_users", :force => true do |t|
     t.integer "user_id"
     t.integer "group_id"
+    t.boolean "recruited", :default => false
   end
 
   add_index "ready_users", ["user_id", "group_id"], :name => "index_ready_users_on_user_id_and_group_id"

@@ -23,6 +23,19 @@ class CandidatesController < ApplicationController
     @candidates = User.ready.page params[:page]
   end
 
+  def developers
+    @developers = ReadyUser.developers.page(params[:page]).map(&:user)
+  end
+
+  def arch_testers
+    @testers = ReadyUser.arch_testers.page(params[:page]).map(&:user)
+  end
+
+  def staffers
+    @staffers = ReadyUser.staffers.page(params[:page]).map(&:user)
+  end
+
+  # This is actually promote to mentor
   def recruit
     authorize! :promote, User
     @novice = User.find_by_name params[:id]
