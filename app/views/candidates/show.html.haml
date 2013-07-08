@@ -37,6 +37,10 @@
     = @candidate.projects
   %p
     %strong Biography
+  %p
+    %strong Badges earned
+    - @candidate.badges.each do |badge|
+      %span.label.label-info= badge
   %p= markdown @candidate.biography
 
 = link_to "<<Back", :back

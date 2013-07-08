@@ -103,6 +103,10 @@ class User < ActiveRecord::Base
     answer.mentor_action!(self)
   end
 
+  def badges
+    ready_users.map(&:badge)
+  end
+
   def to_param
     name
   end
