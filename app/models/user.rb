@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
   has_many :ready_users # only for join
 
   scope :candidates, where(workflow_state: :candidate)
-  scope :ready, joins(:ready_users).where("ready_users.user_id = users.id")
+  scope :ready, joins(:ready_users).where("ready_users.user_id = users.id and ready_users.recruited = ?", false)
 
   validates_presence_of :email, :name
   #validates_presence_of :ssh_key, :gpg_key, on: :update
@@ -101,6 +101,10 @@ class User < ActiveRecord::Base
   def reject!(answer)
     answer.reject!
     answer.mentor_action!(self)
+  end
+
+  def badges
+    ready_users.map(&:badge)
   end
 
   def to_param
