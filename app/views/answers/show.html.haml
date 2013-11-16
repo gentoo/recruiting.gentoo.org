@@ -6,7 +6,7 @@
 
 .answer= markdown @answer.content
 %p= answer_status(@answer)
-%p= link_to "by #{@answer.user.name}", candidate_path(@answer.user)
+%p= link_to "by #{unsluggish_name(@answer.user.name)}", candidate_path(@answer.user)
 %p= render :partial => 'nav_buttons'
 - if can? :review, Answer
   - if @answer.awaiting_review?

@@ -73,9 +73,13 @@ module ApplicationHelper
     elsif answer.awaiting_review?
       content_tag :div, "Awaiting review", class: "label label-warning"
     elsif answer.rejected?
-      content_tag :div, "Rejected by #{answer.operator.name rescue nil}", class: "label label-important"
+      content_tag :div, "Rejected by #{unsluggish_name(answer.operator.name) rescue nil}", class: "label label-important"
     else
-      content_tag :div, "Accepted by #{answer.operator.name rescue nil}", class: "label label-success"
+      content_tag :div, "Accepted by #{unsluggish_name(answer.operator.name) rescue nil}", class: "label label-success"
     end
+  end
+
+  def unsluggish_name(name)
+    name.gsub("-", ' ').titleize
   end
 end

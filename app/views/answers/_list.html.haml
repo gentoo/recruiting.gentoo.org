@@ -8,7 +8,7 @@
     - @answers.each do |answer|
       %tr
         %td= answer.question.title
-        %td= answer.user.name
+        %td= unsluggish_name answer.user.name
         %td
           - if answer.awaiting_review?
             = link_to [answer.question, answer], class: 'btn btn-warning' do

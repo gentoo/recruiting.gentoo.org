@@ -10,7 +10,7 @@
     .tab-content
       .tab-pane.active#tab1
         = f.error_notification
-        = f.input :name, :required => true, :autofocus => true
+        = f.input :name, :required => true, :autofocus => true, input_html: {value: unsluggish_name(f.object.name)}
         = f.input :email, :required => true
         = f.input :ssh_key, :required => true, label: "SSH KEY"
         = f.input :gpg_key, :required => true, label: "GnuPG KEY"

@@ -8,7 +8,7 @@
 - commentable.comments.each do |comment|
   .row
     .span1
-      %p= comment.user.name
+      %p= unsluggish_name comment.user.name
       %p #{time_ago_in_words comment.created_at} ago
     .span8
       = markdown comment.comment

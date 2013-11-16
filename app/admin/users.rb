@@ -33,7 +33,7 @@ ActiveAdmin.register User do
     column("Name", :name)
     column("Email", :email)
     column("Role") { |user| status_tag(user.current_state.to_s) }
-    column("Action") { |user| link_to "Promote", "/admin/users/#{user.id}/promote", method: :put}
+    column("Action") { |user| link_to "Promote", "/admin/users/#{user.to_param}/promote", method: :put}
     default_actions
   end
 
