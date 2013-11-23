@@ -7,20 +7,22 @@
       %th Name
       %th Description
       %th Questions
-      %th
+      - if can? :subscribe, Group
+        %th
   %tbody
     - @groups.each do |group|
       %tr
         %td= group.name
         %td= group.description
         %td= link_to "View questions", [group, :questions]
-        %td
-          - if group.id.in? current_user.group_ids
-            = link_to [:unsubscribe, group], method: :delete do
-              %i.icon-minus
-              Unsubscribe
-          - else
-            = link_to [:subscribe, group], method: :put do
-              %i.icon-plus
-              Subscribe
+        - if can? :subscribe, Group
+          %td
+            - if group.id.in? current_user.group_ids
+              = link_to [:unsubscribe, group], method: :delete do
+                %i.icon-minus
+                Unsubscribe
+            - else
+              = link_to [:subscribe, group], method: :put do
+                %i.icon-plus
+                Subscribe
 
