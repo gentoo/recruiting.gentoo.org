@@ -8,7 +8,7 @@ Given /^sample question categories exist$/ do
 end
 
 When /^I subscribe to question group "([^"]*)"$/ do |group|
-  subscribe_link = page.find :xpath, "//td[text()='#{group}']/..//a[contains(text(), 'subscribe')]"
+  subscribe_link = page.find :xpath, "//td[text()='#{group}']/..//a[contains(text(), 'Subscribe')]"
   subscribe_link.click
 end
 
