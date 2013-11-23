@@ -16,9 +16,11 @@
         %td= link_to "View questions", [group, :questions]
         %td
           - if group.id.in? current_user.group_ids
-            subscribed
+            = link_to [:unsubscribe, group], method: :delete do
+              %i.icon-minus
+              Unsubscribe
           - else
             = link_to [:subscribe, group], method: :put do
               %i.icon-plus
-              subscribe
+              Subscribe
 

@@ -12,4 +12,13 @@ class GroupsController < ApplicationController
     flash[:notice] = "You have subscribed to group #{group.name}"
     redirect_to [group, :questions]
   end
+
+  def unsubscribe
+    authorize! :subscribe, Group
+    group = current_user.groups.find(params[:id])
+    if group
+      current_user.groups.delete(group)
+    end
+    redirect_to action: :index
+  end
 end

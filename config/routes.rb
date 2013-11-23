@@ -18,6 +18,7 @@ Gentoo::Application.routes.draw do
     resources :questions
     member do
       put :subscribe
+      delete :unsubscribe
     end
   end
 
