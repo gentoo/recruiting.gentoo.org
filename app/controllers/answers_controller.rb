@@ -26,13 +26,18 @@ class AnswersController < InheritedResources::Base
 
   def create
     authorize! :answer, Question
-    @answer = @question.answers.new(params[:answer])
-    @answer.user = current_user
-    if @answer.save
-      AnswerNotification.update(current_user, @answer).deliver
+    if @answer = @question.answers.where(user_id: current_user.id).first
+      flash[:notice] = "You have already created an answer for this question!"
       redirect_to [@question, @answer]
     else
-      render :new
+      @answer = @question.answers.new(params[:answer])
+      @answer.user = current_user
+      if @answer.save
+        AnswerNotification.update(current_user, @answer).deliver
+        redirect_to [@question, @answer]
+      else
+        render :new
+      end
     end
   end
 
