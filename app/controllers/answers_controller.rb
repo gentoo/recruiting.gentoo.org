@@ -30,6 +30,7 @@ class AnswersController < InheritedResources::Base
     @answer.user = current_user
     if @answer.save
       AnswerNotification.update(current_user, @answer).deliver
+      redirect_to [@question, @answer]
     else
       render :new
     end
