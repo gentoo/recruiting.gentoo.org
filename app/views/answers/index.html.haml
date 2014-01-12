@@ -1,5 +1,6 @@
 .page-header
   %h2 Answers by #{@candidate.name}
+  %p= link_to "Export csv", export_candidate_answers_path(@candidate, format: :csv)
 - if @answers.empty?
   %p Empty list.
 - else

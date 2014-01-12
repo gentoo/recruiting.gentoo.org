@@ -11,7 +11,11 @@ Gentoo::Application.routes.draw do
     collection do
       get :ready
     end
-    resources :answers
+    resources :answers do
+      collection do
+        get :export
+      end
+    end
   end
 
   resources :groups do

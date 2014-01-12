@@ -1,3 +1,4 @@
+require 'csv'
 class User < ActiveRecord::Base
   include Workflow
   # Include default devise modules. Others available are:
@@ -111,6 +112,14 @@ class User < ActiveRecord::Base
     name
   end
 
+  def export_answers
+    CSV.generate do |csv|
+      csv << ["Question", "Answer", "State"]
+      answers.each do |answer|
+        csv << [answer.question.content, answer.content, answer.state]
+      end
+    end
+  end
   private
   def sluggish_name
     self.name = self.name.downcase.gsub(/\s+/, '-')

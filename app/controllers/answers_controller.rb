@@ -91,6 +91,18 @@ class AnswersController < InheritedResources::Base
     end
   end
 
+  def export
+    authorize! :review, Answer
+    @candidate = User.find_by_name params[:candidate_id] 
+    if @candidate.candidate?
+      send_data @candidate.export_answers, filename: "#{@candidate.name}.csv", type: 'text/csv; charset=iso-8859-1; header=present'
+    else
+      flash[:alert] = "This is not a candidate."
+      redirect_to root_url
+    end
+
+  end
+
   private
   def check_user_ready(user, group)
     if user.ready_for?(group)
