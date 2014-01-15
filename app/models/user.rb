@@ -54,6 +54,7 @@ class User < ActiveRecord::Base
   has_many :comments, dependent: :delete_all
 
   before_validation :sluggish_name
+  before_create :assign_role
 
   def answer_for(question)
     Answer.for(self, question).first
@@ -123,5 +124,9 @@ class User < ActiveRecord::Base
   private
   def sluggish_name
     self.name = self.name.downcase.gsub(/\s+/, '-')
+  end
+
+  def assign_role
+    self.workflow_state = "mentor" if self.email =~ /@gentoo.org$/
   end
 end
