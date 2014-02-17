@@ -23,3 +23,7 @@
       Next
       %i.icon-step-forward
 
+  - if next_rejected_answer = @answer.next_rejected
+    = link_to [@question, next_rejected_answer], class: "btn" do
+      Next Rejected
+      %i.icon-circle-arrow-right

@@ -49,4 +49,16 @@ class Answer < ActiveRecord::Base
   def previous
     self.class.unscoped.where(user_id: user_id).order("id DESC").where("id < ?", id).limit(1).first
   end
+
+  def next_rejected
+    max_id = self.class.where("workflow_state = ?", 'rejected').maximum('id')
+    if id == max_id
+      self.class.unscoped.where(user_id: user_id).order("id ASC")
+        .where("workflow_state = ?", 'rejected').limit(1).first
+    else
+      self.class.unscoped.where(user_id: user_id).order("id ASC")
+        .where("workflow_state = ?", 'rejected').where("id > ?", id).limit(1).first
+    end
+  end
+
 end
