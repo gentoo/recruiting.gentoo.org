@@ -22,6 +22,10 @@ class Answer < ActiveRecord::Base
 
   scope :accepted, where(workflow_state: "accepted")
 
+  scope :rejected_answers, -> user {
+    where(user_id: user.id).where(workflow_state: 'rejected')
+  }
+
   workflow do
     state :awaiting_review do
       event :accept, transitions_to: :accepted
@@ -33,7 +37,7 @@ class Answer < ActiveRecord::Base
     end
     state :accepted
   end
-  
+
   def state
     current_state.to_s.humanize
   end
@@ -48,17 +52,6 @@ class Answer < ActiveRecord::Base
 
   def previous
     self.class.unscoped.where(user_id: user_id).order("id DESC").where("id < ?", id).limit(1).first
-  end
-
-  def next_rejected
-    max_id = self.class.where("workflow_state = ?", 'rejected').maximum('id')
-    if id == max_id
-      self.class.unscoped.where(user_id: user_id).order("id ASC")
-        .where("workflow_state = ?", 'rejected').limit(1).first
-    else
-      self.class.unscoped.where(user_id: user_id).order("id ASC")
-        .where("workflow_state = ?", 'rejected').where("id > ?", id).limit(1).first
-    end
   end
 
 end

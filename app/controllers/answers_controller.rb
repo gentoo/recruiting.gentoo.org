@@ -64,6 +64,13 @@ class AnswersController < InheritedResources::Base
       flash[:alert] = "You cannot view this answer."
       redirect_to @question
     end
+    if current_user.mentor? || current_user.recruiter?
+      rejected_answers = Answer.rejected_answers(@answer.user)
+      if rejected_answers.length > 1 && rejected_answers.include?(@answer)
+        index = rejected_answers.find_index(@answer)
+        @next_rejected = rejected_answers.rotate(index + 1).first
+      end
+    end
   end
 
   def review
