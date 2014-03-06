@@ -22,4 +22,7 @@
     = link_to [@question, next_answer], class: "btn btn-primary" do
       Next
       %i.icon-step-forward
-
+  - if next_rejected_answer = @next_rejected
+    = link_to [@question, next_rejected_answer], class: "btn" do
+      Next Rejected
+      %i.icon-circle-arrow-right

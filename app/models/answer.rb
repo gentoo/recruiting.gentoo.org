@@ -22,6 +22,10 @@ class Answer < ActiveRecord::Base
 
   scope :accepted, where(workflow_state: "accepted")
 
+  scope :rejected_answers, -> user {
+    where(user_id: user.id).where(workflow_state: 'rejected')
+  }
+
   workflow do
     state :awaiting_review do
       event :accept, transitions_to: :accepted
@@ -33,7 +37,7 @@ class Answer < ActiveRecord::Base
     end
     state :accepted
   end
-  
+
   def state
     current_state.to_s.humanize
   end
@@ -49,4 +53,5 @@ class Answer < ActiveRecord::Base
   def previous
     self.class.unscoped.where(user_id: user_id).order("id DESC").where("id < ?", id).limit(1).first
   end
+
 end
