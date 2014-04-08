@@ -10,7 +10,7 @@ class Question < ActiveRecord::Base
 
   default_scope order("created_at ASC")
 
-  validates_presence_of :title, :content, :group
+  validates_presence_of :content, :group
 
   scope :for_user, -> user {
     joins(:users).where(['users.id = ?', user.id])

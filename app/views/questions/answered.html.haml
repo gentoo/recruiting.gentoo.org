@@ -14,7 +14,7 @@
       - @questions.each do |question|
         - answer = current_user.answer_for(question)
         %tr
-          %td= link_to question.title, question_path(question)
+          %td= link_to question.content, question_path(question)
           %td= question.category_name
           %td= answer.state
           %td

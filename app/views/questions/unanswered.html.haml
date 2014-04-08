@@ -13,7 +13,7 @@
     %tbody
       - @questions.each do |question|
         %tr
-          %td= link_to question.title, question_path(question)
+          %td= link_to question.content, question_path(question)
           %td= question.category_name
           %td Unanswered
           %td
