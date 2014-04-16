@@ -7,7 +7,7 @@
     %i.icon-eject
     All
   - if next_question = @question.next
-    = link_to [:new, next_question, :answer], class: "btn btn-primary" do
+    = link_to [:new, next_question, :answer], class: "btn" do
       Next
       %i.icon-step-forward
 - elsif @answer
@@ -19,7 +19,7 @@
     %i.icon-eject
     All
   - if next_answer = @answer.next
-    = link_to [@question, next_answer], class: "btn btn-primary" do
+    = link_to [@question, next_answer], class: "btn" do
       Next
       %i.icon-step-forward
   - if next_rejected_answer = @next_rejected
