@@ -681,7 +681,7 @@ questions:
       ### docs
 
 
-      * [gentoo.org]()
+      * [Gentoo Mailing Lists](https://www.gentoo.org/main/en/lists.xml)
 
 
 '
@@ -696,7 +696,7 @@ questions:
       ### docs
 
 
-      * [devrel policy]()
+      * [DevRel Policy](https://www.gentoo.org/proj/en/devrel/policy.xml)
 
 
 '
@@ -712,7 +712,7 @@ questions:
       ### docs
 
 
-      * [GLEPs](http://www.gentoo.org/proj/en/glep/)
+      * [GLEPs](https://www.gentoo.org/proj/en/glep/)
 
 
 '
@@ -727,7 +727,7 @@ questions:
       ### docs
 
 
-      * [GLEPs](http://www.gentoo.org/proj/en/glep/)
+      * [GLEPs](https://www.gentoo.org/proj/en/glep/)
 
 
 '
@@ -736,14 +736,14 @@ questions:
     - '1'
   - - '197'
     - Organizational structure questions 5
-    - ! '**What is the Gentoo Foundation? How does one apply for membership andwho
-      are eligible?**
+    - ! '**What is the Gentoo Foundation? How does one apply for membership and who
+      is eligible?**
 
 
       ### docs
 
 
-      * [gentoo.org]()
+      * [Gentoo Foundation Charter](https://www.gentoo.org/foundation/en/)
 
 
 '
@@ -758,7 +758,7 @@ questions:
       ### docs
 
 
-      * [GLEPs](http://www.gentoo.org/proj/en/glep/)
+      * [GLEPs](https://www.gentoo.org/proj/en/glep/)
 
 
 '
@@ -773,7 +773,7 @@ questions:
       ### docs
 
 
-      * [GLEPs](http://www.gentoo.org/proj/en/glep/)
+      * [GLEPs](https://www.gentoo.org/proj/en/glep/)
 
 
 '
@@ -788,7 +788,7 @@ questions:
       ### docs
 
 
-      * [Dev Manual](http://devmanual.gentoo.org/)
+      * [Dev Manual](https://devmanual.gentoo.org/)
 
 
 '
@@ -803,7 +803,7 @@ questions:
       ### docs
 
 
-      * [Handbook](http://www.gentoo.org/doc/en/handbook/)
+      * [Handbook](https://www.gentoo.org/doc/en/handbook/)
 
 
 '
@@ -820,7 +820,7 @@ questions:
       ### docs
 
 
-      * [Dev Manual](http://devmanual.gentoo.org/)
+      * [Dev Manual](https://devmanual.gentoo.org/)
 
 
 '
@@ -836,7 +836,7 @@ questions:
       ### docs
 
 
-      * [Handbook](http://www.gentoo.org/doc/en/handbook/)
+      * [Handbook](https://www.gentoo.org/doc/en/handbook/)
 
 
 '
@@ -848,7 +848,7 @@ questions:
     - ! "**(a) What is repoman? How would you check for QA problems withrepoman?**\r\n\r\n**(b)A
       user submits a brand-new ebuild for a new package. What are the proper steps
       (including repoman/cvs commands) to take to addthis ebuild to the tree?**\r\n\r\n###
-      docs\r\n\r\n* [Handbook](http://www.gentoo.org/doc/en/handbook/)\r\n\r\n"
+      docs\r\n\r\n* [Handbook](https://www.gentoo.org/doc/en/handbook/)\r\n\r\n"
     - '2012-12-01 19:22:58.980066'
     - '2012-12-02 11:22:12.827285'
     - '1'
@@ -861,7 +861,7 @@ questions:
       ### docs
 
 
-      * [Handbook](http://www.gentoo.org/doc/en/handbook/)
+      * [Handbook](https://www.gentoo.org/doc/en/handbook/)
 
 
 '
@@ -878,7 +878,7 @@ questions:
       ### docs
 
 
-      * [Dev Manual](http://devmanual.gentoo.org/)
+      * [Dev Manual](https://devmanual.gentoo.org/)
 
 
 '
@@ -896,7 +896,7 @@ questions:
       ### docs
 
 
-      * [Dev Manual](http://devmanual.gentoo.org/)
+      * [Dev Manual](https://devmanual.gentoo.org/)
 
 
 '
@@ -912,7 +912,7 @@ questions:
       ### docs
 
 
-      * [Dev Manual](http://devmanual.gentoo.org/)
+      * [Dev Manual](https://devmanual.gentoo.org/)
 
 
 '
@@ -928,7 +928,7 @@ questions:
       ### docs
 
 
-      * [GLEPs](http://www.gentoo.org/proj/en/glep/)
+      * [GLEPs](https://www.gentoo.org/proj/en/glep/)
 
 
       * [ devmanual]()
@@ -946,7 +946,7 @@ questions:
       It was previously hard-masked in package.mask. What should be done prior to
       doing so?**\r\n\r\n**(c) You wish to have an ebuild marked \"stable.\" It is
       a popular application, but no other ebuilds depend on it. What should be done
-      first?**\r\n\r\n### docs\r\n\r\n* [Dev Manual](http://devmanual.gentoo.org/)\r\n\r\n"
+      first?**\r\n\r\n### docs\r\n\r\n* [Dev Manual](https://devmanual.gentoo.org/)\r\n\r\n"
     - '2012-12-01 19:22:59.099892'
     - '2012-12-01 19:46:10.715411'
     - '1'
@@ -959,7 +959,7 @@ questions:
       ### docs
 
 
-      * [Dev Manual](http://devmanual.gentoo.org/)
+      * [Dev Manual](https://devmanual.gentoo.org/)
 
 
 '
@@ -974,7 +974,7 @@ questions:
       ### docs
 
 
-      * [Dev Manual](http://devmanual.gentoo.org/)
+      * [Dev Manual](https://devmanual.gentoo.org/)
 
 
 '
@@ -992,7 +992,7 @@ questions:
       ### docs
 
 
-      * [Dev Manual](http://devmanual.gentoo.org/)
+      * [Dev Manual](https://devmanual.gentoo.org/)
 
 
 '
@@ -1008,7 +1008,7 @@ questions:
       ### docs
 
 
-      * [Dev Manual](http://devmanual.gentoo.org/)
+      * [Dev Manual](https://devmanual.gentoo.org/)
 
 
       * [pic-guide]()
@@ -1027,7 +1027,7 @@ questions:
       ### docs
 
 
-      * [Handbook](http://www.gentoo.org/doc/en/handbook/)
+      * [Handbook](https://www.gentoo.org/doc/en/handbook/)
 
 
 '
@@ -1043,7 +1043,7 @@ questions:
       ### docs
 
 
-      * [Handbook](http://www.gentoo.org/doc/en/handbook/)
+      * [Handbook](https://www.gentoo.org/doc/en/handbook/)
 
 
 '
@@ -1059,7 +1059,7 @@ questions:
       ### docs
 
 
-      * [Dev Manual](http://devmanual.gentoo.org/)
+      * [Dev Manual](https://devmanual.gentoo.org/)
 
 
 '
@@ -1074,7 +1074,7 @@ questions:
       ### docs
 
 
-      * [Dev Manual](http://devmanual.gentoo.org/)
+      * [Dev Manual](https://devmanual.gentoo.org/)
 
 
       * [ PMS]()
@@ -1092,7 +1092,7 @@ questions:
       ### docs
 
 
-      * [Handbook](http://www.gentoo.org/doc/en/handbook/)
+      * [Handbook](https://www.gentoo.org/doc/en/handbook/)
 
 
 '
@@ -1108,7 +1108,7 @@ questions:
       ### docs
 
 
-      * [Dev Manual](http://devmanual.gentoo.org/)
+      * [Dev Manual](https://devmanual.gentoo.org/)
 
 
 '
@@ -1124,7 +1124,7 @@ questions:
       ### docs
 
 
-      * [GLEPs](http://www.gentoo.org/proj/en/glep/)
+      * [GLEPs](https://www.gentoo.org/proj/en/glep/)
 
 
 '
@@ -1142,7 +1142,7 @@ questions:
       ### docs
 
 
-      * [Dev Manual](http://devmanual.gentoo.org/)
+      * [Dev Manual](https://devmanual.gentoo.org/)
 
 
 '
@@ -1160,7 +1160,7 @@ questions:
       ### docs
 
 
-      * [Dev Manual](http://devmanual.gentoo.org/)
+      * [Dev Manual](https://devmanual.gentoo.org/)
 
 
 '
@@ -1175,7 +1175,7 @@ questions:
       ### docs
 
 
-      * [Handbook](http://www.gentoo.org/doc/en/handbook/)
+      * [Handbook](https://www.gentoo.org/doc/en/handbook/)
 
 
 '
@@ -1191,7 +1191,7 @@ questions:
       ### docs
 
 
-      * [Dev Manual](http://devmanual.gentoo.org/)
+      * [Dev Manual](https://devmanual.gentoo.org/)
 
 
 '
@@ -1207,7 +1207,7 @@ questions:
       ### docs
 
 
-      * [Dev Manual](http://devmanual.gentoo.org/)
+      * [Dev Manual](https://devmanual.gentoo.org/)
 
 
 '
@@ -1230,7 +1230,7 @@ questions:
       broken on some archs\r\n\r\n```shell\r\n DEPEND=\"!x86? ( !amd64? ( !ppc? (
       foo? ( >=dev-libs/libfoo-1.2 ) ) ) )\"\r\n```\r\n\r\n(f) If ```USE=fnord```
       is enabled, make extra targets:\r\n\r\n```shell\r\n use fnord && ( emake fnordification
-      || die \"it broke\" )\r\n```\r\n\r\n### docs\r\n\r\n* [Dev Manual](http://devmanual.gentoo.org/)\r\n\r\n"
+      || die \"it broke\" )\r\n```\r\n\r\n### docs\r\n\r\n* [Dev Manual](https://devmanual.gentoo.org/)\r\n\r\n"
     - '2012-12-01 19:22:59.310593'
     - '2012-12-01 19:41:03.574689'
     - '1'
@@ -1243,7 +1243,7 @@ questions:
       ### docs
 
 
-      * [Dev Manual](http://devmanual.gentoo.org/)
+      * [Dev Manual](https://devmanual.gentoo.org/)
 
 
 '
@@ -1261,7 +1261,7 @@ questions:
       ### docs
 
 
-      * [Dev Manual](http://devmanual.gentoo.org/)
+      * [Dev Manual](https://devmanual.gentoo.org/)
 
 
 '
@@ -1277,7 +1277,7 @@ questions:
       ### docs
 
 
-      * [Dev Manual](http://devmanual.gentoo.org/)
+      * [Dev Manual](https://devmanual.gentoo.org/)
 
 
 '
@@ -1293,7 +1293,7 @@ questions:
       ### docs
 
 
-      * [Dev Manual](http://devmanual.gentoo.org/)
+      * [Dev Manual](https://devmanual.gentoo.org/)
 
 
 '
@@ -1308,7 +1308,7 @@ questions:
       ### docs
 
 
-      * [Dev Manual](http://devmanual.gentoo.org/)
+      * [Dev Manual](https://devmanual.gentoo.org/)
 
 
 '
@@ -1324,7 +1324,7 @@ questions:
       ### docs
 
 
-      * [Handbook](http://www.gentoo.org/doc/en/handbook/)
+      * [Handbook](https://www.gentoo.org/doc/en/handbook/)
 
 
 '
@@ -1339,7 +1339,7 @@ questions:
       ### docs
 
 
-      * [Dev Manual](http://devmanual.gentoo.org/)
+      * [Dev Manual](https://devmanual.gentoo.org/)
 
 
 '
@@ -1355,7 +1355,7 @@ questions:
       ### docs
 
 
-      * [Dev Manual](http://devmanual.gentoo.org/)
+      * [Dev Manual](https://devmanual.gentoo.org/)
 
 
 '
@@ -1371,7 +1371,7 @@ questions:
       ### docs
 
 
-      * [Dev Manual](http://devmanual.gentoo.org/)
+      * [Dev Manual](https://devmanual.gentoo.org/)
 
 
 '
@@ -1388,7 +1388,7 @@ questions:
       ### docs
 
 
-      * [Dev Manual](http://devmanual.gentoo.org/)
+      * [Dev Manual](https://devmanual.gentoo.org/)
 
 
 '
@@ -1406,7 +1406,7 @@ questions:
       ### docs
 
 
-      * [Dev Manual](http://devmanual.gentoo.org/)
+      * [Dev Manual](https://devmanual.gentoo.org/)
 
 
 '
@@ -1425,7 +1425,7 @@ questions:
       ### docs
 
 
-      * [Dev Manual](http://devmanual.gentoo.org/)
+      * [Dev Manual](https://devmanual.gentoo.org/)
 
 
 '
@@ -1443,7 +1443,7 @@ questions:
       ### docs
 
 
-      * [Dev Manual](http://devmanual.gentoo.org/)
+      * [Dev Manual](https://devmanual.gentoo.org/)
 
 
 '
@@ -1460,51 +1460,51 @@ questions:
   - - '250'
     - Organizational structure & policy questions 2
     - ! "**Who should be contacted with complaints about specific developers or projects?**\r\n\r\n*docs*\r\n\r\n[developer
-      relationship policy](http://www.gentoo.org/proj/en/devrel/policy.xml)"
+      relationship policy](https://www.gentoo.org/proj/en/devrel/policy.xml)"
     - '2012-12-18 16:38:31.752819'
     - '2012-12-24 20:28:23.650498'
     - '2'
   - - '251'
     - Organizational structure & policy questions 3
     - ! "**What is the proper method for suggesting a wide-ranging feature or enhancement
-      to Gentoo? Describe the process for getting this feature approved and implemented.**\r\n\r\n*Docs*\r\n\r\n[GLEPs](http://www.gentoo.org/proj/en/glep/)"
+      to Gentoo? Describe the process for getting this feature approved and implemented.**\r\n\r\n*Docs*\r\n\r\n[GLEPs](https://www.gentoo.org/proj/en/glep/)"
     - '2012-12-18 16:39:46.307486'
     - '2012-12-24 20:27:54.907424'
     - '2'
   - - '252'
     - Organizational structure & policy questions 4
-    - ! "**What is the purpose of the Gentoo Council?**\r\n\r\n*docs*\r\n\r\n[GLEPs](http://www.gentoo.org/proj/en/glep/)"
+    - ! "**What is the purpose of the Gentoo Council?**\r\n\r\n*docs*\r\n\r\n[GLEPs](https://www.gentoo.org/proj/en/glep/)"
     - '2012-12-18 16:40:24.463763'
     - '2012-12-24 20:27:29.052323'
     - '2'
   - - '253'
     - Organizational structure & policy questions 5
     - ! "**What is the Gentoo Foundation? How does one apply for membership and who
-      are eligible?**\r\n\r\n*docs*\r\n\r\n[GLEPs](http://www.gentoo.org/proj/en/glep/)"
+      are eligible?**\r\n\r\n*docs*\r\n\r\n[GLEPs](https://www.gentoo.org/proj/en/glep/)"
     - '2012-12-18 16:41:04.340068'
     - '2012-12-24 20:26:52.887849'
     - '2'
   - - '254'
     - Organizational structure & policy questions 6
-    - ! "**What is the purpose of the Gentoo project structure?**\r\n\r\n*docs*\r\n\r\n[GLEPs](http://www.gentoo.org/proj/en/glep/)"
+    - ! "**What is the purpose of the Gentoo project structure?**\r\n\r\n*docs*\r\n\r\n[GLEPs](https://www.gentoo.org/proj/en/glep/)"
     - '2012-12-18 16:41:33.827246'
     - '2012-12-24 20:26:18.892823'
     - '2'
   - - '255'
     - Organizational structure & policy questions 7
-    - ! "**Who can start new Gentoo projects and how is it done?**\r\n\r\n*docs*\r\n\r\n[GLEPs](http://www.gentoo.org/proj/en/glep/)"
+    - ! "**Who can start new Gentoo projects and how is it done?**\r\n\r\n*docs*\r\n\r\n[GLEPs](https://www.gentoo.org/proj/en/glep/)"
     - '2012-12-18 16:42:01.817387'
     - '2012-12-24 20:25:49.556293'
     - '2'
   - - '256'
     - Organizational structure & policy questions 8
-    - ! "**What is the purpose of herds?**\r\n\r\n*docs*\r\n\r\n[Dev Manual](http://devmanual.gentoo.org/)"
+    - ! "**What is the purpose of herds?**\r\n\r\n*docs*\r\n\r\n[Dev Manual](https://devmanual.gentoo.org/)"
     - '2012-12-18 16:42:33.246809'
     - '2012-12-24 20:24:15.818744'
     - '2'
   - - '257'
     - Organizational structure & policy questions 9
-    - ! "**What is the purpose of ```~ARCH```?**\r\n\r\n*docs*\r\n\r\n[Dev Manual](http://devmanual.gentoo.org/)"
+    - ! "**What is the purpose of ```~ARCH```?**\r\n\r\n*docs*\r\n\r\n[Dev Manual](https://devmanual.gentoo.org/)"
     - '2012-12-18 16:43:09.520078'
     - '2012-12-24 20:23:37.049317'
     - '2'
@@ -1516,7 +1516,7 @@ questions:
     - '2'
   - - '259'
     - Organizational structure & policy questions 11
-    - ! "**When should package.mask be used?**\r\n\r\n\r\n*docs*\r\n\r\n[Dev Manual](http://devmanual.gentoo.org/)"
+    - ! "**When should package.mask be used?**\r\n\r\n\r\n*docs*\r\n\r\n[Dev Manual](https://devmanual.gentoo.org/)"
     - '2012-12-18 16:44:09.789874'
     - '2012-12-24 20:22:25.562549'
     - '2'
