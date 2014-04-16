@@ -829,7 +829,7 @@ questions:
     - '1'
   - - '203'
     - Ebuild technical/policy questions 2
-    - ! '**A user submits a "live" CVS ebuild. What would be a preferablealternative
+    - ! '**A user submits a "live" CVS ebuild. What would be a preferable alternative
       to such an ebuild?**
 
 
