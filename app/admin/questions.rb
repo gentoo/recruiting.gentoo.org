@@ -3,7 +3,7 @@ ActiveAdmin.register Question do
 
   index do
     selectable_column
-    #column :title
+    column :title
     column :group
     column ("Content") {|question| truncate(question.content, length: 200) }
     column :created_at
@@ -12,7 +12,7 @@ ActiveAdmin.register Question do
 
   show do |question|
     attributes_table do
-      #row :title
+      row :title
       row :content do
         markdown question.content
       end
@@ -24,7 +24,7 @@ ActiveAdmin.register Question do
 
   form do |f|
     f.inputs "Info" do
-      #f.input :title
+      f.input :title
       f.input :content
       f.input :group
     end

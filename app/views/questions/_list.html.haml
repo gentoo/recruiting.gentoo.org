@@ -12,9 +12,9 @@
       %tr
         %td
           - if can?(:answer, Question) && current_user.assigned_to?(question)
-            = link_to question.content, [:new, question, :answer]
+            = link_to question.title, [:new, question, :answer]
           - else
-            = link_to question.content, question
+            = link_to question.title, question
         %td= question.category_name
         - if current_user.candidate?
           %td= answer_status(answer)

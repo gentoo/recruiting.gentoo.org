@@ -22,7 +22,7 @@ class AnswerNotification < ActionMailer::Base
   def reject(mentor, user, answer)
     @user = user
     @mentor = mentor
-    @question = answer.question.content
+    @question = answer.question.title
     @answer_url = candidate_answer_url(candidate_id:user.id, id: answer.id)
 
     mail to: user.email, subject: "You answer for #{@question} is rejected."
@@ -31,7 +31,7 @@ class AnswerNotification < ActionMailer::Base
   def update(user, answer)
     @user = user
     @answer_url = candidate_answer_url(candidate_id:user.id, id: answer.id)
-    @question = answer.question.content
+    @question = answer.question.title
 
     mail to: user.mentors.empty? ? "recruitor@gentoo.org" : user.mentors.map(&:email), subject: "#{user.name} update his answer for question #{@question}."
   end

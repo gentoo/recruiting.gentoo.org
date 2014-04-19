@@ -1,4 +1,6 @@
 .page-header
+  %h3= @question.title
+.page-header
   %p= markdown(@question.content)
 #epiceditor
 = simple_form_for [@question, @answer], :html => { :class => 'form-horizontal' } do |f|
