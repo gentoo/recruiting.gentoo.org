@@ -1,16 +1,17 @@
 %table.table.table-striped
   %thead
     %tr
-      %th Title
+      %th Question
       %th Group
       - if current_user.candidate?
         %th Answer status
       %th
   %tbody
-    - @questions.each do |question|
+    - @questions.each_with_index do |question, idx|
       - answer = user_signed_in? ? current_user.answer_for(question) : nil
       %tr
         %td
+          = "%s." % current_entry_info(idx, params[:page])
           - if can?(:answer, Question) && current_user.assigned_to?(question)
             = link_to question.title, [:new, question, :answer]
           - else

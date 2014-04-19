@@ -82,4 +82,8 @@ module ApplicationHelper
   def unsluggish_name(name)
     name.gsub("-", ' ').titleize
   end
+
+  def current_entry_info(idx, page, per_page = 25)
+    '%02d' % (idx + (per_page * ((page.try(:to_i) || 1) - 1)) + 1)
+  end
 end
