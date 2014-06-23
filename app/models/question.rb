@@ -9,7 +9,7 @@ class Question < ActiveRecord::Base
   has_many :user_groups, through: :group
   has_many :users, through: :user_groups
 
-  default_scope order("created_at ASC")
+  default_scope -> { order("created_at ASC") }
 
   validates_presence_of :title, :content, :group
 

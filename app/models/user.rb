@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :biography, :workflow_state, :ssh_key, :gpg_key, :date_of_birth, :address, :skills, :other_skills, :projects
+  #attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :biography, :workflow_state, :ssh_key, :gpg_key, :date_of_birth, :address, :skills, :other_skills, :projects
 
   workflow do
     state :candidate do
@@ -45,8 +45,8 @@ class User < ActiveRecord::Base
 
   has_many :ready_users # only for join
 
-  scope :candidates, where(workflow_state: :candidate)
-  scope :ready, joins(:ready_users).where("ready_users.user_id = users.id and ready_users.recruited = ?", false)
+  scope :candidates, -> { where(workflow_state: :candidate) }
+  scope :ready, -> { joins(:ready_users).where("ready_users.user_id = users.id and ready_users.recruited = ?", false) }
 
   validates_presence_of :email, :name
   #validates_presence_of :ssh_key, :gpg_key, on: :update

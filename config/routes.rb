@@ -1,5 +1,5 @@
 Gentoo::Application.routes.draw do
-  match "help" => "help#index"
+  get "/help" => "help#index"
   resources :reviews
   resources :candidates do
     member do
