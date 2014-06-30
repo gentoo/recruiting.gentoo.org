@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140419201108) do
+ActiveRecord::Schema.define(:version => 20140630193552) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -36,8 +36,10 @@ ActiveRecord::Schema.define(:version => 20140419201108) do
     t.datetime "updated_at",     :null => false
     t.string   "workflow_state"
     t.integer  "operator_id"
+    t.datetime "deleted_at"
   end
 
+  add_index "answers", ["deleted_at"], :name => "index_answers_on_deleted_at"
   add_index "answers", ["operator_id"], :name => "index_answers_on_operator_id"
   add_index "answers", ["question_id"], :name => "index_answers_on_question_id"
   add_index "answers", ["user_id"], :name => "index_answers_on_user_id"
@@ -50,10 +52,12 @@ ActiveRecord::Schema.define(:version => 20140419201108) do
     t.integer  "user_id"
     t.datetime "created_at",                                     :null => false
     t.datetime "updated_at",                                     :null => false
+    t.datetime "deleted_at"
   end
 
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
   add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
+  add_index "comments", ["deleted_at"], :name => "index_comments_on_deleted_at"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "groups", :force => true do |t|
@@ -61,7 +65,10 @@ ActiveRecord::Schema.define(:version => 20140419201108) do
     t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.datetime "deleted_at"
   end
+
+  add_index "groups", ["deleted_at"], :name => "index_groups_on_deleted_at"
 
   create_table "mentorships", :id => false, :force => true do |t|
     t.integer "mentor_id"
@@ -77,8 +84,10 @@ ActiveRecord::Schema.define(:version => 20140419201108) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "group_id"
+    t.datetime "deleted_at"
   end
 
+  add_index "questions", ["deleted_at"], :name => "index_questions_on_deleted_at"
   add_index "questions", ["group_id"], :name => "index_questions_on_group_id"
 
   create_table "ready_users", :force => true do |t|
@@ -122,9 +131,11 @@ ActiveRecord::Schema.define(:version => 20140419201108) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.text     "gpg_key"
+    t.datetime "deleted_at"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
+  add_index "users", ["deleted_at"], :name => "index_users_on_deleted_at"
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["name"], :name => "index_users_on_name", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true

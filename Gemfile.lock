@@ -188,6 +188,8 @@ GEM
     mysql2 (0.3.11)
     nokogiri (1.5.9)
     orm_adapter (0.4.0)
+    paranoia (1.3.3)
+      activerecord (~> 3.2)
     pg (0.15.1)
     polyamorous (0.5.0)
       activerecord (~> 3.0)
@@ -259,6 +261,7 @@ GEM
       simplecov
     simplecov-html (0.7.1)
     slop (3.4.4)
+    spring (1.1.3)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -321,6 +324,7 @@ DEPENDENCIES
   lol_dba
   mysql2
   nokogiri
+  paranoia (~> 1.0)
   pg
   pry
   psych
@@ -332,6 +336,7 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   simple_form
   simplecov-csv
+  spring
   therubyracer
   thin
   uglifier (>= 1.0.3)

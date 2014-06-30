@@ -1,6 +1,8 @@
 require 'csv'
 class User < ActiveRecord::Base
   include Workflow
+  acts_as_paranoid
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable

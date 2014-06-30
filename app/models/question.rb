@@ -1,9 +1,10 @@
 class Question < ActiveRecord::Base
 
   acts_as_commentable
+  acts_as_paranoid
 
   attr_accessible :content, :id, :title, :group_id, :group
-  has_many :answers
+  has_many :answers, dependent: :destroy
   belongs_to :group
   has_many :user_groups, through: :group
   has_many :users, through: :user_groups

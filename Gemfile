@@ -8,20 +8,18 @@ gem 'rails-i18n'
 
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'haml_coffee_assets'
-  gem 'execjs'
-  gem 'compass-rails'
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer', :platforms => :ruby
-  gem 'bootstrap-sass'
-  gem 'font-awesome-sass-rails'
+gem 'sass-rails',   '~> 3.2.3'
+gem 'coffee-rails', '~> 3.2.1'
+gem 'haml_coffee_assets'
+gem 'execjs'
+gem 'compass-rails'
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+gem 'therubyracer', :platforms => :ruby
+gem 'bootstrap-sass'
+gem 'font-awesome-sass-rails'
 
-  gem 'bootswatch-rails', github: "isaiah/bootswatch-rails"
-  gem 'uglifier', '>= 1.0.3'
-end
+gem 'bootswatch-rails', github: "isaiah/bootswatch-rails"
+gem 'uglifier', '>= 1.0.3'
 gem 'simple_form'
 
 gem 'jquery-rails'
@@ -41,7 +39,10 @@ gem 'nokogiri'
 gem 'kaminari'
 gem 'backbone-on-rails'
 gem 'yaml_db'
+gem "paranoia", "~> 1.0"
+
 group :development, :test do
+gem 'spring'
   gem 'pry'
   gem 'rspec-rails'
   gem 'unicorn'

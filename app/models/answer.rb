@@ -1,6 +1,8 @@
 class Answer < ActiveRecord::Base
   include Workflow
   acts_as_commentable
+  acts_as_paranoid
+
   attr_accessible :content, :question_id, :user_id, :user, :operator
 
   belongs_to :user
