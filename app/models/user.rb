@@ -85,7 +85,7 @@ class User < ActiveRecord::Base
   end
 
   def ready_for?(group)
-    group.questions.count == answers.where(question_id: group.questions, workflow_state: "accepted").count
+    group.questions.count == answers.accepted.where(question_id: group.questions.map(&:id)).count
   end
 
   def ready?

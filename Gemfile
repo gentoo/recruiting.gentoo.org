@@ -38,7 +38,7 @@ gem 'nokogiri'
 gem 'kaminari'
 gem 'backbone-on-rails'
 gem 'yaml_db'
-gem "paranoia", "~> 1.0"
+gem "paranoia", "~> 2.0"
 gem 'protected_attributes', '~>1.0.1'
 
 group :development, :test do
@@ -51,7 +51,7 @@ gem 'spring'
   gem 'factory_girl_rails'
 end
 group :test do
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', require: false
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
   gem 'capybara'
