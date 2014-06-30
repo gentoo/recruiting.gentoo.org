@@ -368,6 +368,7 @@ DEPENDENCIES
   rails4_upgrade
   redcarpet
   rspec-rails
+  sass-rails
   simple_form
   simplecov-csv
   spring
