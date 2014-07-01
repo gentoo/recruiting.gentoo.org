@@ -54,5 +54,13 @@ module Gentoo
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    config.to_prepare do
+      Devise::SessionsController.layout "home"
+      Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "home" }
+      Devise::ConfirmationsController.layout "home"
+      Devise::UnlocksController.layout "home"            
+      Devise::PasswordsController.layout "home"        
+    end
   end
 end

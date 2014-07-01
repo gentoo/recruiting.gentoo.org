@@ -1,12 +1,14 @@
 %p.alert= alert
-%h2 Sign in
-= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-  .form-inputs
-    = f.input :email, :required => false, :autofocus => true
-    = f.input :password, :required => false
-    - if devise_mapping.rememberable?
-      = f.check_box :remember_me
-      %label(for="user_remember_me" style="display: inline;") Remember me
-  .form-actions
-    = f.button :submit, "Sign in"
-= render "devise/shared/links"
+.page-header
+  %h3 Sign in
+%p.lead
+  = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+    .form-inputs
+      = f.input :email, :required => false, :autofocus => true
+      = f.input :password, :required => false
+      - if devise_mapping.rememberable?
+        = f.check_box :remember_me
+        %label(for="user_remember_me" style="display: inline;") Remember me
+    .form-actions
+      = f.button :submit, "Sign in"
+  = render "devise/shared/links"
