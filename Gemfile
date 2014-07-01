@@ -36,7 +36,7 @@ gem 'gravatar-ultimate'
 gem 'nokogiri'
 gem 'kaminari'
 gem 'backbone-on-rails'
-gem 'yaml_db'
+gem 'yaml_db', github: 'jetthoughts/yaml_db'
 gem "paranoia", "~> 2.0"
 gem 'protected_attributes', '~>1.0.1'
 
