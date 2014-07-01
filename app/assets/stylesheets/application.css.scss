@@ -12,17 +12,12 @@
  *= require_tree .
  *= require github
  */
-/*@import "bootswatch/cerulean/variables";*/
 @import "gentoo";
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
 
-body { padding-top: 83px; }
-input, textarea { width: 400px; }
 .hidden { display: none; }
-#epiceditor{ height: 400px }
-textarea.comment { width: 680px; height: 88px; }
 /* fixes for conflits between font-awesome and glyphicons */
 .dropdown-menu > li > a:hover > [class^="icon-"],
 .dropdown-menu > li > a:hover > [class*=" icon-"],
@@ -76,6 +71,7 @@ body {
   /* Set the fixed height of the footer here */
   height: 60px;
   background-color: #f5f5f5;
+  text-align: center;
 }
 
 
@@ -158,5 +154,23 @@ code {
   #sidebar .nav a:hover .caret{
     border-top-color: #fff;
     border-bottom-color: #fff;
+  }
+}
+
+.navbar .divider-vertical {
+  height: 50px;
+  margin: 0 9px;
+  border-right: 1px solid #ffffff;
+  border-left: 1px solid #f2f2f2;
+}
+
+.navbar-inverse .divider-vertical {
+  border-right-color: #222222;
+  border-left-color: #111111;
+}
+
+@media (max-width: 767px) {
+.navbar-collapse .nav > .divider-vertical {
+    display: none;
   }
 }
