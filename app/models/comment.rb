@@ -6,7 +6,7 @@ class Comment < ActiveRecord::Base
   belongs_to :commentable, :polymorphic => true
 
   #default_scope :order => 'created_at ASC'
-  #attr_accessible :comment, :user
+  attr_accessible :comment, :user
 
   default_scope -> { order("id DESC") }
 

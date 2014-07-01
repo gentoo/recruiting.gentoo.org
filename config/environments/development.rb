@@ -44,4 +44,5 @@ Gentoo::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
   config.secret_token = "1"*30
+  config.assets.prefix = "/dev-assets"
 end

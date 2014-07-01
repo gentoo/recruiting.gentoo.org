@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 ruby '2.1.2'
 gem 'rails', '>= 4.1.0'
@@ -12,13 +12,11 @@ gem 'rails-i18n'
 gem 'sass-rails'
 gem 'haml_coffee_assets', github: "netzpirat/haml_coffee_assets"
 gem 'execjs'
-gem 'compass-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', :platforms => :ruby
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 
-gem 'bootswatch-rails'
 gem 'uglifier'
 gem 'simple_form'
 

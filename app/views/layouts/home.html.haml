@@ -19,7 +19,7 @@
     .navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
       .container
         .navbar-header
-          %button.navbar-toggle{"data-target" => ".navbar-side", "data-toggle" => "offcanvas", :type => "button"}
+          %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
             %span.sr-only Toggle navigation
             %span.icon-bar
             %span.icon-bar
@@ -86,7 +86,7 @@
     / Begin page content
     .container
       .row.row-offcanvas.row-offcanvas-left
-        .col-xs-9.col-sm-6.col-md-3.sidebar-offcanvas.navbar-side(role="navigation")= render :partial => 'shared/sidebar'
+        .col-xs-6.col-sm-3.col-md-3.sidebar-offcanvas(role="navigation")= render :partial => 'shared/sidebar'
         .col-xs-12.col-sm-9.col-md-9= yield
     .footer
       .container
