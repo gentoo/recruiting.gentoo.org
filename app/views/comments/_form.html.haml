@@ -2,7 +2,7 @@
   = f.input :comment, label: false, input_html: {class: "comment"}
   .form-actions
     = button_tag :submit, class: "btn btn-primary" do
-      %i.icon-comment
+      %i.fa.fa-comment
       Comment
     = link_to t('.back', :default => t("helpers.links.back")), commentable, class: "btn"
 - commentable.comments.each do |comment|
@@ -14,5 +14,5 @@
       = markdown comment.comment
       - if current_user.admin?
         = link_to [comment.commentable, comment], method: :delete, class: "btn btn-danger" do
-          %i.icon-trash
+          %i.fa.fa-trash
           Delete

@@ -12,7 +12,7 @@
         %td
           - if answer.awaiting_review?
             = link_to [answer.question, answer], class: 'btn btn-warning' do
-              %i.icon-group
+              %i.fa.fa-group
               Review
           - else
             = answer_status(answer)

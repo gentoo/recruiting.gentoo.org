@@ -1,11 +1,11 @@
 - if previous_question = @question.previous
   = link_to previous_question, class: "btn" do
-    %i.icon-step-backward
+    %i.fa.fa-step-backward
     Previous
 = link_to [@question.group, :questions], class: "btn" do
-  %i.icon-eject
+  %i.fa.fa-eject
   All
 - if next_question = @question.next
   = link_to @question.next, class: "btn btn-primary" do
     Next
-    %i.icon-step-forward
+    %i.fa.fa-step-forward

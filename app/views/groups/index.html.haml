@@ -19,10 +19,10 @@
           %td
             - if group.id.in? current_user.group_ids
               = link_to [:unsubscribe, group], method: :delete do
-                %i.icon-minus
+                %i.fa.fa-minus
                 Unsubscribe
             - else
               = link_to [:subscribe, group], method: :put do
-                %i.icon-plus
+                %i.fa.fa-plus
                 Subscribe
 

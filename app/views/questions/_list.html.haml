@@ -24,7 +24,7 @@
             - if answer.nil?
               - if current_user.assigned_to?(question)
                 = link_to [:new, question, :answer], :class => 'btn' do
-                  %i.icon-book
+                  %i.fa.fa-book
                   Answer
             - else
               - if answer.awaiting_review? || answer.rejected?
@@ -32,7 +32,7 @@
               = link_to "View answer", [question, answer], class: "btn"
           - else
             = link_to question, class: "btn" do
-              %i.icon-info-sign
+              %i.fa.fa-info-sign
               View question
 
 = paginate @questions

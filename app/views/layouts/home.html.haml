@@ -69,17 +69,17 @@
             - else
               %li.dropdown
                 %a.dropdown-toggle{"dropdown-toggle" => "dropdown", :href => "#"}
-                  %i.icon-user
+                  %i.fa.fa-user
                   = current_user.email
                   %b.caret
                 %ul.dropdown-menu
                   %li 
                     = link_to edit_user_registration_path do
-                      %i.icon-cog
+                      %i.fa.fa-cog
                       = t(:settings)
                   %li
                     = link_to destroy_user_session_path, method: :delete do
-                      %i.icon-signout
+                      %i.fa.fa-sign-out
                       = t(:sign_out)
 
         / /.nav-collapse
