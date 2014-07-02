@@ -1,32 +1,33 @@
-.page-header
-  %h2 Account Settings
-= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
-  .tabbable
-    %ul.nav.nav-pills
-      %li.active
-        %a{href: "#tab1", "data-toggle" => "tab"} Profile
-      %li
-        %a{href: "#tab2", "data-toggle" => "tab"} Change password
-    .tab-content
-      .tab-pane.active#tab1
-        = f.error_notification
-        = f.input :name, :required => true, :autofocus => true, input_html: {value: unsluggish_name(f.object.name)}
-        = f.input :email, :required => true
-        = f.input :ssh_key, :required => true, label: "SSH KEY"
-        = f.input :gpg_key, :required => true, label: "GnuPG KEY"
-        = f.input :date_of_birth, as: :date, start_year: Date.today.year - 60,
-                                  end_year: Date.today.year - 10
-        = f.input :address, label: "Where are you from"
-        = f.input :skills, label: "Main skills"
-        = f.input :other_skills, label: "Other experience"
-        = f.input :projects, label: "Projects you took part in"
-        = f.input :biography, placeholder: "Tell us about yourself. This doesn't need to be strictly computer-relevant; things like hobbies, job, family, interests. This will be used for your recruit annoucement."
-      .tab-pane#tab2
-        = f.error_notification
-        = f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false
-        = f.input :password_confirmation, :required => false
-        = f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true
-  .form-actions
-    = f.button :submit, "Update"
-    = link_to "Back", :back
-%p Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}.
+.panel.panel-info
+  .panel-heading
+    .panel-title Account Settings
+  .panel-body
+    = simple_form_for resource, as: resource_name, url: registration_path(resource_name), html: { method: :put } do |f|
+      .tabbable
+        %ul.nav.nav-pills
+          %li.active
+            %a{href: "#tab1", "data-toggle" => "tab"} Profile
+          %li
+            %a{href: "#tab2", "data-toggle" => "tab"} Change password
+        .tab-content
+          .tab-pane.active#tab1
+            = f.error_notification
+            = f.input :name, :required => true, :autofocus => true, input_html: {value: unsluggish_name(f.object.name)}
+            = f.input :email, :required => true
+            = f.input :ssh_key, :required => true, label: "SSH KEY"
+            = f.input :gpg_key, :required => true, label: "GnuPG KEY"
+            = f.input :date_of_birth, as: :date, start_year: Date.today.year - 60,
+                                      end_year: Date.today.year - 10
+            = f.input :address, label: "Where are you from"
+            = f.input :skills, label: "Main skills"
+            = f.input :other_skills, label: "Other experience"
+            = f.input :projects, label: "Projects you took part in"
+            = f.input :biography, placeholder: "Tell us about yourself. This doesn't need to be strictly computer-relevant; things like hobbies, job, family, interests. This will be used for your recruit annoucement."
+          .tab-pane#tab2
+            = f.error_notification
+            = f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false
+            = f.input :password_confirmation, :required => false
+            = f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true
+      = f.button :submit, "Update"
+      = link_to "Back", :back
+  .panel-footer Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}.

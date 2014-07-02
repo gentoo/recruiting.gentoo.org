@@ -9,7 +9,6 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
  *= require github
  */
 @import "gentoo";
@@ -40,18 +39,9 @@
 
 a.btn-primary:visited, a.btn-success:visited, a.btn-warning:visited { color: white }
 
-.nav a:link, .navbar .navbar-brand { text-decoration: none;}
-
 .navbar .navbar-brand {
   padding: 8.5px 20px;
-  img {
-    height: 45px;
-    width: 45px;
-  }
-  span {
-    top: -24px;
-    position: relative;
-  }
+  img { height: 45px; width: 45px; }
 }
 
 /* Sticky footer styles
@@ -154,23 +144,5 @@ code {
   #sidebar .nav a:hover .caret{
     border-top-color: #fff;
     border-bottom-color: #fff;
-  }
-}
-
-.navbar .divider-vertical {
-  height: 50px;
-  margin: 0 9px;
-  border-right: 1px solid #ffffff;
-  border-left: 1px solid #f2f2f2;
-}
-
-.navbar-inverse .divider-vertical {
-  border-right-color: #222222;
-  border-left-color: #111111;
-}
-
-@media (max-width: 767px) {
-.navbar-collapse .nav > .divider-vertical {
-    display: none;
   }
 }
