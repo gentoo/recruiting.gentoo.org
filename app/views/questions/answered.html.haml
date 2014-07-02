@@ -3,19 +3,20 @@
 - if @questions.empty?
   There is no question assigned to you yet.
 - else 
-  %table.table.table-striped
-    %thead
-      %tr
-        %th Title
-        %th Category
-        %th Status
-        %th=t '.actions', :default => t("helpers.actions")
-    %tbody
-      - @questions.each do |question|
-        - answer = current_user.answer_for(question)
+  .table-responsive
+    %table.table.table-striped
+      %thead
         %tr
-          %td= link_to question.title, question_path(question)
-          %td= question.category_name
-          %td= answer.state
-          %td
-            = link_to "Edit answer", [:edit, question, answer], :class => 'btn btn-mini' if answer.awaiting_review? || answer.rejected?
+          %th Title
+          %th Category
+          %th Status
+          %th=t '.actions', :default => t("helpers.actions")
+      %tbody
+        - @questions.each do |question|
+          - answer = current_user.answer_for(question)
+          %tr
+            %td= link_to question.title, question_path(question)
+            %td= question.category_name
+            %td= answer.state
+            %td
+              = link_to "Edit answer", [:edit, question, answer], :class => 'btn btn-mini' if answer.awaiting_review? || answer.rejected?

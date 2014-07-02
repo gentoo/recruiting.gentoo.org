@@ -69,10 +69,9 @@
               %li= link_to t(:sign_up), new_user_registration_path
             - else
               %li.dropdown
-                %a.dropdown-toggle{"dropdown-toggle" => "dropdown", :href => "#"}
-                  %i.fa.fa-user
+                = link_to "#", class: "dropdown-toggle", "data-toggle" => "dropdown" do
                   = current_user.email
-                  %b.caret
+                  %i.caret
                 %ul.dropdown-menu
                   %li 
                     = link_to edit_user_registration_path do

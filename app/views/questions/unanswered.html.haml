@@ -3,18 +3,20 @@
 - if @questions.empty?
   There is no question in due.
 - else 
-  %table.table.table-striped
-    %thead
-      %tr
-        %th Title
-        %th Category
-        %th Status
-        %th=t '.actions', :default => t("helpers.actions")
-    %tbody
-      - @questions.each do |question|
+  .table-responsive
+    %table.table.table-striped
+      %thead
         %tr
-          %td= link_to question.title, question_path(question)
-          %td= question.category_name
-          %td Unanswered
-          %td
-            = link_to "Answer", [:new, question, :answer], class: "btn btn-mini"
+          %th Title
+          %th Category
+          %th Status
+          %th=t '.actions', :default => t("helpers.actions")
+      %tbody
+        - @questions.each do |question|
+          %tr
+            %td= link_to question.title, question_path(question)
+            %td= question.category_name
+            %td 
+              %span.label.label-default Unanswered
+            %td
+              = link_to "Answer", [:new, question, :answer], class: "btn btn-mini"
