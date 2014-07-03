@@ -29,7 +29,7 @@ end
 
 Then /^I should( not)? mentor all other users$/ do |negation|
   me = User.find_by_workflow_state 'mentor'
-  ((me.sponsees.count == User.count - 1) ^ negation).should be_true
+  expect((me.sponsees.count == User.count - 1) ^ negation).to be(true)
 end
 
 Then /^I should( not)? see link "([^"]*)"$/ do |negation, text|
