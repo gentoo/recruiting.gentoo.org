@@ -1,14 +1,18 @@
-.row
-  - list.to_a.in_groups_of(3, false) do |sponsees|
+- list.to_a.in_groups_of(2, false) do |sponsees|
+  .row
     - sponsees.each do |sponsee|
-      .col-md-4.col-sm-6.col-xs-12
-        .thumbnail
-          = gravatar_tag(sponsee)
-          .caption
-            %h3= link_to unsluggish_name(sponsee.name), candidate_path(sponsee)
-            %p= truncate(sponsee.biography, length: 150)
-            - if can?(:sponsor, User)
-              %p
+      .col-md-6.col-sm-6.col-xs-12
+        .panel.panel-default
+          .panel-body
+            .media
+              = link_to candidate_path(sponsee), class: "pull-left" do
+                = gravatar_tag(sponsee, html: {class: "media-object"})
+              .media-body
+                %h3.media-heading= link_to unsluggish_name(sponsee.name), candidate_path(sponsee)
+                %p= truncate(sponsee.biography, length: 150)
+          .panel-footer
+            .btn-group
+              - if can?(:sponsor, User)
                 - if current_user.mentoring?(sponsee)
                   = link_to sponsee_path(sponsee), method: :delete, class: "btn btn-primary" do
                     %i.fa.fa-unlock
@@ -25,9 +29,8 @@
                   = link_to candidate_answers_path(sponsee), class: "btn btn-success" do
                     %i.fa.fa-check
                     Grade
-            - if can?(:promote, User) && sponsee.ready?
-              %p
+              - if can?(:promote, User) && sponsee.ready?
                 = link_to recruit_candidate_path(sponsee), method: :put, class: "btn btn-danger" do
                   %i.fa.fa-trophy
                   Recruit 
-= paginate list
+  = paginate list

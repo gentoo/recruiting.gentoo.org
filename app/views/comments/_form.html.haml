@@ -1,18 +1,19 @@
 = simple_form_for [commentable, Comment.new] do |f|
   = f.input :comment, label: false, input_html: {class: "comment"}
-  .form-actions
+  .btn-group
     = button_tag :submit, class: "btn btn-primary" do
       %i.fa.fa-comment
       Comment
-    = link_to t('.back', :default => t("helpers.links.back")), commentable, class: "btn"
-- commentable.comments.each do |comment|
-  .row
-    .span1
-      %p= unsluggish_name comment.user.name
-      %p #{time_ago_in_words comment.created_at} ago
-    .span8
-      = markdown comment.comment
-      - if current_user.admin?
-        = link_to [comment.commentable, comment], method: :delete, class: "btn btn-danger" do
-          %i.fa.fa-trash
-          Delete
+    = link_to t('.back', :default => t("helpers.links.back")), commentable, class: "btn btn-default"
+%p
+  - commentable.comments.each do |comment|
+    .row
+      .col-md-2.col-xs-0
+        %p= unsluggish_name comment.user.name
+        %p #{time_ago_in_words comment.created_at} ago
+      .col-md-10.col-xs-12
+        .well.well-sm= markdown comment.comment
+        - if current_user.admin?
+          = link_to [comment.commentable, comment], method: :delete, class: "btn btn-danger btn-xs" do
+            %i.fa.fa-trash
+            Delete

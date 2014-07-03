@@ -1,20 +1,21 @@
 .page-header
   %h3= @question.title
 
-.page-header.question
-  %p= markdown(@question.content)
+%p.lead.question= markdown(@question.content)
 
-.answer= markdown @answer.content
-%p= answer_status(@answer)
-%p= link_to "by #{unsluggish_name(@answer.user.name)}", candidate_path(@answer.user)
-%p= render :partial => 'nav_buttons'
+.well= markdown @answer.content
+
+%p
+  = answer_status(@answer)
+  = link_to "by #{unsluggish_name(@answer.user.name)}", candidate_path(@answer.user)
 - if can? :review, Answer
   - if @answer.awaiting_review?
-    .form-actions
+    .btn-group
       = link_to [:accept, @answer], class: 'btn btn-primary', method: :put, remote: true do
         %i.fa.fa-ok
         Accept
       = link_to [:reject, @answer], method: :put, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-danger', remote: true do
         %i.fa.fa-remove
         Reject
-= render :partial => 'comments/form', locals: {commentable: @answer}
+= render :partial => 'nav_buttons'
+%p= render :partial => 'comments/form', locals: {commentable: @answer}
