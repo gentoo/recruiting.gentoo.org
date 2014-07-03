@@ -7,9 +7,9 @@
   = f.input :user_id, as: :hidden
   = f.input :question_id, as: :hidden
   = f.input :content, as: :hidden
-  .form-actions
+  .btn-group
     = f.button :submit, :class => 'btn-primary', value: "Submit"
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), [@question.group, :questions], :class => 'btn'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), [@question.group, :questions], :class => 'btn btn-default'
     = render :partial => 'nav_buttons'
 - content_for :js do
   :javascript

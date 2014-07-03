@@ -1,8 +1,9 @@
-%h2 Resend confirmation instructions
-= simple_form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f|
-  = f.error_notification
-  .form-inputs
-    = f.input :email, :required => true
-  .form-actions
-    = f.button :submit, "Resend confirmation instructions"
-= render "devise/shared/links"
+.panel.panel-info
+  .panel-heading
+    .panel-title Resend confirmation instructions
+  .panel-body
+    = simple_form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f|
+      = f.error_notification
+      = f.input :email, :required => true
+      = f.button :submit, "Resend confirmation instructions"
+  .panel-footer= render "devise/shared/links"
