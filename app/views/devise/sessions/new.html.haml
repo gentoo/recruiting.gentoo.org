@@ -9,5 +9,5 @@
       = f.input :password, :required => false
       - if devise_mapping.rememberable?
         = f.input :remember_me, as: :boolean
-      = f.button :submit, "Sign in"
+      = f.button :submit, "Sign in", class: "btn-primary"
   .panel-footer= render "devise/shared/links"

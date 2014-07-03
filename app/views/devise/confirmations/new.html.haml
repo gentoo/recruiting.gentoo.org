@@ -2,8 +2,8 @@
   .panel-heading
     .panel-title Resend confirmation instructions
   .panel-body
-    = simple_form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f|
+    = simple_form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post, class: 'form-inline' }, wrapper: :inline_form) do |f|
       = f.error_notification
-      = f.input :email, :required => true
-      = f.button :submit, "Resend confirmation instructions"
+      = f.input :email, :required => true, placeholder: "Enter email"
+      = f.button :submit, "Resend confirmation instructions", class: 'btn-primary'
   .panel-footer= render "devise/shared/links"
