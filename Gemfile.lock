@@ -159,6 +159,7 @@ GEM
     gravatar-ultimate (2.0.0)
       activesupport (>= 2.3.14)
       rack
+    gravatarify (3.1.1)
     haml (4.0.5)
       tilt
     haml-rails (0.5.3)
@@ -348,6 +349,7 @@ DEPENDENCIES
   factory_girl_rails
   font-awesome-sass
   gravatar-ultimate
+  gravatarify
   haml-rails
   haml_coffee_assets!
   jquery-rails

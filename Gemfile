@@ -39,9 +39,10 @@ gem 'backbone-on-rails'
 gem 'yaml_db', github: 'jetthoughts/yaml_db'
 gem "paranoia", "~> 2.0"
 gem 'protected_attributes', '~>1.0.1'
+gem 'gravatarify'
 
 group :development, :test do
-gem 'spring'
+  gem 'spring'
   gem 'pry'
   gem 'rspec-rails'
   gem 'unicorn'

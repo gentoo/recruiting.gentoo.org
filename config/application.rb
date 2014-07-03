@@ -61,6 +61,7 @@ module Gentoo
       Devise::ConfirmationsController.layout "home"
       Devise::UnlocksController.layout "home"            
       Devise::PasswordsController.layout "home"        
+      Haml::Helpers.send(:include, Gravatarify::Helper)
     end
   end
 end
