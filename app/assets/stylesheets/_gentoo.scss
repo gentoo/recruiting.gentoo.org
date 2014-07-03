@@ -20,12 +20,12 @@ $yellow:                #F7B42C;
 $orange:                #DD5600;
 $pink:                  #F49AC1;
 $purple:                #9760B3;
-$gentoo:                #5C4F85;
+$brand-primary:         #5C4F85;
 
 $link-color:                       #7A5ADA;
 $link-color-hover:                 darken($link-color, 15%);
 
-$navbar-default-bg:                $gentoo;
+$navbar-default-bg:                $brand-primary;
 $navbar-default-link-color:        $grayLighter;
 $navbar-default-link-hover-color:  $white;
 

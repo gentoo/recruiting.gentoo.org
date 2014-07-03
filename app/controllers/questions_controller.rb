@@ -3,7 +3,7 @@ class QuestionsController < InheritedResources::Base
 
   def index
     @group = Group.find params[:group_id]
-    @questions = @group.questions.page params[:page]
+    @questions = @group.questions.page(params[:page])
   end
 
   def create

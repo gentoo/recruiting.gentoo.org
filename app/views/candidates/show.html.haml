@@ -4,53 +4,54 @@
     text-align: right;
     width: 170px;
   }
-.thumbnail
-  %img(src="http://placehold.it/260x200")
-%hr
-.row
-  .span6
-    %p
-      %strong Name
-      = unsluggish_name @candidate.name
-    %p 
-      %strong Email
-      = @candidate.email
-    %p
-      %strong Date of birth
-      = @candidate.date_of_birth
-    %p 
-      %strong SSH public key
-      = link_to "download", ssh_key_candidate_path(@candidate)
-    %p 
-      %strong GnuPG public key
-      = link_to "download", gpg_key_candidate_path(@candidate)
+.panel.panel-info
+  .panel-heading
+    .panel-title= unsluggish_name @candidate.name
+  .panel-body
+    .row
+      .col-md-9
+        %p 
+          %strong Email
+          = @candidate.email
+          %p
+            %strong Date of birth
+          = @candidate.date_of_birth
+        %p 
+          %strong SSH public key
+          = link_to "download", ssh_key_candidate_path(@candidate)
+        %p 
+          %strong GnuPG public key
+          = link_to "download", gpg_key_candidate_path(@candidate)
 
-    %p 
-      %strong Address
-      = @candidate.address
-    %p
-      %strong Skills
-      = @candidate.skills
-    %p 
-      %strong Other experiences
-      = @candidate.other_skills
-    %p 
-      %strong Contributed projects
-      = @candidate.projects
-    %p
-      %strong Biography
-    %p= markdown @candidate.biography
-  .span3
-    %p
-      %em Subscribed quests
-      %ul
-        - @candidate.groups.each do |group|
-          %li= link_to group.name, candidate_answers_path(@candidate)
-    %p
-      %em Badges Earned
-      - @candidate.badges.each do |badge|
-        %span.label.label-info= badge
-      - if @candidate.badges.empty?
-        %span.label.label-default None Badges Earned
+        %p 
+          %strong Address
+          = @candidate.address
+        %p
+          %strong Skills
+          = @candidate.skills
+        %p 
+          %strong Other experiences
+          = @candidate.other_skills
+        %p 
+          %strong Contributed projects
+          = @candidate.projects
+        %p
+          %strong Biography
+        %p= markdown @candidate.biography
+      .col-md-3
+        .thumbnail= gravatar_tag(@candidate)
+        %p
+          %em Subscribed quests
+          - @candidate.groups.each do |group|
+            %p= link_to group.name, candidate_answers_path(@candidate)
+          - if @candidate.groups.empty?
+            %p No question group subscribed.
 
-= link_to "<<Back", :back
+        %p
+          %em Badges Earned
+          - @candidate.badges.each do |badge|
+            %span.label.label-info= badge
+          - if @candidate.badges.empty?
+            %span.label.label-default None Badges Earned
+
+  .panel-footer= link_to "<<Back", :back
