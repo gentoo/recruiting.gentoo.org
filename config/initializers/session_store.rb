@@ -1,6 +1,6 @@
 # Be sure to restart your server when you modify this file.
 
-Gentoo::Application.config.session_store :cookie_store, key: '_gentoo_session'
+Gentoo::Application.config.session_store :cookie_store, key: '_gentoo_session', domain: :all, tld_length: 2
 
 # Use the database for sessions instead of the cookie-based default,
 # which shouldn't be used to store highly confidential information

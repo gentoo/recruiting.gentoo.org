@@ -17,5 +17,5 @@
       %span.label.label-info= current_user.awaiting_review? ? "Processing" : "Candidate"
 
   = link_to cancel_apply_project_path(@project), class: "btn btn-danger", method: :delete do
-    %i.icon-trash
+    %i.fa.fa-trash
     Cancel my application

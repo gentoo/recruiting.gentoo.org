@@ -69,11 +69,11 @@ module ApplicationHelper
   
   def answer_status(answer)
     if answer.nil?
-      content_tag :div, "Unanswered", class: "label label-default"
+      content_tag :div, "Unanswered", class: "label label-warning"
     elsif answer.awaiting_review?
-      content_tag :div, "Awaiting review", class: "label label-warning"
+      content_tag :div, "Awaiting review", class: "label label-info"
     elsif answer.rejected?
-      content_tag :div, "Rejected by #{unsluggish_name(answer.operator.name) rescue nil}", class: "label label-important"
+      content_tag :div, "Rejected by #{unsluggish_name(answer.operator.name) rescue nil}", class: "label label-danger"
     else
       content_tag :div, "Accepted by #{unsluggish_name(answer.operator.name) rescue nil}", class: "label label-success"
     end

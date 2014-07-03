@@ -1,0 +1,99 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %meta{:content => "", :name => "description"}/
+    %meta{:content => "", :name => "author"}/
+    = favicon_link_tag "favicon.ico"
+    %title= content_for?(:title) ? yield(:title) : "Gentoo"
+    = stylesheet_link_tag "application", :media => "all"
+    / Just for debugging purposes. Don't actually copy these 2 lines!
+    / HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
+    /[if lt IE 9]
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  %body
+    / Fixed navbar
+    .navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
+      .container
+        .navbar-header
+          %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand{:href => "/"}
+            = image_tag "glogo-small.png"
+            %span Gentoo Recruiting
+
+        .collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            %li.divider-vertical
+            %li= link_to "Question groups", "/groups"
+            %li.divider-vertical
+            %li= link_to "Help", "/help"
+            %li.divider-vertical
+            %li.dropdown
+              = link_to "#", class: "dropdown-toggle", "data-toggle" => "dropdown" do
+                gentoo.org Sites
+                %i.caret
+              %ul.dropdown-menu
+                %li
+                  %a{:href => "http://www.gentoo.org/"} gentoo.org
+                %li
+                  %a{:href => "http://wiki.gentoo.org/", :title => "Find and contribute documentation"} Wiki
+                %li
+                  %a{:href => "https://bugs.gentoo.org/", :title => "Report issues and find common issues"} Bugs
+                %li
+                  %a{:href => "http://forums.gentoo.org/", :title => "Discuss with the community"} Forums
+                %li
+                  %a{:href => "http://packages.gentoo.org/", :title => "Find software for your Gentoo"} Packages
+                %li.divider
+                %li
+                  %a{:href => "http://archives.gentoo.org/", :title => "Read up on past discussions"} Archives
+                %li
+                  %a{:href => "http://overlays.gentoo.org/", :title => "Collaborate on maintaining packages"} Overlays
+                %li
+                  %a{:href => "http://planet.gentoo.org/", :title => "Find out what's going on in the developer community"} Planet
+                %li
+                  %a{:href => "http://sources.gentoo.org/", :title => "Browse our source code"} Sources
+
+          %ul.nav.navbar-nav.navbar-right
+            %li.divider-vertical
+            - if ! user_signed_in?
+              %li= link_to t(:sign_in), new_user_session_path
+              %li.divider-vertical
+              %li= link_to t(:sign_up), new_user_registration_path
+            - else
+              %li.dropdown
+                %a.dropdown-toggle{"dropdown-toggle" => "dropdown", :href => "#"}
+                  %i.fa.fa-user
+                  = current_user.email
+                  %b.caret
+                %ul.dropdown-menu
+                  %li 
+                    = link_to edit_user_registration_path do
+                      %i.fa.fa-cog
+                      = t(:settings)
+                  %li
+                    = link_to destroy_user_session_path, method: :delete do
+                      %i.fa.fa-sign-out
+                      = t(:sign_out)
+
+        / /.nav-collapse
+    / Begin page content
+    .container= yield
+    .footer
+      .container
+        %p.text-muted
+          Gentoo Foundation &copy; #{Time.now.strftime("%Y")}
+          built by #{link_to "isaiah", "https://twitter.com/isaiah_peng"} and #{link_to "other contributors", "https://github.com/gentoo/recruiting.gentoo.org/blob/master/doc/contributors.md"}
+
+    /
+      Javascripts
+      \==================================================
+    / Placed at the end of the document so the pages load faster
+    = javascript_include_tag "application"
+    = yield :js

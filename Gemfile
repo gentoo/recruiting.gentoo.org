@@ -1,6 +1,7 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
-gem 'rails', '~> 3.2.13'
+ruby '2.1.2'
+gem 'rails', '>= 4.1.0'
 gem 'rails-i18n'
 
 # Bundle edge Rails instead:
@@ -8,38 +9,36 @@ gem 'rails-i18n'
 
 # Gems used only for assets and not required
 # in production environments by default.
-gem 'sass-rails',   '~> 3.2.3'
-gem 'coffee-rails', '~> 3.2.1'
-gem 'haml_coffee_assets'
+gem 'sass-rails'
+gem 'haml_coffee_assets', github: "netzpirat/haml_coffee_assets"
 gem 'execjs'
-gem 'compass-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', :platforms => :ruby
 gem 'bootstrap-sass'
-gem 'font-awesome-sass-rails'
+gem 'font-awesome-sass'
 
-gem 'bootswatch-rails', github: "isaiah/bootswatch-rails"
-gem 'uglifier', '>= 1.0.3'
-gem 'simple_form'
+gem 'uglifier'
+gem 'simple_form', '~> 3.1.0.rc1', github: 'plataformatec/simple_form', branch: 'master'
 
 gem 'jquery-rails'
 gem 'haml-rails'
 gem 'devise'
 gem 'cancan'
-gem 'activeadmin', '~> 0.5.0'
+gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'thin'
 gem 'psych'
-gem 'redcarpet', '~> 2.1.1'
-gem 'pygments.rb', '0.3.1'
-gem 'acts_as_commentable', '~> 3.0.1'
+gem 'redcarpet'
+gem 'pygments.rb'
+gem 'acts_as_commentable'
 gem 'workflow'
 #gem 'mailboxer'
 gem 'gravatar-ultimate'
 gem 'nokogiri'
 gem 'kaminari'
 gem 'backbone-on-rails'
-gem 'yaml_db'
-gem "paranoia", "~> 1.0"
+gem 'yaml_db', github: 'jetthoughts/yaml_db'
+gem "paranoia", "~> 2.0"
+gem 'protected_attributes', '~>1.0.1'
 
 group :development, :test do
 gem 'spring'
@@ -51,14 +50,16 @@ gem 'spring'
   gem 'factory_girl_rails'
 end
 group :test do
-  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails', require: false
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
   gem 'capybara'
   gem 'cucumber-debug'
   gem 'simplecov-csv', require: false
-  gem 'capybara-webkit', git: 'https://github.com/thoughtbot/capybara-webkit.git'
+  gem 'capybara-webkit'
 end
 group :production do
   gem 'mysql2'
 end
+
+gem 'rails4_upgrade'

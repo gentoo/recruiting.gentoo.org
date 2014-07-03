@@ -1,38 +1,39 @@
-%table.table.table-striped
-  %thead
-    %tr
-      %th Question
-      %th Group
-      - if current_user.candidate?
-        %th Answer status
-      %th
-  %tbody
-    - @questions.each_with_index do |question, idx|
-      - answer = user_signed_in? ? current_user.answer_for(question) : nil
+.table-responsive
+  %table.table.table-striped
+    %thead
       %tr
-        %td
-          = "%s." % current_entry_info(idx, params[:page])
-          - if can?(:answer, Question) && current_user.assigned_to?(question)
-            = link_to question.title, [:new, question, :answer]
-          - else
-            = link_to question.title, question
-        %td= question.category_name
+        %th Question
+        %th Group
         - if current_user.candidate?
-          %td= answer_status(answer)
-        %td
-          - if can?(:answer, Question)
-            - if answer.nil?
-              - if current_user.assigned_to?(question)
-                = link_to [:new, question, :answer], :class => 'btn' do
-                  %i.icon-book
-                  Answer
+          %th Answer status
+        %th
+    %tbody
+      - @questions.each_with_index do |question, idx|
+        - answer = user_signed_in? ? current_user.answer_for(question) : nil
+        %tr
+          %td
+            = "%s." % current_entry_info(idx, params[:page])
+            - if can?(:answer, Question) && current_user.assigned_to?(question)
+              = link_to question.title, [:new, question, :answer]
             - else
-              - if answer.awaiting_review? || answer.rejected?
-                = link_to "Edit answer", [:edit, question, answer], :class => 'btn btn-primary'
-              = link_to "View answer", [question, answer], class: "btn"
-          - else
-            = link_to question, class: "btn" do
-              %i.icon-info-sign
-              View question
+              = link_to question.title, question
+          %td= question.category_name
+          - if current_user.candidate?
+            %td= answer_status(answer)
+          %td
+            - if can?(:answer, Question)
+              - if answer.nil?
+                - if current_user.assigned_to?(question)
+                  = link_to [:new, question, :answer], :class => 'btn' do
+                    %i.fa.fa-book
+                    Answer
+              - else
+                = link_to "View answer", [question, answer], class: "btn"
+                - if answer.awaiting_review? || answer.rejected?
+                  = link_to "Edit answer", [:edit, question, answer], :class => 'btn btn-warning'
 
-= paginate @questions
+            - else
+              = link_to question, class: "btn" do
+                %i.fa.fa-info-sign
+                View question
+  = paginate @questions
