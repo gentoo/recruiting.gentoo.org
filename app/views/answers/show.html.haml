@@ -9,11 +9,12 @@
   = answer_status(@answer)
   = link_to "by #{unsluggish_name(@answer.user.name)}", candidate_path(@answer.user)
 - if can? :review, Answer
-  - if @answer.awaiting_review?
-    .btn-group
+  .btn-group
+    - if @answer.awaiting_review? || @answer.rejected?
       = link_to [:accept, @answer], class: 'btn btn-primary', method: :put, remote: true do
         %i.fa.fa-ok
         Accept
+    - if @answer.awaiting_review? || @answer.accepted?
       = link_to [:reject, @answer], method: :put, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-danger', remote: true do
         %i.fa.fa-remove
         Reject

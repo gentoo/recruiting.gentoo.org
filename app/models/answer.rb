@@ -37,9 +37,12 @@ class Answer < ActiveRecord::Base
     end
 
     state :rejected do
+      event :accept, transitions_to: :accepted
       event :submit, transitions_to: :awaiting_review
     end
-    state :accepted
+    state :accepted do
+      event :reject, transitions_to: :rejected
+    end
   end
 
   def state

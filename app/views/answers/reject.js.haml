@@ -1,2 +1,3 @@
 $("a[data-remote=true]").parent(".btn-group").fadeOut();
-$(".label-info").removeClass("label-info").addClass("label-important").html("Rejected by #{current_user.name}");
+$(".label-info").removeClass("label-info").addClass("label-danger").html("Rejected by #{current_user.name}");
+$(".label-success").removeClass("label-success").addClass("label-danger").html("Rejected by #{current_user.name}");
