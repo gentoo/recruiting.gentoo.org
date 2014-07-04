@@ -145,11 +145,14 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.2.1)
+    fabrication (2.11.3)
     factory_girl (4.4.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.4.1)
       factory_girl (~> 4.4.0)
       railties (>= 3.0.0)
+    faker (1.4.0)
+      i18n (~> 0.5)
     font-awesome-sass (4.1.0)
       sass (~> 3.2)
     formtastic (2.3.0.rc3)
@@ -188,10 +191,6 @@ GEM
     launchy (2.4.2)
       addressable (~> 2.3)
     libv8 (3.16.14.3)
-    lol_dba (1.6.0)
-      actionpack (>= 3.0)
-      activerecord (>= 3.0)
-      railties (>= 3.0)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -346,7 +345,9 @@ DEPENDENCIES
   database_cleaner
   devise
   execjs
+  fabrication
   factory_girl_rails
+  faker
   font-awesome-sass
   gravatar-ultimate
   gravatarify
@@ -354,7 +355,6 @@ DEPENDENCIES
   haml_coffee_assets!
   jquery-rails
   kaminari
-  lol_dba
   mysql2
   nokogiri
   paranoia (~> 2.0)

@@ -46,9 +46,10 @@ group :development, :test do
   gem 'pry'
   gem 'rspec-rails'
   gem 'unicorn'
-  gem 'lol_dba'
   gem 'pg'
   gem 'factory_girl_rails'
+  gem 'fabrication'
+  gem 'faker'
 end
 
 group :test do

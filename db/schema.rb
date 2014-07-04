@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140630193552) do
+ActiveRecord::Schema.define(version: 20140704110756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,8 +44,10 @@ ActiveRecord::Schema.define(version: 20140630193552) do
 
   add_index "answers", ["deleted_at"], name: "index_answers_on_deleted_at", using: :btree
   add_index "answers", ["operator_id"], name: "index_answers_on_operator_id", using: :btree
-  add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
-  add_index "answers", ["user_id"], name: "index_answers_on_user_id", using: :btree
+  add_index "answers", ["user_id", "question_id", "deleted_at"], name: "index_answers_on_user_id_and_question_id_and_deleted_at", using: :btree
+  add_index "answers", ["user_id", "question_id"], name: "index_answers_on_user_id_and_question_id", using: :btree
+  add_index "answers", ["workflow_state", "deleted_at"], name: "index_answers_on_workflow_state_and_deleted_at", using: :btree
+  add_index "answers", ["workflow_state"], name: "index_answers_on_workflow_state", using: :btree
 
   create_table "comments", force: true do |t|
     t.string   "title",            limit: 50, default: ""
@@ -142,5 +144,7 @@ ActiveRecord::Schema.define(version: 20140630193552) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["name"], name: "index_users_on_name", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["workflow_state", "deleted_at"], name: "index_users_on_workflow_state_and_deleted_at", using: :btree
+  add_index "users", ["workflow_state"], name: "index_users_on_workflow_state", using: :btree
 
 end
