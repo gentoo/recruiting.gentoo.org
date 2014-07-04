@@ -93,7 +93,7 @@ class User < ActiveRecord::Base
   end
 
   def progress
-    @progress ||= ( answers.select(&:accepted?).count / Question.for_user(self).count.to_f ).round(2)
+    @progress ||= (answers.select(&:accepted?).count * 100 / Question.for_user(self).count.to_f).round(2)
   end
 
   # mentor operations
