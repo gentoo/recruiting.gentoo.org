@@ -123,9 +123,10 @@ class User < ActiveRecord::Base
       end
     end
   end
+
   private
   def sluggish_name
-    self.name = self.name.downcase.gsub(/\s+/, '-')
+    self.name = self.name.downcase.gsub(/\s+/, '-').gsub(/\./, '')
   end
 
   def assign_role
