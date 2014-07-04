@@ -7,7 +7,7 @@ ActiveAdmin.register Question do
     column :group
     column ("Content") {|question| truncate(question.content, length: 200) }
     column :created_at
-    default_actions
+    actions
   end
 
   show do |question|
@@ -28,6 +28,6 @@ ActiveAdmin.register Question do
       f.input :content
       f.input :group
     end
-    f.buttons
+    f.actions
   end
 end
