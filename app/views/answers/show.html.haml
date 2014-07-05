@@ -3,11 +3,11 @@
 
 %p.lead.question= markdown(@question.content)
 
-.well= markdown @answer.content
-
 %p
   = answer_status(@answer)
+  answer
   = link_to "by #{unsluggish_name(@answer.user.name)}", candidate_path(@answer.user)
+.well= markdown @answer.content
 - if can? :review, Answer
   .btn-group
     - if @answer.awaiting_review? || @answer.rejected?
