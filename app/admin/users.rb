@@ -50,7 +50,7 @@ ActiveAdmin.register User do
   end
 
   member_action :promote, :method => :put do
-    user = User.find_by_name(params[:id])
+    user = User.find_by(name: params[:id])
     user.promote!
     flash[:notice] = "#{user.name} promoted!"
     redirect_to action: :index

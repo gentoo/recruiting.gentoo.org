@@ -18,10 +18,16 @@
           = @candidate.date_of_birth
         %p 
           %strong SSH public key
-          = link_to "download", ssh_key_candidate_path(@candidate)
+          - unless @candidate.ssh_key.blank?
+            = link_to "download", ssh_key_candidate_path(@candidate)
+          - else
+            To be uploaded
         %p 
           %strong GnuPG public key
-          = link_to "download", gpg_key_candidate_path(@candidate)
+          - unless @candidate.gpg_key.blank?
+            = link_to "download", gpg_key_candidate_path(@candidate)
+          - else
+            To be uploaded
 
         %p 
           %strong Address

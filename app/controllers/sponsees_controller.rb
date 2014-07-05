@@ -10,7 +10,7 @@ class SponseesController < ApplicationController
 
   def destroy
     authorize! :sponsor, User
-    @sponsee = current_user.sponsees.find_by_name params[:id]
+    @sponsee = current_user.sponsees.find_by name: params[:id]
     current_user.sponsees.delete(@sponsee) if @sponsee.present?
     redirect_to action: :index
   end

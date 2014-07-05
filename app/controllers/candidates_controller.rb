@@ -8,12 +8,12 @@ class CandidatesController < ApplicationController
 
   def show
     authorize! :sponsor, User
-    @candidate = User.find_by_name params[:id]
+    @candidate = User.find_by name: params[:id]
   end
 
   def sponsor
     authorize! :sponsor, User
-    @novice = User.find_by_name params[:id]
+    @novice = User.find_by name: params[:id]
     current_user.recruit(@novice)
     redirect_to action: :index
   end
@@ -38,7 +38,7 @@ class CandidatesController < ApplicationController
   # This is actually promote to mentor
   def recruit
     authorize! :promote, User
-    @novice = User.find_by_name params[:id]
+    @novice = User.find_by name: params[:id]
     # XXX The recruiter choose what post to assign the candidate
     # @novice.recuite! # => staffer
     @novice.promote! # => mentor
@@ -55,13 +55,13 @@ class CandidatesController < ApplicationController
 
   def ssh_key
     authorize! :sponsor, User
-    @candidate = User.find_by_name params[:id]
-    send_data @candidate.ssh_key, filename: "#{@candidate.name}.pub"
+    @candidate = User.find_by name: params[:id]
+    send_data @candidate.ssh_key, filename: "#{@candidate.name}-ssh.pub"
   end
 
   def gpg_key
     authorize! :sponsor, User
-    @candidate = User.find_by_name params[:id]
-    send_data @candidate.gpg_key, filename: "#{@candidate.name}.pub"
+    @candidate = User.find_by name: params[:id]
+    send_data @candidate.gpg_key, filename: "#{@candidate.name}-gpg.pub"
   end
 end

@@ -5,7 +5,7 @@ class AnswersController < InheritedResources::Base
   before_filter :get_question, only: [:new, :edit, :update, :create] 
   def index
     authorize! :review, Answer
-    @candidate = User.find_by_name params[:candidate_id] 
+    @candidate = User.find_by name: params[:candidate_id] 
     if @candidate.candidate?
       @answers = @candidate.answers.page params[:page]
     else
@@ -100,7 +100,7 @@ class AnswersController < InheritedResources::Base
 
   def export
     authorize! :review, Answer
-    @candidate = User.find_by_name params[:candidate_id] 
+    @candidate = User.find_by name: params[:candidate_id] 
     if @candidate.candidate?
       send_data @candidate.export_answers, filename: "#{@candidate.name}.csv", type: 'text/csv; charset=iso-8859-1; header=present'
     else

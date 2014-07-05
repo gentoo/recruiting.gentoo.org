@@ -28,7 +28,7 @@ When /^I follow first candidate name$/ do
 end
 
 Then /^I should( not)? mentor all other users$/ do |negation|
-  me = User.find_by_workflow_state 'mentor'
+  me = User.find_by(workflow_state: 'mentor')
   expect((me.sponsees.count == User.count - 1) ^ negation).to be(true)
 end
 
