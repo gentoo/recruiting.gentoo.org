@@ -22,6 +22,8 @@ class Answer < ActiveRecord::Base
     joins(:user).where("users.id" => user.sponsees.map(&:id))
   }
 
+  scope :reviewed, -> { where.not(workflow_state: "awaiting_review") }
+
   scope :accepted, -> { where(workflow_state: "accepted") }
 
   scope :rejected_answers, -> user {
@@ -35,9 +37,12 @@ class Answer < ActiveRecord::Base
     end
 
     state :rejected do
+      event :accept, transitions_to: :accepted
       event :submit, transitions_to: :awaiting_review
     end
-    state :accepted
+    state :accepted do
+      event :reject, transitions_to: :rejected
+    end
   end
 
   def state

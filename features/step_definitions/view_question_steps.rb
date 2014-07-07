@@ -38,6 +38,6 @@ end
 Given /^I subscribed "([^"]*)" question category/ do |category|
   User.count.should == 1
   u = User.last
-  u.groups << [Group.find_by_name(category)]
+  u.groups << [Group.find_by(name: category)]
   u.save!
 end

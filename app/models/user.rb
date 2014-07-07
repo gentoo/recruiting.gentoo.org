@@ -93,7 +93,7 @@ class User < ActiveRecord::Base
   end
 
   def progress
-    @progress ||= ( answers.select(&:accepted?).count / Question.for_user(self).count.to_f ).round(2)
+    @progress ||= (answers.select(&:accepted?).count * 100 / Question.for_user(self).count.to_f).round(2)
   end
 
   # mentor operations
@@ -123,9 +123,10 @@ class User < ActiveRecord::Base
       end
     end
   end
+
   private
   def sluggish_name
-    self.name = self.name.downcase.gsub(/\s+/, '-')
+    self.name = self.name.downcase.gsub(/\s+/, '-').gsub(/\./, '')
   end
 
   def assign_role

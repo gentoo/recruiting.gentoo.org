@@ -61,9 +61,9 @@ module ApplicationHelper
     end
   end
 
-  def progress_bar(percentage)
-    content_tag :div, class: :progress, title: "Progress #{percentage * 100} %" do
-      content_tag :div, nil, style: "width: #{percentage * 100}%", class: "bar"
+  def progress_bar(value)
+    content_tag :div, class: :progress do
+      content_tag :div, "#{value}%", style: "width: #{value}%", class: "progress-bar progress-bar-success", role: "progressbar", "aria-valuenow" => value, "aria-valuemin" => 0, "aria-valuemax" => 1
     end
   end
   

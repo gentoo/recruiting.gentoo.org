@@ -5,7 +5,7 @@
         %th Question
         %th Group
         - if current_user.candidate?
-          %th Answer status
+          %th Status
         %th
     %tbody
       - @questions.each_with_index do |question, idx|
