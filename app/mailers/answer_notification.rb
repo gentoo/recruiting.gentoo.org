@@ -33,7 +33,7 @@ class AnswerNotification < ActionMailer::Base
     @answer_url = candidate_answer_url(candidate_id:user.id, id: answer.id)
     @question = answer.question.title
 
-    mail to: user.mentors.empty? ? "recruitor@gentoo.org" : user.mentors.map(&:email), subject: "#{user.name} update his answer for question #{@question}."
+    mail to: user.mentors.empty? ? "recruitor@gentoo.org" : user.mentors.map(&:email), subject: "#{user.name} update the answer for question: #{@question}."
   end
 
 end
