@@ -8,7 +8,9 @@
               = link_to candidate_path(sponsee), class: "pull-left" do
                 = gravatar_tag(sponsee, html: {class: "media-object"})
               .media-body
-                %h3.media-heading= link_to unsluggish_name(sponsee.name), candidate_path(sponsee)
+                %h3.media-heading
+                  = link_to unsluggish_name(sponsee.name), candidate_path(sponsee)
+                  %span.badge(title='Number of mentors')= sponsee.mentors.count
                 %p= truncate(sponsee.biography, length: 150)
           .panel-footer
             .btn-group
