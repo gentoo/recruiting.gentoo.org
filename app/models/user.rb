@@ -85,7 +85,7 @@ class User < ActiveRecord::Base
   end
 
   def ready_for?(group)
-    group.questions.count == answers.accepted.where(question_id: group.questions.map(&:id)).count
+    group.questions.count == accepted_answers_for(group)
   end
 
   def ready?
@@ -94,6 +94,10 @@ class User < ActiveRecord::Base
 
   def progress
     @progress ||= (answers.select(&:accepted?).count * 100 / Question.for_user(self).count.to_f).round(2)
+  end
+
+  def progress_for(group)
+    "#{accepted_answers_for(group)}/#{group.questions.count}"
   end
 
   # mentor operations
@@ -131,5 +135,9 @@ class User < ActiveRecord::Base
 
   def assign_role
     self.workflow_state = "mentor" if self.email =~ /@gentoo.org$/
+  end
+
+  def accepted_answers_for(group)
+    answers.accepted.where(question_id: group.questions.map(&:id)).count
   end
 end

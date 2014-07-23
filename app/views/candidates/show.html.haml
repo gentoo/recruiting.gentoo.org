@@ -13,8 +13,8 @@
         %p 
           %strong Email
           = @candidate.email
-          %p
-            %strong Date of birth
+        %p
+          %strong Date of birth
           = @candidate.date_of_birth
         %p 
           %strong SSH public key
@@ -49,7 +49,9 @@
         %p
           %em Subscribed quests
           - @candidate.groups.each do |group|
-            %p= link_to group.name, candidate_answers_path(@candidate)
+            %p
+              = link_to group.name, candidate_answers_path(@candidate)
+              %span.label.label-info= @candidate.progress_for(group)
           - if @candidate.groups.empty?
             %p No question group subscribed.
 
