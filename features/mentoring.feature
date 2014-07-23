@@ -35,6 +35,6 @@ Feature: Mentoring
   Scenario: Start mentoring
     When I follow "Candidates"
     Then I should not mentor all other users
-    When I follow "Mentor"
-    Then I should not see link "Mentor"
+    When I follow "Recruit"
+    Then I should not see link "Recruit"
     And I should mentor all other users
