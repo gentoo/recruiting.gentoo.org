@@ -9,6 +9,8 @@ gem 'rails-i18n'
 # Gems used only for assets and not required
 # in production environments by default.
 gem 'sass-rails'
+gem 'jquery-turbolinks'
+gem 'turbolinks'
 gem 'haml_coffee_assets', github: "netzpirat/haml_coffee_assets"
 gem 'execjs'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes

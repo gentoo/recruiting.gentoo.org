@@ -181,6 +181,9 @@ GEM
     jquery-rails (3.1.1)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-turbolinks (2.1.0)
+      railties (>= 3.1.0)
+      turbolinks
     jquery-ui-rails (4.2.1)
       railties (>= 3.2.16)
     json (1.8.1)
@@ -313,6 +316,8 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
+    turbolinks (2.2.2)
+      coffee-rails
     tzinfo (1.2.1)
       thread_safe (~> 0.1)
     uglifier (2.5.1)
@@ -354,6 +359,7 @@ DEPENDENCIES
   haml-rails
   haml_coffee_assets!
   jquery-rails
+  jquery-turbolinks
   kaminari
   mysql2
   nokogiri
@@ -374,6 +380,7 @@ DEPENDENCIES
   spring
   therubyracer
   thin
+  turbolinks
   uglifier
   unicorn
   workflow
