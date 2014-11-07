@@ -85,7 +85,12 @@
 
         / /.nav-collapse
     / Begin page content
-    .container= yield
+    .container
+      - if flash[:notice]
+        .alert.alert-info= flash[:notice]
+      - if flash[:alert]
+        .alert.alert-danger= flash[:alert]
+      = yield
     .footer
       .container
         %p.text-muted
