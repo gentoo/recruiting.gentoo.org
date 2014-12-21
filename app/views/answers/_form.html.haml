@@ -14,7 +14,7 @@
 - content_for :js do
   :javascript
     $(function() {
-      var epicEditor = new EpicEditor({basePath: "/assets"}).load().reflow('height');
+      var epicEditor = new EpicEditor({basePath: ""}).load().reflow('height');
       epicEditor.importFile("answer", "#{escape_javascript(@answer.content)}")
       $("form").submit(function() {
         $("#answer_content").val(epicEditor.exportFile());
