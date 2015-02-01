@@ -60,7 +60,8 @@ bundle install
 
 * prepare database
 
-## For create new database
+### For create new database 
+
 first modify config/database.yml.example then
 
 ```
@@ -70,7 +71,7 @@ RAILS_ENV=development bundle exec rake db:schema:load
 RAILS_ENV=development bundle exec rake db:data:load 
 ```
 
-## For exisitng database and you want keep the data
+### For exisitng database and you want keep the data
 ```
 RAILS_ENV=development bundle exec rake db:migrate
 ```
@@ -89,4 +90,4 @@ bundle exec cucumber
 ```
 bundle exec rspec
 ```
-``````
+
