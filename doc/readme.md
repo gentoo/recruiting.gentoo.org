@@ -23,9 +23,9 @@ then
 ```
 cp config/database.yml.example config/database.yml
 cp config/initializers/secret_token.rb.example config/initializers/secret_token.rb
-RAILS_ENV=productoin bundle exec rake db:create
-RAILS_ENV=productoin bundle exec rake db:schema:load
-RAILS_ENV=productoin bundle exec rake db:data:load
+RAILS_ENV=production bundle exec rake db:create
+RAILS_ENV=production bundle exec rake db:schema:load
+RAILS_ENV=production bundle exec rake db:data:load
 ```
 
 Change the secret token in config/initializers/secret_token.rb by following instructions there.
@@ -38,5 +38,5 @@ RAILS_ENV=production bundle exec rake assets:precompile
 * start webserver
 
 ```
-bundle exec thin -p 8080 -e production -d
+bundle exec thin -p 8080 -e production -d start
 ```
