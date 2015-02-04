@@ -44,7 +44,7 @@ bundle exec thin -p 8080 -e production -d
 How to setup development envirement
 ------------------
 
-* install ruby 1.9.3
+* install ruby 2.2.0 (2.1.5 should working as well)
 * install and setup postgresql or mysql
 * install bundler by
 
